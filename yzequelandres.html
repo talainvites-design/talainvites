@@ -1,0 +1,902 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Yzeanel Andres | Baptism & 1st Birthday</title>
+
+<!-- GOOGLE FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Playfair+Display:wght@600&family=Caveat:wght@700&display=swap" rel="stylesheet">
+
+<!-- AOS -->
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<style>
+
+/* =====================================================
+RESET
+===================================================== */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Poppins', sans-serif;
+  background:#050d34;
+  color:white;
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* =====================================================
+GLOBAL
+===================================================== */
+
+section{
+  position:relative;
+  padding:100px 20px;
+  overflow:hidden;
+}
+
+.container{
+  width:100%;
+  max-width:1200px;
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+
+.section-title{
+  font-family:'Playfair Display', serif;
+  font-size:3rem;
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.section-sub{
+  text-align:center;
+  opacity:.8;
+  margin-bottom:60px;
+}
+
+/* =====================================================
+STARS
+===================================================== */
+
+.stars{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+}
+
+.star{
+  position:absolute;
+  width:3px;
+  height:3px;
+  background:white;
+  border-radius:50%;
+  opacity:.5;
+  animation:twinkle 4s infinite ease-in-out;
+}
+
+@keyframes twinkle{
+  0%,100%{
+    opacity:.2;
+    transform:scale(1);
+  }
+  50%{
+    opacity:1;
+    transform:scale(1.8);
+  }
+}
+
+/* =====================================================
+FLOATING DECOR
+===================================================== */
+
+.floating-astronaut{
+  position:fixed;
+  width:90px;
+  right:3%;
+  top:18%;
+  z-index:2;
+  animation:floatAstronaut 6s ease-in-out infinite;
+  opacity:.9;
+}
+
+.floating-ufo{
+  position:fixed;
+  width:110px;
+  left:3%;
+  top:65%;
+  z-index:2;
+  animation:floatUfo 7s ease-in-out infinite;
+  opacity:.8;
+}
+
+.saturn{
+  position:absolute;
+  width:180px;
+  top:100px;
+  left:-60px;
+  opacity:.7;
+  animation:rotatePlanet 20s linear infinite;
+}
+
+.rocket{
+  position:absolute;
+  width:110px;
+  right:-20px;
+  bottom:120px;
+  animation:rocketMove 5s ease-in-out infinite;
+}
+
+.shooting-star{
+  position:fixed;
+  top:100px;
+  right:-250px;
+  width:250px;
+  height:4px;
+  background:linear-gradient(to left, white, transparent);
+  border-radius:999px;
+  transform:rotate(-20deg);
+  animation:shooting 7s linear infinite;
+}
+
+.shooting-star::before{
+  content:'⭐';
+  position:absolute;
+  left:-10px;
+  top:-15px;
+  font-size:30px;
+}
+
+/* =====================================================
+HERO
+===================================================== */
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  background:
+  radial-gradient(circle at top,#213b9d 0%,#050d34 65%);
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+}
+
+.subtitle{
+  font-size:1.1rem;
+  letter-spacing:1px;
+  margin-bottom:20px;
+  opacity:.9;
+}
+
+.name{
+  font-family:'Caveat', cursive;
+  font-size:6rem;
+  line-height:1;
+  margin-bottom:10px;
+}
+
+.title{
+  font-family:'Playfair Display', serif;
+  font-size:3rem;
+  margin-bottom:30px;
+}
+
+.hero-card{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(15px);
+  padding:35px;
+  border-radius:30px;
+}
+
+.hero-card p{
+  line-height:1.9;
+  font-size:1.05rem;
+}
+
+.button-wrap{
+  display:flex;
+  gap:15px;
+  margin-top:25px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:15px 28px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:700;
+  transition:.3s ease;
+}
+
+.btn-primary{
+  background:#ffd35f;
+  color:#09143d;
+}
+
+.btn-secondary{
+  border:1px solid rgba(255,255,255,.2);
+  color:white;
+  background:rgba(255,255,255,.08);
+}
+
+.btn:hover{
+  transform:translateY(-5px);
+}
+
+/* =====================================================
+PHOTO
+===================================================== */
+
+.photo-wrap{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.moon{
+  position:absolute;
+  width:420px;
+  bottom:-30px;
+  animation:float 6s ease-in-out infinite;
+}
+
+.baby-photo{
+  width:360px;
+  position:relative;
+  z-index:2;
+  animation:float 5s ease-in-out infinite;
+  filter:drop-shadow(0 15px 35px rgba(0,0,0,.4));
+}
+
+/* =====================================================
+COUNTDOWN
+===================================================== */
+
+.countdown-section{
+  background:
+  radial-gradient(circle at top right,
+  rgba(255,211,95,.15),
+  transparent 25%),
+  #071242;
+}
+
+.countdown{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.time-box{
+  width:130px;
+  height:130px;
+  background:white;
+  color:#071242;
+  border-radius:28px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.time-box h2{
+  font-size:2.8rem;
+}
+
+.time-box span{
+  font-size:.8rem;
+  font-weight:700;
+  letter-spacing:1px;
+}
+
+/* =====================================================
+FUN SECTION
+===================================================== */
+
+.fun-section{
+  background:
+  radial-gradient(circle at center,
+  rgba(255,211,95,.12),
+  transparent 40%),
+  #08144d;
+}
+
+.fun-card{
+  max-width:900px;
+  margin:auto;
+  text-align:center;
+  padding:70px 40px;
+  border-radius:40px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.1);
+  position:relative;
+  overflow:hidden;
+}
+
+.fun-card h2{
+  font-size:3rem;
+  margin-bottom:20px;
+  font-family:'Playfair Display', serif;
+}
+
+.fun-card p{
+  line-height:2;
+  max-width:700px;
+  margin:auto;
+}
+
+.fun-icons{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  margin-top:40px;
+  flex-wrap:wrap;
+}
+
+.fun-icon{
+  width:80px;
+  height:80px;
+  border-radius:24px;
+  background:rgba(255,255,255,.08);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2rem;
+  transition:.3s ease;
+}
+
+.fun-icon:hover{
+  transform:translateY(-8px) rotate(5deg);
+}
+
+/* =====================================================
+TIMELINE
+===================================================== */
+
+.timeline-section{
+  background:#050d34;
+}
+
+.timeline{
+  max-width:700px;
+  margin:auto;
+  position:relative;
+}
+
+.timeline::before{
+  content:'';
+  position:absolute;
+  left:30px;
+  top:0;
+  width:3px;
+  height:100%;
+  background:rgba(255,255,255,.15);
+}
+
+.timeline-item{
+  display:flex;
+  gap:25px;
+  margin-bottom:40px;
+}
+
+.dot{
+  width:18px;
+  height:18px;
+  background:#ffd35f;
+  border-radius:50%;
+  margin-top:18px;
+}
+
+.timeline-card{
+  flex:1;
+  background:rgba(255,255,255,.06);
+  border-radius:25px;
+  padding:25px;
+}
+
+.timeline-card h3{
+  margin-bottom:10px;
+}
+
+/* =====================================================
+GALLERY
+===================================================== */
+
+.gallery-section{
+  background:#071242;
+}
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:20px;
+}
+
+.gallery-grid img{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+  border-radius:28px;
+  transition:.4s ease;
+}
+
+.gallery-grid img:hover{
+  transform:translateY(-10px) scale(1.02);
+}
+
+/* =====================================================
+MAP
+===================================================== */
+
+.map-section{
+  background:#050d34;
+}
+
+.map-card{
+  background:rgba(255,255,255,.08);
+  border-radius:35px;
+  overflow:hidden;
+}
+
+.map-header{
+  padding:40px;
+  text-align:center;
+}
+
+.map-frame{
+  width:100%;
+  height:500px;
+  border:none;
+}
+
+/* =====================================================
+RSVP
+===================================================== */
+
+.rsvp-section{
+  background:#071242;
+}
+
+.rsvp-card{
+  max-width:950px;
+  margin:auto;
+  border-radius:35px;
+  overflow:hidden;
+  padding:2px;
+  background:linear-gradient(
+  45deg,
+  #ffd35f,
+  #8ea6ff,
+  #ff8bd7
+  );
+}
+
+.rsvp-inner{
+  background:#08144d;
+  border-radius:33px;
+  overflow:hidden;
+}
+
+.rsvp-header{
+  text-align:center;
+  padding:50px 30px 20px;
+}
+
+.rsvp-header h2{
+  font-size:3rem;
+  margin-bottom:10px;
+}
+
+.rsvp-form{
+  width:100%;
+  height:750px;
+  border:none;
+}
+
+/* =====================================================
+CLOUDS
+===================================================== */
+
+.cloud-section{
+  height:120px;
+  background:#050d34;
+  position:relative;
+  overflow:hidden;
+}
+
+.cloud{
+  position:absolute;
+  background:rgba(255,255,255,.08);
+  border-radius:999px;
+}
+
+.cloud::before,
+.cloud::after{
+  content:'';
+  position:absolute;
+  background:inherit;
+  border-radius:inherit;
+}
+
+.cloud1{
+  width:180px;
+  height:55px;
+  top:20px;
+  left:-200px;
+  animation:cloudMove 22s linear infinite;
+}
+
+.cloud1::before{
+  width:70px;
+  height:70px;
+  left:25px;
+  top:-30px;
+}
+
+.cloud1::after{
+  width:90px;
+  height:90px;
+  right:20px;
+  top:-45px;
+}
+
+/* =====================================================
+FOOTER
+===================================================== */
+
+footer{
+  padding:100px 20px;
+  text-align:center;
+  background:#050d34;
+}
+
+footer h2{
+  font-size:3rem;
+  margin-bottom:20px;
+  font-family:'Playfair Display', serif;
+}
+
+/* =====================================================
+ANIMATIONS
+===================================================== */
+
+@keyframes float{
+  0%,100%{
+    transform:translateY(0px);
+  }
+  50%{
+    transform:translateY(-18px);
+  }
+}
+
+@keyframes floatAstronaut{
+  0%,100%{
+    transform:translateY(0px) rotate(-5deg);
+  }
+  50%{
+    transform:translateY(-20px) rotate(5deg);
+  }
+}
+
+@keyframes floatUfo{
+  0%,100%{
+    transform:translateY(0px);
+  }
+  50%{
+    transform:translateY(-15px);
+  }
+}
+
+@keyframes rotatePlanet{
+  from{
+    transform:rotate(0deg);
+  }
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+@keyframes rocketMove{
+  0%,100%{
+    transform:translateY(0px);
+  }
+  50%{
+    transform:translateY(-15px);
+  }
+}
+
+@keyframes shooting{
+  0%{
+    right:-250px;
+    top:100px;
+  }
+  100%{
+    right:120%;
+    top:350px;
+  }
+}
+
+@keyframes cloudMove{
+  from{
+    transform:translateX(0);
+  }
+  to{
+    transform:translateX(140vw);
+  }
+}
+
+/* =====================================================
+MOBILE
+===================================================== */
+
+@media(max-width:900px){
+
+  section{
+    padding:70px 18px;
+  }
+
+  .hero-grid{
+    grid-template-columns:1fr;
+    gap:60px;
+  }
+
+  .photo-wrap{
+    order:-1;
+  }
+
+  .name{
+    font-size:4rem;
+    text-align:center;
+  }
+
+  .title{
+    font-size:2rem;
+    text-align:center;
+  }
+
+  .subtitle{
+    text-align:center;
+  }
+
+  .hero-card{
+    padding:24px;
+  }
+
+  .hero-card p{
+    text-align:center;
+  }
+
+  .button-wrap{
+    justify-content:center;
+  }
+
+  .btn{
+    width:100%;
+    text-align:center;
+  }
+
+  .moon{
+    width:280px;
+  }
+
+  .baby-photo{
+    width:240px;
+  }
+
+  .section-title{
+    font-size:2rem;
+  }
+
+  .gallery-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .gallery-grid img{
+    height:180px;
+  }
+
+  .time-box{
+    width:78px;
+    height:78px;
+  }
+
+  .time-box h2{
+    font-size:1.5rem;
+  }
+
+  .floating-astronaut{
+    width:65px;
+  }
+
+  .floating-ufo{
+    width:80px;
+  }
+
+}
+
+@media(max-width:480px){
+
+  .name{
+    font-size:3.2rem;
+  }
+
+  .title{
+    font-size:1.7rem;
+  }
+
+  .gallery-grid{
+    grid-template-columns:1fr;
+  }
+
+  .gallery-grid img{
+    height:260px;
+  }
+
+}
+
+/* ===================================================== */
+
+</style>
+
+</head>
+
+<body>
+
+<!-- STARS -->
+<div class="stars">
+
+  <div class="star" style="top:10%;left:15%"></div>
+  <div class="star" style="top:25%;left:80%"></div>
+  <div class="star" style="top:60%;left:10%"></div>
+  <div class="star" style="top:75%;left:90%"></div>
+  <div class="star" style="top:40%;left:50%"></div>
+
+</div>
+
+<!-- FLOATING DECOR -->
+<img class="floating-astronaut"
+src="https://cdn-icons-png.flaticon.com/512/3212/3212608.png">
+
+<img class="floating-ufo"
+src="https://cdn-icons-png.flaticon.com/512/1245/1245823.png">
+
+<img class="saturn"
+src="https://cdn-icons-png.flaticon.com/512/3594/3594088.png">
+
+<img class="rocket"
+src="https://cdn-icons-png.flaticon.com/512/3212/3212567.png">
+
+<div class="shooting-star"></div>
+
+<!-- HERO -->
+<section class="hero">
+
+<div class="container">
+
+<div class="hero-grid">
+
+<div>
+
+<p class="subtitle">
+🚀 Join the space adventure as we celebrate
+</p>
+
+<h1 class="name">
+Yzeanel Andres
+</h1>
+
+<h2 class="title">
+Baptism & 1st Birthday
+</h2>
+
+<div class="hero-card">
+
+<p>
+🌙 Moon River Resort <br>
+Patindig Araw, Imus Cavite <br>
+Sunday, May 18, 2025 <br>
+Party starts at 12 Noon
+</p>
+
+<div class="button-wrap">
+
+<a href="#rsvp" class="btn btn-primary">
+RSVP Now
+</a>
+
+<a href="#location" class="btn btn-secondary">
+View Location
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="photo-wrap">
+
+<img class="moon"
+src="https://cdn-icons-png.flaticon.com/512/414/414927.png">
+
+<img class="baby-photo"
+src="https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/v123456789/baby.png">
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- COUNTDOWN -->
+<section class="countdown-section">
+
+<div class="container">
+
+<h2 class="section-title">
+Countdown to Blast Off 🚀
+</h2>
+
+<p class="section-sub">
+Our little astronaut’s big day is coming soon
+</p>
+
+<div class="countdown">
+
+<div class="time-box">
+<h2 id="days">00</h2>
+<span>DAYS</span>
+</div>
+
+<div class="time-box">
+<h2 id="hours">00</h2>
+<span>HOURS</span>
+</div>
+
+<div class="time-box">
+<h2 id="minutes">00</h2>
+<span>MINS</span>
+</div>
+
+<div class="time-box">
+<h2 id="seconds">00</h2>
+<span>SECS</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FUN MESSAGE SECTION --> <section class="fun-section"> <div class="container"> <div class="fun-card" data-aos="zoom-in"> <div class="planet-glow"></div> <h2> 🌙 A Tiny Astronaut Turns One! </h2> <p> Join us for an out-of-this-world celebration filled with yummy food, games, laughter, and magical memories as our little explorer reaches his first orbit 🚀 </p> <div class="fun-icons"> <div class="fun-icon">👨‍🚀</div> <div class="fun-icon">🪐</div> <div class="fun-icon">🚀</div> <div class="fun-icon">⭐</div> </div> </div> </div> </section> <!-- TIMELINE --> <section class="timeline-section"> <div class="container"> <h2 class="section-title"> Space Adventure Schedule 🪐 </h2> <p class="section-sub"> Here’s our fun journey for the day </p> <div class="timeline"> <div class="timeline-item"> <div class="dot"></div> <div class="timeline-card"> <h3>12:00 PM</h3> <p>Guest Arrival & Lunch</p> </div> </div> <div class="timeline-item"> <div class="dot"></div> <div class="timeline-card"> <h3>1:00 PM</h3> <p>Games & Space Activities</p> </div> </div> <div class="timeline-item"> <div class="dot"></div> <div class="timeline-card"> <h3>3:00 PM</h3> <p>Birthday Program & Cake</p> </div> </div> </div> </div> </section> <!-- GALLERY --> <section class="gallery-section"> <div class="container"> <h2 class="section-title"> Little Astronaut Moments 🌙 </h2> <p class="section-sub"> Precious memories before the big day </p> <div class="gallery-grid"> <img src="https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/v1/photo1.jpg"> <img src="https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/v1/photo2.jpg"> <img src="https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/v1/photo3.jpg"> <img src="https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/v1/photo4.jpg"> </div> </div> </section> <!-- MAP --> <section class="map-section" id="location"> <div class="container"> <div class="map-card"> <div class="map-header"> <h2 class="section-title"> Party Location 📍 </h2> <p> We can’t wait to celebrate with you! </p> </div> <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=YOUR_MAP_LINK" loading="lazy"> </iframe> </div> </div> </section> <!-- RSVP --> <section class="rsvp-section" id="rsvp"> <div class="container"> <div class="rsvp-card"> <div class="rsvp-inner"> <div class="rsvp-header"> <h2> Ready for Liftoff? 🚀 </h2> <p> Kindly confirm your attendance </p> </div> <iframe class="rsvp-form" src="https://tally.so/r/YOUR_TALLY_ID"> </iframe> </div> </div> </div> </section> <!-- CLOUDS --> <section class="cloud-section"> <div class="cloud cloud1"></div> <div class="cloud cloud2"></div> <div class="cloud cloud3"></div> </section> <!-- FOOTER --> <footer> <img class="planet planet1" src="https://cdn-icons-png.flaticon.com/512/3212/3212608.png" > <img class="planet planet2" src="https://cdn-icons-png.flaticon.com/512/3212/3212608.png" > <div class="container"> <h2> See you among the stars ✨ </h2> <p> With love, <br> Andrei, Bea & Yzeanel </p> </div> </footer>
+
+</body>
+</html>
+```

@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tala Invites — Web Invitations · Philippines</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#C9A84C;--onyx:#1C1712;--cream:#FAF7F2;--gold-light:#E8D5A3;
+  --gold-pale:#F7F0DC;--mist:#8B7D6B;--cognac:#3D2F1F;--ivory:#F2EDE4;
+  --lora:'Lora',Georgia,serif;--poppins:'Poppins',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--onyx);font-family:var(--poppins);font-weight:300;overflow-x:hidden}
+
+/* ─── NAV ─── */
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3rem;border-bottom:0.5px solid var(--gold-light);background:var(--cream);position:sticky;top:0;z-index:100}
+.nav-brand{cursor:pointer}
+.nav-logo{font-family:var(--lora);font-size:1.1rem;letter-spacing:0.12em;color:var(--onyx)}
+.nav-logo span{color:var(--gold)}
+.nav-sub{font-family:var(--poppins);font-size:0.52rem;letter-spacing:0.24em;color:var(--mist);text-transform:uppercase;margin-top:2px}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-family:var(--poppins);font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;color:var(--mist);transition:color 0.2s;cursor:pointer;background:none;border:none;padding:0}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-cta{font-family:var(--poppins);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.55rem 1.4rem;border:1px solid var(--gold);color:var(--gold);background:transparent;cursor:pointer;transition:all 0.25s}
+.nav-cta:hover{background:var(--gold);color:var(--cream)}
+
+/* ─── SHARED ─── */
+.page{display:none;animation:fadeIn 0.4s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+.section-label{font-family:var(--poppins);font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem}
+.ornament{display:flex;align-items:center;gap:0.75rem;margin:1.2rem 0}
+.ornament.center{justify-content:center}
+.ornament-line{width:60px;height:0.5px;background:var(--gold-light)}
+.ornament-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0}
+
+.btn-primary{font-family:var(--poppins);font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.85rem 2.2rem;background:var(--gold);color:var(--cream);border:none;cursor:pointer;transition:all 0.25s}
+.btn-primary:hover{background:var(--cognac)}
+.btn-ghost{font-family:var(--poppins);font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.85rem 2.2rem;background:transparent;color:var(--onyx);border:1px solid var(--onyx);cursor:pointer;transition:all 0.25s}
+.btn-ghost:hover{background:var(--onyx);color:var(--cream)}
+.btn-gold-ghost{font-family:var(--poppins);font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.85rem 2.2rem;background:transparent;color:var(--gold);border:1px solid var(--gold);cursor:pointer;transition:all 0.25s}
+.btn-gold-ghost:hover{background:var(--gold);color:var(--cream)}
+
+/* ─── FOOTER ─── */
+footer{background:var(--onyx);padding:3rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;align-items:start}
+.footer-brand .nav-logo{color:var(--cream)}
+.footer-brand .nav-sub{margin-top:4px}
+.footer-tagline{font-family:var(--lora);font-size:0.85rem;font-style:italic;color:rgba(250,247,242,0.4);margin-top:1rem;line-height:1.6}
+.footer-col-title{font-family:var(--poppins);font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.footer-links-list{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.footer-links-list a{font-family:var(--poppins);font-size:0.75rem;font-weight:300;color:rgba(250,247,242,0.5);text-decoration:none;cursor:pointer;transition:color 0.2s;background:none;border:none;padding:0;text-align:left}
+.footer-links-list a:hover{color:var(--gold)}
+.footer-contact-item{font-family:var(--poppins);font-size:0.75rem;font-weight:300;color:rgba(250,247,242,0.5);margin-bottom:0.6rem}
+.footer-contact-item a{color:rgba(250,247,242,0.5);text-decoration:none}
+.footer-contact-item a:hover{color:var(--gold)}
+.footer-bottom{background:var(--cognac);padding:1rem 3rem;display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-family:var(--poppins);font-size:0.6rem;letter-spacing:0.1em;color:rgba(250,247,242,0.3)}
+
+/* ════════════════════════════
+   HOME PAGE
+════════════════════════════ */
+.home-hero{text-align:center;padding:7rem 2rem 5rem;position:relative;overflow:hidden}
+.home-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:80px;background:linear-gradient(to bottom,transparent,var(--gold-light))}
+.hero-eyebrow{font-family:var(--poppins);font-size:0.62rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.8rem;animation:fadeUp 0.6s 0.1s both}
+.hero-title{font-family:var(--lora);font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:400;line-height:1.12;color:var(--onyx);margin-bottom:1.5rem;animation:fadeUp 0.6s 0.2s both}
+.hero-title em{font-style:italic;color:var(--gold)}
+.hero-sub{font-family:var(--poppins);font-size:0.85rem;font-weight:300;color:var(--mist);max-width:500px;margin:0 auto 2.5rem;line-height:2;animation:fadeUp 0.6s 0.4s both}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeUp 0.6s 0.5s both}
+
+.home-marquee{border-top:0.5px solid var(--gold-light);border-bottom:0.5px solid var(--gold-light);padding:0.9rem 0;overflow:hidden;white-space:nowrap;background:var(--gold-pale)}
+.marquee-track{display:inline-flex;gap:3rem;animation:marquee 22s linear infinite}
+.marquee-item{font-family:var(--poppins);font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--mist)}
+.marquee-item span{color:var(--gold);margin-right:3rem}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.home-intro{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:1100px;margin:0 auto;padding:6rem 3rem}
+.home-intro-text{padding-right:5rem;border-right:0.5px solid var(--gold-light)}
+.home-intro-text h2{font-family:var(--lora);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:400;line-height:1.3;color:var(--onyx);margin-bottom:1.5rem}
+.home-intro-text h2 em{font-style:italic;color:var(--gold)}
+.home-intro-text p{font-family:var(--poppins);font-size:0.82rem;font-weight:300;color:var(--mist);line-height:2;margin-bottom:1.5rem}
+.home-intro-stats{padding-left:5rem;display:flex;flex-direction:column;justify-content:center;gap:2.5rem}
+.stat-item{border-left:1.5px solid var(--gold);padding-left:1.5rem}
+.stat-num{font-family:var(--lora);font-size:2.8rem;font-weight:400;color:var(--gold);line-height:1}
+.stat-label{font-family:var(--poppins);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mist);margin-top:4px}
+
+.home-suites{padding:0 3rem 6rem;max-width:1100px;margin:0 auto}
+.home-suites-header{text-align:center;margin-bottom:3.5rem}
+.home-suites-header h2{font-family:var(--lora);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:400}
+.suite-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--gold-light)}
+.suite-tile{background:var(--cream);padding:2.5rem 2rem;cursor:pointer;transition:background 0.3s}
+.suite-tile:hover{background:var(--onyx)}
+.suite-tile:hover .suite-num,.suite-tile:hover .suite-name,.suite-tile:hover .suite-desc,.suite-tile:hover .suite-eye{color:var(--cream)}
+.suite-tile:hover .suite-num{color:rgba(201,168,76,0.4)}
+.suite-tile:hover .suite-arrow{color:var(--gold)}
+.suite-num{font-family:var(--lora);font-size:3rem;font-weight:400;color:var(--gold-light);line-height:1;margin-bottom:1rem;transition:color 0.3s}
+.suite-eye{font-family:var(--poppins);font-size:0.58rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;transition:color 0.3s}
+.suite-name{font-family:var(--lora);font-size:1.3rem;font-weight:500;color:var(--onyx);margin-bottom:0.8rem;transition:color 0.3s}
+.suite-desc{font-family:var(--poppins);font-size:0.76rem;font-weight:300;color:var(--mist);line-height:1.85;margin-bottom:1.5rem;transition:color 0.3s}
+.suite-arrow{font-family:var(--poppins);font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--mist);transition:color 0.3s}
+
+.home-process{background:var(--onyx);padding:6rem 3rem}
+.home-process-inner{max-width:1000px;margin:0 auto}
+.home-process-header{text-align:center;margin-bottom:4rem}
+.home-process-header .section-label{color:var(--gold)}
+.home-process-header h2{font-family:var(--lora);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:400;color:var(--cream)}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);position:relative}
+.process-step{padding:1.5rem;text-align:center;position:relative}
+.process-step::after{content:'';position:absolute;top:2rem;right:0;width:1px;height:36px;background:rgba(201,168,76,0.15)}
+.process-step:last-child::after{display:none}
+.ps-num{font-family:var(--lora);font-size:2.5rem;font-weight:400;color:rgba(201,168,76,0.2);line-height:1;margin-bottom:0.8rem}
+.ps-title{font-family:var(--lora);font-size:1rem;font-weight:500;color:var(--gold-light);margin-bottom:0.6rem}
+.ps-desc{font-family:var(--poppins);font-size:0.73rem;font-weight:300;color:var(--mist);line-height:1.8}
+
+.home-preview-strip{padding:6rem 3rem;max-width:1100px;margin:0 auto}
+.home-preview-header{text-align:center;margin-bottom:3.5rem}
+.home-preview-header h2{font-family:var(--lora);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:400}
+.preview-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.inv-card{border:0.5px solid var(--gold-light);position:relative;overflow:hidden}
+.inv-body{padding:2.5rem 1.75rem;text-align:center;min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.inv-light{background:var(--cream)}
+.inv-dark{background:var(--onyx)}
+.inv-warm{background:var(--gold-pale)}
+.inv-orn{font-size:0.55rem;letter-spacing:0.3em;color:var(--gold);text-transform:uppercase;margin-bottom:1.2rem}
+.inv-eyebrow{font-family:var(--poppins);font-size:0.57rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.7rem}
+.inv-name-l{font-family:var(--lora);font-size:1.65rem;font-style:italic;color:var(--onyx);line-height:1.2}
+.inv-name-d{font-family:var(--lora);font-size:1.65rem;font-style:italic;color:var(--cream);line-height:1.2}
+.inv-name-w{font-family:var(--lora);font-size:1.65rem;font-style:italic;color:var(--cognac);line-height:1.2}
+.inv-amp{font-family:var(--lora);font-size:1rem;color:var(--gold);margin:0.3rem 0;display:block}
+.inv-rule{width:28px;height:0.5px;background:var(--gold);margin:0.9rem auto}
+.inv-detail-l{font-family:var(--poppins);font-size:0.67rem;font-weight:300;color:var(--mist);line-height:2}
+.inv-detail-d{font-family:var(--poppins);font-size:0.67rem;font-weight:300;color:rgba(250,247,242,0.45);line-height:2}
+.inv-detail-w{font-family:var(--poppins);font-size:0.67rem;font-weight:300;color:var(--mist);line-height:2}
+.inv-footer-tag{font-family:var(--poppins);font-size:0.5rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-top:1.4rem}
+.inv-label{position:absolute;bottom:0;left:0;right:0;padding:0.6rem 1rem;display:flex;align-items:center;justify-content:space-between}
+.inv-label-light{background:var(--gold-pale)}
+.inv-label-dark{background:var(--cognac)}
+.inv-label-warm{background:var(--ivory)}
+.inv-label-txt{font-family:var(--poppins);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase}
+.inv-label-txt-l{color:var(--mist)}
+.inv-label-txt-d{color:var(--gold-light)}
+
+.home-cta{text-align:center;padding:7rem 2rem;border-top:0.5px solid var(--gold-light)}
+.home-cta h2{font-family:var(--lora);font-size:clamp(2rem,4vw,3.2rem);font-weight:400;line-height:1.2;margin-bottom:1rem}
+.home-cta h2 em{font-style:italic;color:var(--gold)}
+.home-cta p{font-family:var(--poppins);font-size:0.82rem;font-weight:300;color:var(--mist);max-width:420px;margin:0 auto 2.5rem;line-height:2}
+
+/* ════════════════════════════
+   SERVICES PAGE
+════════════════════════════ */
+.page-hero{text-align:center;padding:6rem 2rem 4rem;border-bottom:0.5px solid var(--gold-light)}
+.page-hero .section-label{margin-bottom:1rem}
+.page-hero h1{font-family:var(--lora);font-size:clamp(2.2rem,4vw,3.4rem);font-weight:400;line-height:1.15;margin-bottom:1rem}
+.page-hero h1 em{font-style:italic;color:var(--gold)}
+.page-hero p{font-family:var(--poppins);font-size:0.82rem;font-weight:300;color:var(--mist);max-width:480px;margin:0 auto;line-height:2}
+
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--gold-light);margin:0}
+.svc-card{background:var(--cream);padding:2.5rem 2rem;position:relative;transition:background 0.3s;cursor:default}
+.svc-card:hover{background:var(--onyx)}
+.svc-card:hover .svc-num,.svc-card:hover .svc-name,.svc-card:hover .svc-desc,.svc-card:hover .svc-eye{color:var(--cream)}
+.svc-card:hover .svc-num{color:rgba(201,168,76,0.3)}
+.svc-card:hover .tag{background:var(--cognac);color:var(--gold-light)}
+.svc-card:hover .svc-link{border-color:var(--gold);color:var(--gold)}
+.svc-badge{position:absolute;top:1rem;right:1rem;font-family:var(--poppins);font-size:0.53rem;letter-spacing:0.16em;text-transform:uppercase;background:var(--gold);color:var(--cream);padding:4px 10px}
+.svc-num{font-family:var(--lora);font-size:2.8rem;font-weight:400;color:var(--gold-light);line-height:1;margin-bottom:1.2rem;transition:color 0.3s}
+.svc-eye{font-family:var(--poppins);font-size:0.57rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;transition:color 0.3s}
+.svc-name{font-family:var(--lora);font-size:1.3rem;font-weight:500;color:var(--onyx);margin-bottom:0.8rem;transition:color 0.3s}
+.svc-desc{font-family:var(--poppins);font-size:0.76rem;font-weight:300;color:var(--mist);line-height:1.85;margin-bottom:1.4rem;transition:color 0.3s}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.4rem}
+.tag{font-family:var(--poppins);font-size:0.57rem;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;background:var(--ivory);color:var(--mist);transition:all 0.3s}
+.svc-link{font-family:var(--poppins);font-size:0.63rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--mist);border:none;background:none;cursor:pointer;padding:0;border-bottom:0.5px solid var(--gold-light);padding-bottom:2px;transition:all 0.3s}
+
+.svc-how{background:var(--onyx);padding:5rem 3rem}
+.svc-how-inner{max-width:960px;margin:0 auto}
+.svc-how-header{text-align:center;margin-bottom:4rem}
+.svc-how-header .section-label{color:var(--gold)}
+.svc-how-header h2{font-family:var(--lora);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:400;color:var(--cream)}
+.how-steps{display:grid;grid-template-columns:repeat(4,1fr);position:relative}
+.how-step{padding:1.5rem;text-align:center;position:relative}
+.how-step::after{content:'';position:absolute;top:1.8rem;right:0;width:1px;height:36px;background:rgba(201,168,76,0.15)}
+.how-step:last-child::after{display:none}
+.hs-num{font-family:var(--lora);font-size:2.2rem;font-weight:400;color:rgba(201,168,76,0.2);line-height:1;margin-bottom:0.8rem}
+.hs-title{font-family:var(--lora);font-size:1rem;font-weight:500;color:var(--gold-light);margin-bottom:0.5rem}
+.hs-desc{font-family:var(--poppins);font-size:0.72rem;font-weight:300;color:var(--mist);line-height:1.8}
+
+.svc-previews{padding:5rem 3rem;max-width:1100px;margin:0 auto}
+.svc-previews-header{text-align:center;margin-bottom:3.5rem}
+.svc-previews-header h2{font-family:var(--lora);font-size:clamp(1.8rem,3vw,2.3rem);font-weight:400}
+
+/* ════════════════════════════
+   PRICING PAGE
+════════════════════════════ */
+.pricing-wrapper{padding:5rem 3rem;max-width:1040px;margin:0 auto}
+.pricing-header{text-align:center;margin-bottom:4rem}
+.pricing-header h2{font-family:var(--lora);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:400}
+.pricing-note{font-family:var(--poppins);font-size:0.78rem;font-weight:300;color:var(--mist);max-width:420px;margin:1rem auto 0;line-height:1.9}
+
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:4rem}
+.p-card{background:var(--cream);border:0.5px solid var(--gold-light);padding:2.2rem 1.8rem;position:relative;display:flex;flex-direction:column}
+.p-card.featured{border:1.5px solid var(--gold);background:var(--onyx)}
+.p-tier{font-family:var(--poppins);font-size:0.57rem;letter-spacing:0.26em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem}
+.p-name{font-family:var(--lora);font-size:1.5rem;font-weight:500;color:var(--onyx);margin-bottom:0.2rem}
+.p-card.featured .p-name{color:var(--cream)}
+.p-tagline{font-family:var(--lora);font-size:0.82rem;font-style:italic;color:var(--mist);margin-bottom:1rem}
+.p-card.featured .p-tagline{color:rgba(250,247,242,0.4)}
+.p-price{font-family:var(--lora);font-size:2.6rem;font-weight:400;color:var(--onyx);line-height:1;margin:0.8rem 0 0.2rem}
+.p-card.featured .p-price{color:var(--gold)}
+.p-cur{font-size:1.1rem;vertical-align:super;font-family:var(--poppins);font-weight:300}
+.p-per{font-family:var(--poppins);font-size:0.7rem;font-weight:300;color:var(--mist);margin-bottom:1.2rem}
+.p-card.featured .p-per{color:rgba(250,247,242,0.35)}
+.p-rule{width:100%;height:0.5px;background:var(--gold-light);margin:1.2rem 0}
+.p-card.featured .p-rule{background:rgba(201,168,76,0.25)}
+.p-features{list-style:none;margin-bottom:1.8rem;flex:1}
+.p-features li{font-family:var(--poppins);font-size:0.74rem;font-weight:300;color:var(--mist);padding:0.38rem 0;display:flex;align-items:flex-start;gap:0.55rem;line-height:1.55}
+.p-card.featured .p-features li{color:rgba(250,247,242,0.6)}
+.p-features li::before{content:'—';color:var(--gold);flex-shrink:0;font-size:0.6rem;margin-top:2px}
+.p-features li.highlight{color:var(--onyx);font-weight:400}
+.p-card.featured .p-features li.highlight{color:var(--gold-light);font-weight:400}
+.p-features li.highlight::before{content:'✦';font-size:0.5rem;margin-top:3px}
+.p-btn{width:100%;padding:0.8rem;font-family:var(--poppins);font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;border:1px solid var(--gold-light);background:transparent;color:var(--mist);cursor:pointer;transition:all 0.25s}
+.p-btn:hover{border-color:var(--gold);color:var(--gold)}
+.p-card.featured .p-btn{border-color:var(--gold);color:var(--gold)}
+.p-card.featured .p-btn:hover{background:var(--gold);color:var(--onyx)}
+.popular-badge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);font-family:var(--poppins);font-size:0.53rem;letter-spacing:0.18em;text-transform:uppercase;background:var(--gold);color:var(--cream);padding:5px 16px;white-space:nowrap}
+
+.addons-section{background:var(--ivory);padding:5rem 3rem}
+.addons-inner{max-width:900px;margin:0 auto}
+.addons-header{text-align:center;margin-bottom:3.5rem}
+.addons-header h2{font-family:var(--lora);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:400}
+.addons-note{font-family:var(--poppins);font-size:0.76rem;font-weight:300;color:var(--mist);max-width:400px;margin:0.8rem auto 0;line-height:1.9}
+.addons-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.addon-group{background:var(--cream);border:0.5px solid var(--gold-light);padding:1.8rem}
+.addon-group-title{font-family:var(--poppins);font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;padding-bottom:0.8rem;border-bottom:0.5px solid var(--gold-light)}
+.addon-row{display:flex;justify-content:space-between;align-items:baseline;padding:0.5rem 0;border-bottom:0.5px solid rgba(232,213,163,0.3)}
+.addon-row:last-child{border-bottom:none}
+.addon-name{font-family:var(--poppins);font-size:0.75rem;font-weight:300;color:var(--onyx)}
+.addon-price{font-family:var(--lora);font-size:0.95rem;font-weight:400;color:var(--gold);white-space:nowrap;margin-left:1rem}
+.addon-sub{font-family:var(--poppins);font-size:0.62rem;font-weight:300;color:var(--mist);margin-top:2px}
+
+.pricing-faq{padding:5rem 3rem;max-width:800px;margin:0 auto}
+.pricing-faq-header{text-align:center;margin-bottom:3rem}
+.pricing-faq-header h2{font-family:var(--lora);font-size:clamp(1.5rem,3vw,2rem);font-weight:400}
+.faq-item{border-bottom:0.5px solid var(--gold-light);padding:1.2rem 0}
+.faq-q{font-family:var(--lora);font-size:0.95rem;font-weight:500;color:var(--onyx);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q::after{content:'+';font-family:var(--poppins);font-size:1.2rem;font-weight:300;color:var(--gold);flex-shrink:0;transition:transform 0.2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-family:var(--poppins);font-size:0.78rem;font-weight:300;color:var(--mist);line-height:1.9;max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s}
+.faq-item.open .faq-a{max-height:200px;padding-top:0.8rem}
+
+/* ════════════════════════════
+   PORTFOLIO PAGE
+════════════════════════════ */
+.portfolio-filters{display:flex;justify-content:center;gap:0;margin:3rem 0;border-bottom:0.5px solid var(--gold-light)}
+.filter-btn{font-family:var(--poppins);font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;padding:0.8rem 1.8rem;border:none;background:transparent;color:var(--mist);cursor:pointer;transition:all 0.2s;border-bottom:1.5px solid transparent;margin-bottom:-0.5px}
+.filter-btn:hover{color:var(--gold)}
+.filter-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+
+.portfolio-grid{padding:0 3rem 5rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.port-card{border:0.5px solid var(--gold-light);overflow:hidden;position:relative;cursor:pointer}
+.port-card:hover .port-overlay{opacity:1}
+.port-inner{padding:3rem 2rem;text-align:center;min-height:340px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.port-overlay{position:absolute;inset:0;background:rgba(28,23,18,0.88);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;padding:2rem}
+.port-overlay p{font-family:var(--poppins);font-size:0.7rem;font-weight:300;color:rgba(250,247,242,0.7);line-height:1.8;margin-bottom:1.2rem;text-align:center}
+.port-overlay-btn{font-family:var(--poppins);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.6rem 1.4rem;border:1px solid var(--gold);color:var(--gold);background:transparent;cursor:pointer;transition:all 0.2s}
+.port-overlay-btn:hover{background:var(--gold);color:var(--onyx)}
+.port-meta{padding:0.8rem 1rem;background:var(--gold-pale);display:flex;justify-content:space-between;align-items:center}
+.port-meta-dark{background:var(--cognac)}
+.port-title{font-family:var(--lora);font-size:0.82rem;font-weight:500;color:var(--cognac)}
+.port-title-d{font-family:var(--lora);font-size:0.82rem;font-weight:500;color:var(--gold-light)}
+.port-badge{font-family:var(--poppins);font-size:0.52rem;letter-spacing:0.12em;text-transform:uppercase;padding:3px 8px;background:var(--ivory);color:var(--mist)}
+.port-badge-d{font-family:var(--poppins);font-size:0.52rem;letter-spacing:0.12em;text-transform:uppercase;padding:3px 8px;background:rgba(201,168,76,0.15);color:var(--gold)}
+
+/* ════════════════════════════
+   ABOUT PAGE
+════════════════════════════ */
+.about-story{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:1100px;margin:0 auto;padding:6rem 3rem}
+.about-story-text{padding-right:5rem;border-right:0.5px solid var(--gold-light)}
+.about-story-text h2{font-family:var(--lora);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:400;line-height:1.3;margin-bottom:1.5rem}
+.about-story-text h2 em{font-style:italic;color:var(--gold)}
+.about-story-text p{font-family:var(--poppins);font-size:0.81rem;font-weight:300;color:var(--mist);line-height:2;margin-bottom:1.2rem}
+.about-story-side{padding-left:5rem;display:flex;flex-direction:column;justify-content:center;gap:2rem}
+.value-item{padding:1.5rem;border:0.5px solid var(--gold-light)}
+.value-title{font-family:var(--lora);font-size:1rem;font-weight:500;color:var(--onyx);margin-bottom:0.4rem}
+.value-desc{font-family:var(--poppins);font-size:0.74rem;font-weight:300;color:var(--mist);line-height:1.8}
+
+.about-philosophy{background:var(--onyx);padding:6rem 3rem;text-align:center}
+.about-philosophy blockquote{font-family:var(--lora);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:400;font-style:italic;color:var(--cream);max-width:680px;margin:0 auto 1.5rem;line-height:1.5}
+.about-philosophy blockquote span{color:var(--gold)}
+.about-philosophy cite{font-family:var(--poppins);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mist)}
+
+.about-values{padding:6rem 3rem;max-width:1100px;margin:0 auto}
+.about-values-header{text-align:center;margin-bottom:3.5rem}
+.about-values-header h2{font-family:var(--lora);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:400}
+.pillars-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--gold-light)}
+.pillar{background:var(--cream);padding:2rem 1.5rem;text-align:center}
+.pillar-icon{font-family:var(--lora);font-size:2rem;font-style:italic;color:var(--gold);margin-bottom:1rem;line-height:1}
+.pillar-title{font-family:var(--lora);font-size:1rem;font-weight:500;color:var(--onyx);margin-bottom:0.5rem}
+.pillar-desc{font-family:var(--poppins);font-size:0.72rem;font-weight:300;color:var(--mist);line-height:1.8}
+
+/* ════════════════════════════
+   CONTACT PAGE
+════════════════════════════ */
+.contact-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:1100px;margin:0 auto;padding:6rem 3rem}
+.contact-info{padding-right:5rem;border-right:0.5px solid var(--gold-light)}
+.contact-info h2{font-family:var(--lora);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:400;line-height:1.3;margin-bottom:1rem}
+.contact-info h2 em{font-style:italic;color:var(--gold)}
+.contact-info p{font-family:var(--poppins);font-size:0.8rem;font-weight:300;color:var(--mist);line-height:2;margin-bottom:2rem}
+.contact-detail{display:flex;flex-direction:column;gap:1.2rem;margin-bottom:2.5rem}
+.cd-item{display:flex;gap:1rem;align-items:flex-start}
+.cd-label{font-family:var(--poppins);font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);width:70px;flex-shrink:0;margin-top:2px}
+.cd-value{font-family:var(--poppins);font-size:0.78rem;font-weight:300;color:var(--onyx);line-height:1.7}
+.cd-value a{color:var(--onyx);text-decoration:none}
+.cd-value a:hover{color:var(--gold)}
+.contact-social{display:flex;gap:1rem;margin-top:0.5rem}
+.social-pill{font-family:var(--poppins);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.45rem 1rem;border:0.5px solid var(--gold-light);color:var(--mist);text-decoration:none;transition:all 0.2s}
+.social-pill:hover{border-color:var(--gold);color:var(--gold)}
+
+.contact-form-side{padding-left:5rem}
+.contact-form-side h3{font-family:var(--lora);font-size:1.3rem;font-weight:500;color:var(--onyx);margin-bottom:0.5rem}
+.contact-form-side p{font-family:var(--poppins);font-size:0.76rem;font-weight:300;color:var(--mist);margin-bottom:1.8rem;line-height:1.8}
+.form-group{margin-bottom:1.2rem}
+.form-label{font-family:var(--poppins);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mist);display:block;margin-bottom:0.4rem}
+.form-input{width:100%;padding:0.75rem 0.9rem;font-family:var(--poppins);font-size:0.78rem;font-weight:300;color:var(--onyx);background:var(--cream);border:0.5px solid var(--gold-light);outline:none;transition:border-color 0.2s;font-family:var(--poppins)}
+.form-input:focus{border-color:var(--gold)}
+.form-input::placeholder{color:var(--gold-light)}
+.form-select{width:100%;padding:0.75rem 0.9rem;font-family:var(--poppins);font-size:0.78rem;font-weight:300;color:var(--mist);background:var(--cream);border:0.5px solid var(--gold-light);outline:none;appearance:none;cursor:pointer}
+.form-select:focus{border-color:var(--gold)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-textarea{width:100%;padding:0.75rem 0.9rem;font-family:var(--poppins);font-size:0.78rem;font-weight:300;color:var(--onyx);background:var(--cream);border:0.5px solid var(--gold-light);outline:none;resize:vertical;min-height:100px;transition:border-color 0.2s}
+.form-textarea:focus{border-color:var(--gold)}
+.form-textarea::placeholder{color:var(--gold-light)}
+.form-submit{width:100%;padding:0.9rem;font-family:var(--poppins);font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;background:var(--gold);color:var(--cream);border:none;cursor:pointer;transition:all 0.25s;margin-top:0.5rem}
+.form-submit:hover{background:var(--cognac)}
+.form-success{display:none;text-align:center;padding:2rem}
+.form-success h4{font-family:var(--lora);font-size:1.3rem;font-style:italic;color:var(--gold);margin-bottom:0.5rem}
+.form-success p{font-family:var(--poppins);font-size:0.78rem;font-weight:300;color:var(--mist);line-height:1.9}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-brand" onclick="showPage('home')">
+    <div class="nav-logo">TALA <span>INVITES</span></div>
+    <div class="nav-sub">Web Invitations · Philippines</div>
+  </div>
+  <ul class="nav-links">
+    <li><a onclick="showPage('services')" id="nav-services">Services</a></li>
+    <li><a onclick="showPage('portfolio')" id="nav-portfolio">Portfolio</a></li>
+    <li><a onclick="showPage('pricing')" id="nav-pricing">Pricing</a></li>
+    <li><a onclick="showPage('about')" id="nav-about">About</a></li>
+  </ul>
+  <button class="nav-cta" onclick="showPage('contact')">Begin Your Story</button>
+</nav>
+
+<!-- ════════════════════════════
+     HOME
+════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <section class="home-hero">
+    <p class="hero-eyebrow">Web Invitations · Philippines</p>
+    <h1 class="hero-title">Every moment deserves<br>to be <em>unforgettable.</em></h1>
+    <div class="ornament center">
+      <div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div>
+    </div>
+    <p class="hero-sub">Beautifully crafted digital invitations for weddings, birthdays, and every celebration worth remembering. Timeless design. Thoughtful delivery.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="showPage('services')">Explore Our Services</button>
+      <button class="btn-ghost" onclick="showPage('portfolio')">View Portfolio</button>
+    </div>
+  </section>
+
+  <div class="home-marquee">
+    <div class="marquee-track">
+      <span class="marquee-item">Weddings <span>✦</span></span>
+      <span class="marquee-item">Birthdays <span>✦</span></span>
+      <span class="marquee-item">Christenings <span>✦</span></span>
+      <span class="marquee-item">Anniversaries <span>✦</span></span>
+      <span class="marquee-item">Debuts <span>✦</span></span>
+      <span class="marquee-item">Graduations <span>✦</span></span>
+      <span class="marquee-item">Corporate Events <span>✦</span></span>
+      <span class="marquee-item">Weddings <span>✦</span></span>
+      <span class="marquee-item">Birthdays <span>✦</span></span>
+      <span class="marquee-item">Christenings <span>✦</span></span>
+      <span class="marquee-item">Anniversaries <span>✦</span></span>
+      <span class="marquee-item">Debuts <span>✦</span></span>
+      <span class="marquee-item">Graduations <span>✦</span></span>
+      <span class="marquee-item">Corporate Events <span>✦</span></span>
+    </div>
+  </div>
+
+  <div class="home-intro">
+    <div class="home-intro-text">
+      <p class="section-label">Our Story</p>
+      <h2>Crafted with love.<br><em>Designed to last.</em></h2>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div></div>
+      <p>Tala Invites was born from a simple belief — that every celebration, no matter the size or budget, deserves an invitation as beautiful as the moment it announces.</p>
+      <p>Based in the Philippines, we design web invitations that are timeless in aesthetic and personal in spirit. From the intimate to the grand, every design is handled with the same reverence.</p>
+      <button class="btn-ghost" onclick="showPage('about')" style="margin-top:0.5rem">Our Story</button>
+    </div>
+    <div class="home-intro-stats">
+      <!-- <div class="stat-item">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Invitations Delivered</div>
+      </div> -->
+      <div class="stat-item">
+        <div class="stat-num">₱500</div>
+        <div class="stat-label">Starting Price</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">48hr</div>
+        <div class="stat-label">Priority Turnaround</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="home-suites">
+    <div class="home-suites-header">
+      <p class="section-label">What We Offer</p>
+      <h2>Our Invitation Suites</h2>
+      <div class="ornament center"><div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div></div>
+    </div>
+    <div class="suite-strip">
+      <div class="suite-tile" onclick="showPage('services')">
+        <div class="suite-num">01</div>
+        <p class="suite-eye">Weddings</p>
+        <h3 class="suite-name">Wedding Invitation Suite</h3>
+        <p class="suite-desc">A complete digital suite for your most cherished day — from save-the-dates to ceremony details, crafted with the reverence your love story deserves.</p>
+        <span class="suite-arrow">View suite →</span>
+      </div>
+      <div class="suite-tile" onclick="showPage('services')">
+        <div class="suite-num">02</div>
+        <p class="suite-eye">Birthdays</p>
+        <h3 class="suite-name">Birthday Celebration Invite</h3>
+        <p class="suite-desc">Whether it's a debut, a milestone, or an intimate gathering — a bespoke invitation that sets the tone before the first guest arrives.</p>
+        <span class="suite-arrow">View suite →</span>
+      </div>
+      <div class="suite-tile" onclick="showPage('services')">
+        <div class="suite-num">03</div>
+        <p class="suite-eye">Special Events</p>
+        <h3 class="suite-name">Bespoke Event Invitation</h3>
+        <p class="suite-desc">Christenings, anniversaries, corporate gatherings, and every occasion in between. Custom-designed for the language of your event.</p>
+        <span class="suite-arrow">View suite →</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="home-process">
+    <div class="home-process-inner">
+      <div class="home-process-header">
+        <p class="section-label">The Process</p>
+        <h2>From inquiry to invitation — four quiet steps.</h2>
+      </div>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="ps-num">01</div>
+          <div class="ps-title">Inquire</div>
+          <p class="ps-desc">Share your event details, vision, and style preferences through our simple inquiry form.</p>
+        </div>
+        <div class="process-step">
+          <div class="ps-num">02</div>
+          <div class="ps-title">Design</div>
+          <p class="ps-desc">We craft your invitation in the Tala aesthetic — tailored to your palette, names, and event details.</p>
+        </div>
+        <div class="process-step">
+          <div class="ps-num">03</div>
+          <div class="ps-title">Refine</div>
+          <p class="ps-desc">Review your draft and request revisions. We collaborate until every detail feels exactly right.</p>
+        </div>
+        <div class="process-step">
+          <div class="ps-num">04</div>
+          <div class="ps-title">Deliver</div>
+          <p class="ps-desc">Your invitation goes live on a beautiful, shareable link — ready to send to every guest.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="home-preview-strip">
+    <div class="home-preview-header">
+      <p class="section-label">Sample Designs</p>
+      <h2>Timeless by Design</h2>
+      <div class="ornament center"><div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div></div>
+    </div>
+    <div class="preview-row">
+      <div class="inv-card">
+        <div class="inv-body inv-light">
+          <p class="inv-orn">· ·</p>
+          <p class="inv-eyebrow" style="color:var(--mist)">Together with their families</p>
+          <div class="inv-name-l">Isabela<span class="inv-amp">&amp;</span>Mateo</div>
+          <div class="inv-rule"></div>
+          <p class="inv-detail-l">Saturday · 14 June 2025<br>Four o'clock in the afternoon<br>San Antonio de Padua Parish<br>Makati City, Philippines</p>
+          <p class="inv-footer-tag">Tala Invites · talainvites.co</p>
+        </div>
+        <div class="inv-label inv-label-light">
+          <span class="inv-label-txt inv-label-txt-l">Wedding Suite — Light</span>
+          <span style="color:var(--gold);font-size:0.6rem">✦</span>
+        </div>
+      </div>
+      <div class="inv-card">
+        <div class="inv-body inv-dark">
+          <p class="inv-orn">· ·</p>
+          <p class="inv-eyebrow" style="color:var(--mist)">You are cordially invited to</p>
+          <p style="font-family:var(--poppins);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem">A Birthday Celebration</p>
+          <div class="inv-name-d">Sofia</div>
+          <div style="font-family:var(--lora);font-size:2.4rem;color:var(--gold);line-height:1;margin:0.3rem 0">18</div>
+          <p style="font-family:var(--poppins);font-size:0.62rem;font-weight:300;color:var(--mist);margin-bottom:0.7rem">years of grace &amp; beauty</p>
+          <div class="inv-rule"></div>
+          <p class="inv-detail-d">Friday · 20 August 2025<br>Seven in the evening<br>The Peninsula Manila<br>Makati City, Philippines</p>
+          <p class="inv-footer-tag">Tala Invites · talainvites.co</p>
+        </div>
+        <div class="inv-label inv-label-dark">
+          <span class="inv-label-txt inv-label-txt-d">Birthday Suite — Dark</span>
+          <span style="color:var(--gold);font-size:0.6rem">✦</span>
+        </div>
+      </div>
+      <div class="inv-card">
+        <div class="inv-body inv-warm">
+          <p class="inv-orn" style="color:var(--mist)">· ·</p>
+          <p class="inv-eyebrow" style="color:var(--mist)">In celebration of</p>
+          <div class="inv-name-w">Maria &amp; Jose's</div>
+          <p style="font-family:var(--poppins);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin:0.4rem 0 0.5rem">25th Anniversary</p>
+          <div class="inv-rule" style="background:var(--cognac)"></div>
+          <p class="inv-detail-w">Saturday · 12 October 2025<br>Six in the evening<br>Rockwell Tent<br>Makati City, Philippines</p>
+          <p class="inv-footer-tag" style="color:var(--mist)">Tala Invites · talainvites.co</p>
+        </div>
+        <div class="inv-label inv-label-warm">
+          <span class="inv-label-txt inv-label-txt-l">Anniversary Suite — Warm</span>
+          <span style="color:var(--gold);font-size:0.6rem">✦</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="home-cta">
+    <p class="section-label" style="text-align:center">Ready to begin?</p>
+    <h2>Your celebration,<br><em>beautifully told.</em></h2>
+    <div class="ornament center"><div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div></div>
+    <p>Every invitation is a first impression — a quiet promise of the story about to unfold. Let's craft yours together.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <button class="btn-primary" onclick="showPage('contact')">Start Your Invitation</button>
+      <button class="btn-ghost" onclick="showPage('pricing')">See Pricing</button>
+    </div>
+  </section>
+
+</div>
+
+<!-- ════════════════════════════
+     SERVICES
+════════════════════════════ -->
+<div id="page-services" class="page">
+
+  <section class="page-hero">
+    <p class="section-label">What We Offer</p>
+    <h1>Our Invitation <em>Suites</em></h1>
+    <div class="ornament center"><div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div></div>
+    <p>From intimate gatherings to grand celebrations — every suite is designed with the same devotion to craft, beauty, and the story you want to tell.</p>
+  </section>
+
+  <div class="services-grid">
+    <div class="svc-card">
+      <div class="svc-num">01</div>
+      <p class="svc-eye">Weddings</p>
+      <h3 class="svc-name">Wedding Invitation Suite</h3>
+      <p class="svc-desc">A complete digital suite for your most cherished day. From save-the-dates to ceremony invitations, every detail is crafted with the reverence your love story deserves.</p>
+      <div class="tags">
+        <span class="tag">Save the Date</span><span class="tag">Ceremony Invite</span>
+        <span class="tag">RSVP Link</span><span class="tag">Reception Details</span>
+      </div>
+      <button class="svc-link" onclick="showPage('pricing')">View pricing →</button>
+    </div>
+    <div class="svc-card" style="position:relative">
+      <div class="svc-badge">Most Loved</div>
+      <div class="svc-num">02</div>
+      <p class="svc-eye">Birthdays</p>
+      <h3 class="svc-name">Birthday Celebration Invite</h3>
+      <p class="svc-desc">Whether it's a debut, a milestone, or an intimate gathering — a bespoke invitation that sets the tone before the first guest even arrives at your door.</p>
+      <div class="tags">
+        <span class="tag">Debut</span><span class="tag">Milestone Birthdays</span>
+        <span class="tag">Kids Parties</span><span class="tag">Intimate Soirées</span>
+      </div>
+      <button class="svc-link" onclick="showPage('pricing')">View pricing →</button>
+    </div>
+    <div class="svc-card">
+      <div class="svc-num">03</div>
+      <p class="svc-eye">Special Events</p>
+      <h3 class="svc-name">Bespoke Event Invitation</h3>
+      <p class="svc-desc">Christenings, anniversaries, corporate gatherings, and every occasion in between. Custom-designed invitations that speak the language of your event.</p>
+      <div class="tags">
+        <span class="tag">Christening</span><span class="tag">Anniversary</span>
+        <span class="tag">Corporate</span><span class="tag">Graduation</span>
+      </div>
+      <button class="svc-link" onclick="showPage('pricing')">View pricing →</button>
+    </div>
+  </div>
+
+  <section class="svc-how">
+    <div class="svc-how-inner">
+      <div class="svc-how-header">
+        <p class="section-label">The Process</p>
+        <h2>Crafted with love. Delivered with care.</h2>
+      </div>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="hs-num">01</div>
+          <div class="hs-title">Inquire</div>
+          <p class="hs-desc">Share your event details, vision, and style preferences through a simple inquiry form or a quick message.</p>
+        </div>
+        <div class="how-step">
+          <div class="hs-num">02</div>
+          <div class="hs-title">Design</div>
+          <p class="hs-desc">We craft your invitation in the Tala aesthetic — tailored to your colour palette, names, and event details.</p>
+        </div>
+        <div class="how-step">
+          <div class="hs-num">03</div>
+          <div class="hs-title">Refine</div>
+          <p class="hs-desc">Review your draft and request revisions. We collaborate until every detail feels exactly right.</p>
+        </div>
+        <div class="how-step">
+          <div class="hs-num">04</div>
+          <div class="hs-title">Deliver</div>
+          <p class="hs-desc">Your invitation goes live on a beautiful, shareable link — ready to send to every guest.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="svc-previews">
+    <div class="svc-previews-header">
+      <p class="section-label">Sample Designs</p>
+      <h2>Timeless by Design</h2>
+      <div class="ornament center"><div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div></div>
+    </div>
+    <div class="preview-row">
+      <div class="inv-card">
+        <div class="inv-body inv-light">
+          <p class="inv-orn">· ·</p>
+          <p class="inv-eyebrow" style="color:var(--mist)">Together with their families</p>
+          <div class="inv-name-l">Isabela<span class="inv-amp">&amp;</span>Mateo</div>
+          <div class="inv-rule"></div>
+          <p class="inv-detail-l">Saturday · 14 June 2025<br>Four o'clock in the afternoon<br>San Antonio de Padua Parish<br>Makati City, Philippines</p>
+          <p class="inv-footer-tag">Tala Invites · talainvites.co</p>
+        </div>
+        <div class="inv-label inv-label-light">
+          <span class="inv-label-txt inv-label-txt-l">Wedding Suite — Light</span>
+          <span style="color:var(--gold);font-size:0.6rem">✦</span>
+        </div>
+      </div>
+      <div class="inv-card">
+        <div class="inv-body inv-dark">
+          <p class="inv-orn">· ·</p>
+          <p class="inv-eyebrow" style="color:var(--mist)">You are cordially invited to</p>
+          <p style="font-family:var(--poppins);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem">A Birthday Celebration</p>
+          <div class="inv-name-d">Sofia</div>
+          <div style="font-family:var(--lora);font-size:2.4rem;color:var(--gold);line-height:1;margin:0.3rem 0">18</div>
+          <p style="font-family:var(--poppins);font-size:0.62rem;font-weight:300;color:var(--mist);margin-bottom:0.7rem">years of grace &amp; beauty</p>
+          <div class="inv-rule"></div>
+          <p class="inv-detail-d">Friday · 20 August 2025<br>Seven in the evening<br>The Peninsula Manila<br>Makati City, Philippines</p>
+          <p class="inv-footer-tag">Tala Invites · talainvites.co</p>
+        </div>
+        <div class="inv-label inv-label-dark">
+          <span class="inv-label-txt inv-label-txt-d">Birthday Suite — Dark</span>
+          <span style="color:var(--gold);font-size:0.6rem">✦</span>
+        </div>
+      </div>
+      <div class="inv-card">
+        <div class="inv-body inv-warm">
+          <p class="inv-orn" style="color:var(--mist)">· ·</p>
+          <p class="inv-eyebrow" style="color:var(--mist)">In celebration of</p>
+          <div class="inv-name-w">Maria &amp; Jose's</div>
+          <p style="font-family:var(--poppins);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin:0.4rem 0 0.5rem">25th Anniversary</p>
+          <div class="inv-rule" style="background:var(--cognac)"></div>
+          <p class="inv-detail-w">Saturday · 12 October 2025<br>Six in the evening<br>Rockwell Tent<br>Makati City, Philippines</p>
+          <p class="inv-footer-tag" style="color:var(--mist)">Tala Invites · talainvites.co</p>
+        </div>
+        <div class="inv-label inv-label-warm">
+          <span class="inv-label-txt inv-label-txt-l">Anniversary Suite — Warm</span>
+          <span style="color:var(--gold);font-size:0.6rem">✦</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-cta" style="border-top:0.5px solid var(--gold-light)">
+    <p class="section-label" style="text-align:center">Ready to begin?</p>
+    <h2 style="font-family:var(--lora);font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.2;margin-bottom:1rem">See our packages &amp; <em style="font-style:italic;color:var(--gold)">pricing.</em></h2>
+    <p style="font-family:var(--poppins);font-size:0.82rem;font-weight:300;color:var(--mist);max-width:400px;margin:0 auto 2.5rem;line-height:2">Starting from ₱500 — there's a Tala suite for every budget and every celebration.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <button class="btn-primary" onclick="showPage('pricing')">View Pricing</button>
+      <button class="btn-ghost" onclick="showPage('contact')">Inquire Now</button>
+    </div>
+  </section>
+
+</div>
+
+<!-- ════════════════════════════
+     PRICING
+════════════════════════════ -->
+<div id="page-pricing" class="page">
+
+  <section class="page-hero">
+    <p class="section-label">Packages &amp; Pricing</p>
+    <h1>Simple, Honest <em>Pricing</em></h1>
+    <div class="ornament center"><div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div></div>
+    <p>Three tiers designed to grow with your celebration — from the essentials to the full experience. Every tier includes a countdown timer.</p>
+  </section>
+
+  <div class="pricing-wrapper">
+    <div class="pricing-grid">
+
+      <div class="p-card">
+        <p class="p-tier">Essential</p>
+        <h3 class="p-name">Pahiwatig</h3>
+        <p class="p-tagline">The essential digital invite.</p>
+        <div class="p-price"><span class="p-cur">₱</span>500</div>
+        <p class="p-per">per invitation</p>
+        <div class="p-rule"></div>
+        <ul class="p-features">
+          <li>Single-page design</li>
+          <li>Choose from 3 preset themes</li>
+          <li>Up to 5 text fields</li>
+          <li class="highlight">Countdown timer included</li>
+          <li>Shareable link — 60 days</li>
+          <li>1 revision round</li>
+          <li>Standard 5-day turnaround</li>
+          <li>Tala Invites watermark</li>
+        </ul>
+        <button class="p-btn" onclick="showPage('contact')">Get Started</button>
+      </div>
+
+      <div class="p-card featured">
+        <div class="popular-badge">Most Popular</div>
+        <p class="p-tier">Signature</p>
+        <h3 class="p-name">Diwa</h3>
+        <p class="p-tagline">Crafted with intention.</p>
+        <div class="p-price"><span class="p-cur">₱</span>1,800</div>
+        <p class="p-per">per suite</p>
+        <div class="p-rule"></div>
+        <ul class="p-features">
+          <li>Multi-section page</li>
+          <li>6 preset themes + 1 custom color accent</li>
+          <li>Up to 10 text fields</li>
+          <li class="highlight">Countdown timer included</li>
+          <li>RSVP via embedded link</li>
+          <li>Up to 3 photo uploads</li>
+          <li>Shareable link — 1 year</li>
+          <li>3 revision rounds</li>
+          <li>3-day turnaround</li>
+          <li>No watermark</li>
+        </ul>
+        <button class="p-btn" onclick="showPage('contact')">Get Started</button>
+      </div>
+
+      <div class="p-card">
+        <p class="p-tier">Prestige</p>
+        <h3 class="p-name">Tala Suite</h3>
+        <p class="p-tagline">The full experience.</p>
+        <div class="p-price"><span class="p-cur">₱</span>4,000</div>
+        <p class="p-per">per suite</p>
+        <div class="p-rule"></div>
+        <ul class="p-features">
+          <li>Full bespoke multi-page design</li>
+          <li>Entourage or program page</li>
+          <li class="highlight">Countdown timer included</li>
+          <li>Guest RSVP + management dashboard</li>
+          <li>Unlimited photos</li>
+          <li>Shareable link — 2 years</li>
+          <li>Unlimited revisions</li>
+          <li>Priority 48-hour turnaround</li>
+          <li>No watermark</li>
+          <li>Dedicated Viber/email support</li>
+        </ul>
+        <button class="p-btn" onclick="showPage('contact')">Inquire Now</button>
+      </div>
+
+    </div>
+  </div>
+
+  <section class="addons-section">
+    <div class="addons-inner">
+      <div class="addons-header">
+        <p class="section-label">Customize Your Package</p>
+        <h2>Add-Ons</h2>
+        <div class="ornament center"><div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div></div>
+        <p class="addons-note">Available across all tiers. Mix and match to build exactly what your celebration needs.</p>
+      </div>
+      <div class="addons-grid">
+        <div class="addon-group">
+          <div class="addon-group-title">Link &amp; Duration</div>
+          <div class="addon-row">
+            <div><div class="addon-name">Link extension (+6 months)</div></div>
+            <div class="addon-price">₱150</div>
+          </div>
+          <div class="addon-row">
+            <div><div class="addon-name">Link extension (+1 year)</div></div>
+            <div class="addon-price">₱250</div>
+          </div>
+          <div class="addon-row">
+            <div><div class="addon-name">Rush turnaround (24–48 hrs)</div></div>
+            <div class="addon-price">₱300</div>
+          </div>
+          <div class="addon-row">
+            <div><div class="addon-name">Extra revision round</div><div class="addon-sub">per round</div></div>
+            <div class="addon-price">₱150</div>
+          </div>
+        </div>
+        <div class="addon-group">
+          <div class="addon-group-title">Design &amp; Content</div>
+          <div class="addon-row">
+            <div><div class="addon-name">Remove watermark</div><div class="addon-sub">Pahiwatig tier only</div></div>
+            <div class="addon-price">₱200</div>
+          </div>
+          <div class="addon-row">
+            <div><div class="addon-name">Custom color palette swap</div></div>
+            <div class="addon-price">₱300</div>
+          </div>
+          <div class="addon-row">
+            <div><div class="addon-name">Additional photo upload slot</div><div class="addon-sub">per slot</div></div>
+            <div class="addon-price">₱100</div>
+          </div>
+          <div class="addon-row">
+            <div><div class="addon-name">Entourage / program page</div></div>
+            <div class="addon-price">₱500</div>
+          </div>
+        </div>
+        <div class="addon-group">
+          <div class="addon-group-title">Features</div>
+          <div class="addon-row">
+            <div><div class="addon-name">RSVP form integration</div><div class="addon-sub">Pahiwatig tier only</div></div>
+            <div class="addon-price">₱400</div>
+          </div>
+          <div class="addon-row">
+            <div><div class="addon-name">Printer-ready PDF version</div></div>
+            <div class="addon-price">₱350</div>
+          </div>
+        </div>
+        <div class="addon-group" style="background:var(--onyx);border-color:rgba(201,168,76,0.2)">
+          <div class="addon-group-title" style="border-bottom-color:rgba(201,168,76,0.2)">Good to Know</div>
+          <p style="font-family:var(--poppins);font-size:0.74rem;font-weight:300;color:rgba(250,247,242,0.5);line-height:1.9;padding:0.5rem 0">All add-ons are priced as one-time fees. Multiple add-ons can be combined at checkout. Rush turnaround is subject to availability — please inquire first.</p>
+          <button class="btn-gold-ghost" style="width:100%;margin-top:0.5rem;font-size:0.65rem;padding:0.7rem" onclick="showPage('contact')">Ask a Question</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing-faq">
+    <div class="pricing-faq-header">
+      <p class="section-label">Common Questions</p>
+      <h2>Frequently Asked</h2>
+      <div class="ornament center"><div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How long does it take to receive my invitation?</div>
+      <div class="faq-a">Standard turnaround is 5 days for Pahiwatig, 3 days for Diwa, and 48 hours for Tala Suite. Rush delivery (24–48 hrs) is available as an add-on for Pahiwatig and Diwa, subject to availability.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Can I request a theme that isn't in the preset list?</div>
+      <div class="faq-a">Yes — fully custom color palettes are available as an add-on (₱300). Tala Suite includes fully bespoke design by default, so no add-on is needed at that tier.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What happens when my link expires?</div>
+      <div class="faq-a">Your invitation link will become inactive after the active period. You can extend it at any time — before or after expiry — using the Link Extension add-on. Just reach out and we'll sort it for you.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Do you offer a printed version of the invitation?</div>
+      <div class="faq-a">We currently specialize in web (digital) invitations only. A printer-ready PDF version of your design is available as an add-on (₱350), which you can then take to any print shop.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How do I pay and place an order?</div>
+      <div class="faq-a">Send us an inquiry through our contact form or via hello@talainvites.co, and we'll send you a booking form with payment details. We accept GCash, bank transfer, and PayMaya.</div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ════════════════════════════
+     PORTFOLIO
+════════════════════════════ -->
+<div id="page-portfolio" class="page">
+
+  <section class="page-hero">
+    <p class="section-label">Our Work</p>
+    <h1>The <em>Portfolio</em></h1>
+    <div class="ornament center"><div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div></div>
+    <p>A selection of invitations crafted for celebrations across the Philippines. Each one a story, beautifully told.</p>
+  </section>
+
+  <div style="padding:0 3rem;max-width:1100px;margin:0 auto">
+    <div class="portfolio-filters">
+      <button class="filter-btn active" onclick="filterPortfolio('all',this)">All</button>
+      <button class="filter-btn" onclick="filterPortfolio('wedding',this)">Weddings</button>
+      <button class="filter-btn" onclick="filterPortfolio('birthday',this)">Birthdays</button>
+      <button class="filter-btn" onclick="filterPortfolio('special',this)">Special Events</button>
+    </div>
+  </div>
+
+  <div class="portfolio-grid" id="portfolio-grid">
+
+    <div class="port-card" data-cat="wedding">
+      <div class="inv-body inv-light" style="min-height:280px">
+        <p class="inv-orn">· ·</p>
+        <p class="inv-eyebrow" style="color:var(--mist)">Together with their families</p>
+        <div class="inv-name-l">Isabela<span class="inv-amp">&amp;</span>Mateo</div>
+        <div class="inv-rule"></div>
+        <p class="inv-detail-l">14 June 2025<br>San Antonio de Padua Parish<br>Makati City</p>
+        <p class="inv-footer-tag">Tala Invites</p>
+      </div>
+      <div class="port-overlay">
+        <p>Wedding Invitation Suite · Light Theme · Diwa Package</p>
+        <button class="port-overlay-btn" onclick="showPage('contact')">Order Similar</button>
+      </div>
+      <div class="port-meta">
+        <span class="port-title">Isabela &amp; Mateo</span>
+        <span class="port-badge">Wedding</span>
+      </div>
+    </div>
+
+    <div class="port-card" data-cat="birthday">
+      <div class="inv-body inv-dark" style="min-height:280px">
+        <p class="inv-orn">· ·</p>
+        <p style="font-family:var(--poppins);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem">A Birthday Celebration</p>
+        <div class="inv-name-d">Sofia</div>
+        <div style="font-family:var(--lora);font-size:2.2rem;color:var(--gold);line-height:1;margin:0.3rem 0">18</div>
+        <p style="font-family:var(--poppins);font-size:0.6rem;font-weight:300;color:var(--mist);margin-bottom:0.7rem">years of grace &amp; beauty</p>
+        <div class="inv-rule"></div>
+        <p class="inv-detail-d">20 August 2025<br>The Peninsula Manila<br>Makati City</p>
+        <p class="inv-footer-tag">Tala Invites</p>
+      </div>
+      <div class="port-overlay">
+        <p>Birthday Invitation · Dark Theme · Tala Suite Package</p>
+        <button class="port-overlay-btn" onclick="showPage('contact')">Order Similar</button>
+      </div>
+      <div class="port-meta port-meta-dark">
+        <span class="port-title-d">Sofia's 18th</span>
+        <span class="port-badge-d">Birthday</span>
+      </div>
+    </div>
+
+    <div class="port-card" data-cat="special">
+      <div class="inv-body inv-warm" style="min-height:280px">
+        <p class="inv-orn" style="color:var(--mist)">· ·</p>
+        <p class="inv-eyebrow" style="color:var(--mist)">In celebration of</p>
+        <div class="inv-name-w">Maria &amp; Jose's</div>
+        <p style="font-family:var(--poppins);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin:0.4rem 0">25th Anniversary</p>
+        <div class="inv-rule" style="background:var(--cognac)"></div>
+        <p class="inv-detail-w">12 October 2025<br>Rockwell Tent<br>Makati City</p>
+        <p class="inv-footer-tag" style="color:var(--mist)">Tala Invites</p>
+      </div>
+      <div class="port-overlay">
+        <p>Anniversary Invitation · Warm Theme · Diwa Package</p>
+        <button class="port-overlay-btn" onclick="showPage('contact')">Order Similar</button>
+      </div>
+      <div class="port-meta">
+        <span class="port-title">Maria &amp; Jose</span>
+        <span class="port-badge">Anniversary</span>
+      </div>
+    </div>
+
+    <div class="port-card" data-cat="birthday">
+      <div class="inv-body" style="background:var(--cream);min-height:280px">
+        <p class="inv-orn">· ·</p>
+        <p class="inv-eyebrow" style="color:var(--mist)">You are invited to celebrate</p>
+        <div style="font-family:var(--lora);font-size:1.6rem;font-style:italic;color:var(--onyx);line-height:1.2;margin-bottom:0.4rem">Lucas</div>
+        <p style="font-family:var(--poppins);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin:0.3rem 0">Turning One</p>
+        <div class="inv-rule"></div>
+        <p class="inv-detail-l">Sunday · 3 May 2025<br>Two in the afternoon<br>Shangri-La BGC<br>Taguig City</p>
+        <p class="inv-footer-tag">Tala Invites</p>
+      </div>
+      <div class="port-overlay">
+        <p>First Birthday Invitation · Light Theme · Pahiwatig Package</p>
+        <button class="port-overlay-btn" onclick="showPage('contact')">Order Similar</button>
+      </div>
+      <div class="port-meta">
+        <span class="port-title">Lucas Turns One</span>
+        <span class="port-badge">Birthday</span>
+      </div>
+    </div>
+
+    <div class="port-card" data-cat="wedding">
+      <div class="inv-body inv-dark" style="min-height:280px">
+        <p class="inv-orn">· ·</p>
+        <p class="inv-eyebrow" style="color:var(--mist)">Together with their families</p>
+        <div style="font-family:var(--lora);font-size:1.55rem;font-style:italic;color:var(--cream);line-height:1.2">Andrea<span style="font-family:var(--lora);font-size:0.9rem;color:var(--gold);margin:0.2rem 0;display:block">&amp;</span>Rafael</div>
+        <div class="inv-rule"></div>
+        <p class="inv-detail-d">5 July 2025<br>Sanctuario de San Antonio<br>Forbes Park, Makati</p>
+        <p class="inv-footer-tag">Tala Invites</p>
+      </div>
+      <div class="port-overlay">
+        <p>Wedding Invitation Suite · Dark Theme · Tala Suite Package</p>
+        <button class="port-overlay-btn" onclick="showPage('contact')">Order Similar</button>
+      </div>
+      <div class="port-meta port-meta-dark">
+        <span class="port-title-d">Andrea &amp; Rafael</span>
+        <span class="port-badge-d">Wedding</span>
+      </div>
+    </div>
+
+    <div class="port-card" data-cat="special">
+      <div class="inv-body" style="background:var(--ivory);min-height:280px">
+        <p class="inv-orn" style="color:var(--mist)">· ·</p>
+        <p class="inv-eyebrow" style="color:var(--mist)">You are cordially invited to the</p>
+        <div style="font-family:var(--lora);font-size:1.3rem;font-weight:500;color:var(--onyx);line-height:1.3;margin-bottom:0.4rem">Bautista Family<br>Christmas Gathering</div>
+        <div class="inv-rule" style="background:var(--cognac)"></div>
+        <p style="font-family:var(--poppins);font-size:0.67rem;font-weight:300;color:var(--mist);line-height:2">Saturday · 20 December 2025<br>Six in the evening<br>Private Residence<br>Quezon City</p>
+        <p class="inv-footer-tag" style="color:var(--mist)">Tala Invites</p>
+      </div>
+      <div class="port-overlay">
+        <p>Family Gathering Invite · Warm Ivory Theme · Pahiwatig Package</p>
+        <button class="port-overlay-btn" onclick="showPage('contact')">Order Similar</button>
+      </div>
+      <div class="port-meta">
+        <span class="port-title">Bautista Family</span>
+        <span class="port-badge">Special Event</span>
+      </div>
+    </div>
+
+  </div>
+
+  <section class="home-cta" style="border-top:0.5px solid var(--gold-light)">
+    <p class="section-label" style="text-align:center">Love what you see?</p>
+    <h2 style="font-family:var(--lora);font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.2;margin-bottom:1rem">Let's create yours <em style="font-style:italic;color:var(--gold)">together.</em></h2>
+    <p style="font-family:var(--poppins);font-size:0.82rem;font-weight:300;color:var(--mist);max-width:400px;margin:0 auto 2.5rem;line-height:2">Starting from ₱500 — tell us about your celebration and we'll craft something beautiful.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <button class="btn-primary" onclick="showPage('contact')">Start Your Invitation</button>
+      <button class="btn-ghost" onclick="showPage('pricing')">View Pricing</button>
+    </div>
+  </section>
+
+</div>
+
+<!-- ════════════════════════════
+     ABOUT
+════════════════════════════ -->
+<div id="page-about" class="page">
+
+  <section class="page-hero">
+    <p class="section-label">Our Story</p>
+    <h1>Where Elegance Meets <em>Your Story</em></h1>
+    <div class="ornament center"><div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div></div>
+    <p>A small studio born from the belief that every celebration — no matter the size — deserves an invitation as beautiful as the moment it announces.</p>
+  </section>
+
+  <div class="about-story">
+    <div class="about-story-text">
+      <p class="section-label">The Beginning</p>
+      <h2>Every invitation is a <em>first impression.</em></h2>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div></div>
+      <p>Tala Invites was founded in the Philippines with a single belief — that the announcement of a celebration should be as memorable as the celebration itself. That the first thing a guest receives should already feel like a gift.</p>
+      <p>We noticed that beautiful, thoughtful invitations were often out of reach for many families — not because of taste, but because of price. So we set out to change that. Starting from ₱500, every Tala invitation is handled with the same devotion to craft, beauty, and intention.</p>
+      <p>The name Tala is a Filipino word for star — for light, for clarity, for the kind of brightness that guides you somewhere special. That's what we hope every invitation becomes: a small, beautiful light that leads your guests toward a moment they'll always remember.</p>
+    </div>
+    <div class="about-story-side">
+      <div class="value-item">
+        <div class="value-title">Timeless</div>
+        <p class="value-desc">Classical, not dated. Our designs draw from tradition and craft a language that will feel as elegant in ten years as it does today.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-title">Elegant</div>
+        <p class="value-desc">Restrained, not cold. Every element earns its place. We believe that less, done beautifully, is always more.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-title">Intimate</div>
+        <p class="value-desc">Personal, not generic. Warmth is embedded in every design. No two celebrations are the same, and no two invitations should be either.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-title">Celebratory</div>
+        <p class="value-desc">Joyful, not boisterous. Every event deserves delight — quiet, refined delight that feels like a promise of something wonderful ahead.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="about-philosophy">
+    <p class="section-label" style="color:var(--gold);text-align:center;margin-bottom:1.5rem">Brand Philosophy</p>
+    <blockquote>"Every invitation is a first impression — a quiet promise of the <span>story about to unfold.</span>"</blockquote>
+    <div class="ornament center" style="justify-content:center;margin:1.5rem 0"><div class="ornament-line" style="background:rgba(201,168,76,0.3)"></div><div class="ornament-dot"></div><div class="ornament-line" style="background:rgba(201,168,76,0.3)"></div></div>
+    <cite>Tala Invites — Brand Philosophy</cite>
+  </section>
+
+  <section class="about-values">
+    <div class="about-values-header">
+      <p class="section-label">Personality Pillars</p>
+      <h2>What We Stand For</h2>
+      <div class="ornament center"><div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div></div>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-icon">T</div>
+        <div class="pillar-title">Timeless</div>
+        <p class="pillar-desc">Classical, not dated. Language draws from tradition.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">E</div>
+        <div class="pillar-title">Elegant</div>
+        <p class="pillar-desc">Restrained, not cold. Every word earns its place.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">I</div>
+        <div class="pillar-title">Intimate</div>
+        <p class="pillar-desc">Personal, not generic. Warmth embedded in formality.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">C</div>
+        <div class="pillar-title">Celebratory</div>
+        <p class="pillar-desc">Joyful, not boisterous. Every event deserves delight.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-cta" style="border-top:0.5px solid var(--gold-light)">
+    <p class="section-label" style="text-align:center">Work with us</p>
+    <h2 style="font-family:var(--lora);font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.2;margin-bottom:1rem">Your celebration, <em style="font-style:italic;color:var(--gold)">beautifully told.</em></h2>
+    <p style="font-family:var(--poppins);font-size:0.82rem;font-weight:300;color:var(--mist);max-width:400px;margin:0 auto 2.5rem;line-height:2">We'd love to be part of your story. Reach out and let's create something together.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <button class="btn-primary" onclick="showPage('contact')">Get in Touch</button>
+      <button class="btn-ghost" onclick="showPage('services')">Our Services</button>
+    </div>
+  </section>
+
+</div>
+
+<!-- ════════════════════════════
+     CONTACT
+════════════════════════════ -->
+<div id="page-contact" class="page">
+
+  <section class="page-hero">
+    <p class="section-label">Get in Touch</p>
+    <h1>Begin Your <em>Story</em></h1>
+    <div class="ornament center"><div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div></div>
+    <p>Tell us about your celebration and we'll craft something beautiful. We respond to all inquiries within 24 hours.</p>
+  </section>
+
+  <div class="contact-wrapper">
+    <div class="contact-info">
+      <p class="section-label">Reach Us</p>
+      <h2>Let's create something <em>unforgettable.</em></h2>
+      <div class="ornament"><div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div></div>
+      <p>Whether you have a clear vision or are starting from scratch, we're here to guide you through every step — from the first message to the final shareable link.</p>
+      <div class="contact-detail">
+        <div class="cd-item">
+          <span class="cd-label">Email</span>
+          <span class="cd-value"><a href="mailto:hello@talainvites.co">hello@talainvites.co</a></span>
+        </div>
+        <div class="cd-item">
+          <span class="cd-label">Website</span>
+          <span class="cd-value"><a href="https://www.talainvites.co" target="_blank">www.talainvites.co</a></span>
+        </div>
+        <div class="cd-item">
+          <span class="cd-label">Location</span>
+          <span class="cd-value">Makati City, Philippines<br><span style="font-size:0.7rem;color:var(--mist)">Serving clients nationwide</span></span>
+        </div>
+        <div class="cd-item">
+          <span class="cd-label">Hours</span>
+          <span class="cd-value">Monday – Saturday<br><span style="font-size:0.7rem;color:var(--mist)">9:00 AM – 6:00 PM PHT</span></span>
+        </div>
+      </div>
+      <p style="font-family:var(--poppins);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--mist);margin-bottom:0.8rem">Follow Us</p>
+      <div class="contact-social">
+        <a class="social-pill" href="#">Instagram</a>
+        <a class="social-pill" href="#">Facebook</a>
+        <a class="social-pill" href="#">Viber</a>
+      </div>
+    </div>
+
+    <div class="contact-form-side">
+      <h3>Send an Inquiry</h3>
+      <p>Fill in your details and we'll be in touch to discuss your invitation.</p>
+      <iframe data-tally-src="https://tally.so/embed/vGKd8A?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1" loading="lazy" width="100%" height="300" frameborder="0" marginheight="0" marginwidth="0" title="Tala Invites Inquiry Form"></iframe>
+        <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+    </div>
+  </div>
+
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-brand">
+    <div class="nav-logo">TALA <span>INVITES</span></div>
+    <div class="nav-sub">Web Invitations · Philippines</div>
+    <p class="footer-tagline">"Every invitation is a first impression."</p>
+  </div>
+  <div>
+    <p class="footer-col-title">Navigate</p>
+    <ul class="footer-links-list">
+      <li><a onclick="showPage('home')">Home</a></li>
+      <li><a onclick="showPage('services')">Services</a></li>
+      <li><a onclick="showPage('portfolio')">Portfolio</a></li>
+      <li><a onclick="showPage('pricing')">Pricing</a></li>
+      <li><a onclick="showPage('about')">About</a></li>
+      <li><a onclick="showPage('contact')">Contact</a></li>
+    </ul>
+  </div>
+  <div>
+    <p class="footer-col-title">Get in Touch</p>
+    <div class="footer-contact-item"><a href="mailto:hello@talainvites.co">hello@talainvites.co</a></div>
+    <div class="footer-contact-item"><a href="#">www.talainvites.co</a></div>
+    <div class="footer-contact-item">Makati City, Philippines</div>
+    <div style="display:flex;gap:0.8rem;margin-top:1rem;flex-wrap:wrap">
+      <a class="social-pill" href="#" style="font-size:0.55rem;padding:0.35rem 0.8rem">Instagram</a>
+      <a class="social-pill" href="#" style="font-size:0.55rem;padding:0.35rem 0.8rem">Facebook</a>
+    </div>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span class="footer-copy">© 2025 Tala Invites. All rights reserved.</span>
+  <span class="footer-copy">Crafted with love · talainvites.co</span>
+</div>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  const navEl = document.getElementById('nav-' + id);
+  if (navEl) navEl.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function filterPortfolio(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.port-card').forEach(card => {
+    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'block' : 'none';
+  });
+}
+
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+function submitForm() {
+  document.getElementById('inquiry-form').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+}
+</script>
+</body>
+</html>

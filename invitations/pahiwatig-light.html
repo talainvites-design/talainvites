@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You Are Invited — Tala Invites</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <script>
+    /* ============================================================
+       CLIENT CONFIG — edit only this block per invitation
+       ============================================================ */
+    const CLIENT = {
+
+      /* ── Event Details ── */
+      eyebrow:        "Together with their families",
+      name_line_1:    "Isabela",
+      name_line_2:    "Mateo",
+      conjunction:    "&",
+      event_type:     "",
+      date:           "Saturday · 14 June 2025",
+      time:           "Four o'clock in the afternoon",
+      venue:          "San Antonio de Padua Parish",
+      location:       "Makati City, Philippines",
+      dresscode:      "Smart Casual",
+      note:           "Reception to follow",
+      maps_url:       "https://maps.google.com/?q=San+Antonio+de+Padua+Parish+Makati",
+      countdown_date: "2025-06-14T16:00:00",
+
+      /* ── Photos ──
+         PAHIWATIG RULE: Framed only. No full-bleed backgrounds.
+         Up to 2 photos. Each appears inside a bordered frame.
+         Leave src: "" to hide that frame entirely. */
+      photos: [
+        { src: "", alt: "Isabela & Mateo" },
+        { src: "", alt: "Isabela & Mateo" },
+      ],
+
+      /* ── Theme — Preset A: Light ── */
+      theme: {
+        bg:             "#FAF7F2",
+        frame_bg:       "#FFFFFF",
+        border:         "#C9A84C",
+        border_muted:   "rgba(201,168,76,0.22)",
+        border_inner:   "rgba(201,168,76,0.12)",
+        accent:         "#C9A84C",
+        accent_light:   "#E8D5A3",
+        text_primary:   "#1C1712",
+        text_secondary: "#3D2F1F",
+        text_muted:     "#8B7D6B",
+        name_color:     "#1C1712",
+        conj_color:     "#C9A84C",
+        photo_shadow:   "rgba(28,23,18,0.10)",
+      },
+
+      watermark: "Crafted by Tala Invites · talainvites@gmail.com",
+    };
+  </script>
+
+  <style>
+    /* ============================================================
+       PAHIWATIG — PRESET A: LIGHT "The Classic"
+       Centered, double-framed layout.
+       FRAMED PHOTOS ONLY — no full-bleed backgrounds.
+       Photos appear as bordered portrait frames above the names.
+       ============================================================ */
+
+    :root {
+      --bg:             #FAF7F2;
+      --frame-bg:       #FFFFFF;
+      --border:         #C9A84C;
+      --border-muted:   rgba(201,168,76,0.22);
+      --border-inner:   rgba(201,168,76,0.12);
+      --accent:         #C9A84C;
+      --accent-light:   #E8D5A3;
+      --text-primary:   #1C1712;
+      --text-secondary: #3D2F1F;
+      --text-muted:     #8B7D6B;
+      --name-color:     #1C1712;
+      --conj-color:     #C9A84C;
+      --photo-shadow:   rgba(28,23,18,0.10);
+      --lora:           'Lora', Georgia, serif;
+      --poppins:        'Poppins', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--poppins);
+      font-weight: 300;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+    }
+
+    .invitation {
+      width: 100%;
+      max-width: 480px;
+      animation: fadeIn 0.8s ease both;
+    }
+
+    /* ── Outer + inner border frames ── */
+    .frame-outer {
+      border: 0.5px solid var(--border-muted);
+      padding: 2rem;
+      background: var(--frame-bg);
+      position: relative;
+    }
+    .frame-inner {
+      border: 0.5px solid var(--border-inner);
+      padding: 2rem 1.8rem 2.2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Corner marks */
+    .frame-inner::before { content: '✦'; font-size: 0.4rem; color: var(--accent); position: absolute; top: 0.5rem; left: 0.5rem; }
+    .frame-inner::after  { content: '✦'; font-size: 0.4rem; color: var(--accent); position: absolute; bottom: 0.5rem; right: 0.5rem; }
+
+    /* ── FRAMED PHOTOS ──
+       Single photo: full width portrait frame inside the invitation.
+       Two photos: side by side, equal width. */
+    .photos-row {
+      display: flex;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+    .photos-row.single { justify-content: center; }
+
+    .photo-frame {
+      flex: 1;
+      border: 3px solid var(--frame-bg);
+      outline: 0.5px solid var(--border-muted);
+      box-shadow: 0 4px 16px var(--photo-shadow);
+      overflow: hidden;
+      position: relative;
+    }
+    .photos-row.single .photo-frame { max-width: 100%; }
+
+    .photo-frame-img {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+    }
+    .photo-frame-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Thin gold rule below photo frames */
+    .photo-rule {
+      width: 100%;
+      height: 0.5px;
+      background: var(--border-inner);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── Typography ── */
+    .orn       { font-size: 0.52rem; letter-spacing: 0.3em; color: var(--accent); margin-bottom: 1rem; display: block; }
+    .eyebrow   { font-family: var(--poppins); font-size: 0.56rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; display: block; }
+    .event-type{ font-family: var(--poppins); font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; display: block; }
+
+    .name { font-family: var(--lora); font-size: clamp(2.6rem, 9vw, 3.6rem); font-weight: 400; font-style: italic; color: var(--name-color); line-height: 1.05; display: block; }
+    .conjunction { font-family: var(--lora); font-size: 1rem; color: var(--conj-color); display: block; margin: 0.2rem 0; }
+
+    .rule { width: 32px; height: 0.5px; background: var(--accent); margin: 1.1rem auto; display: block; }
+
+    .details { display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: 0.7rem; }
+    .detail-line { font-family: var(--poppins); font-size: 0.7rem; font-weight: 300; color: var(--text-muted); line-height: 1.7; }
+    .detail-line.emphasis { font-family: var(--lora); font-size: 0.78rem; color: var(--text-secondary); }
+
+    .dresscode-line { font-family: var(--poppins); font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-top: 0.5rem; display: block; }
+    .note-line { font-family: var(--lora); font-size: 0.73rem; font-style: italic; color: var(--text-muted); margin-top: 0.4rem; display: block; }
+
+    .map-link { display: inline-block; margin-top: 0.9rem; font-family: var(--poppins); font-size: 0.54rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); border-bottom: 0.5px solid var(--border-muted); padding-bottom: 2px; text-decoration: none; transition: all 0.2s; }
+    .map-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+    /* ── Countdown ── */
+    .countdown-wrap { margin-top: 1.4rem; padding-top: 1.1rem; border-top: 0.5px solid var(--border-inner); }
+    .countdown-label-top { font-family: var(--poppins); font-size: 0.48rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.8rem; }
+    .countdown-grid { display: flex; justify-content: center; align-items: flex-start; gap: 0.9rem; flex-wrap: wrap; }
+    .cd-unit { text-align: center; }
+    .cd-num  { font-family: var(--lora); font-size: 1.7rem; font-weight: 400; color: var(--accent); line-height: 1; display: block; }
+    .cd-lbl  { font-family: var(--poppins); font-size: 0.46rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); display: block; margin-top: 3px; }
+    .cd-sep  { font-family: var(--lora); font-size: 1.4rem; color: var(--border-muted); padding-top: 2px; }
+    .countdown-expired { font-family: var(--lora); font-size: 0.85rem; font-style: italic; color: var(--accent); }
+
+    /* ── Watermark ── */
+    .watermark { margin-top: 1.4rem; font-family: var(--poppins); font-size: 0.44rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-light); text-align: center; }
+    .watermark a { color: inherit; text-decoration: none; }
+    .watermark a:hover { color: var(--accent); }
+
+    @keyframes fadeIn { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+  </style>
+</head>
+<body>
+
+  <div class="invitation">
+    <div class="frame-outer">
+      <div class="frame-inner">
+
+        <!-- Framed photos — rendered by JS, hidden if no src -->
+        <div id="photos-container"></div>
+
+        <span class="orn">· ·</span>
+        <span class="eyebrow"    id="eyebrow"></span>
+        <span class="event-type" id="event-type"></span>
+
+        <span class="name"        id="name-1"></span>
+        <span class="conjunction" id="conjunction"></span>
+        <span class="name"        id="name-2"></span>
+
+        <span class="rule"></span>
+
+        <div class="details">
+          <span class="detail-line emphasis" id="detail-date"></span>
+          <span class="detail-line"          id="detail-time"></span>
+          <span class="detail-line"          id="detail-venue"></span>
+          <span class="detail-line"          id="detail-location"></span>
+        </div>
+
+        <span class="dresscode-line" id="dresscode"></span>
+        <span class="note-line"      id="note"></span>
+        <a class="map-link" id="map-link" href="#" target="_blank">View on Google Maps →</a>
+
+        <div class="countdown-wrap">
+          <span class="countdown-label-top">Counting down to the celebration</span>
+          <div class="countdown-grid" id="countdown-grid">
+            <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><span class="cd-lbl">Days</span></div>
+            <div class="cd-sep">·</div>
+            <div class="cd-unit"><span class="cd-num" id="cd-hours">--</span><span class="cd-lbl">Hours</span></div>
+            <div class="cd-sep">·</div>
+            <div class="cd-unit"><span class="cd-num" id="cd-minutes">--</span><span class="cd-lbl">Mins</span></div>
+            <div class="cd-sep">·</div>
+            <div class="cd-unit"><span class="cd-num" id="cd-seconds">--</span><span class="cd-lbl">Secs</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="watermark" id="watermark"></div>
+  </div>
+
+  <script>
+    /* ── Apply theme ── */
+    (function() {
+      var r = document.documentElement.style;
+      var t = CLIENT.theme;
+      r.setProperty('--bg',             t.bg);
+      r.setProperty('--frame-bg',       t.frame_bg);
+      r.setProperty('--border',         t.border);
+      r.setProperty('--border-muted',   t.border_muted);
+      r.setProperty('--border-inner',   t.border_inner);
+      r.setProperty('--accent',         t.accent);
+      r.setProperty('--accent-light',   t.accent_light);
+      r.setProperty('--text-primary',   t.text_primary);
+      r.setProperty('--text-secondary', t.text_secondary);
+      r.setProperty('--text-muted',     t.text_muted);
+      r.setProperty('--name-color',     t.name_color);
+      r.setProperty('--conj-color',     t.conj_color);
+      r.setProperty('--photo-shadow',   t.photo_shadow);
+    })();
+
+    /* ── Framed photos ──
+       Only renders frames that have a real src.
+       No photo = no frame, no placeholder box. */
+    var validPhotos = (CLIENT.photos || []).filter(function(p) { return p.src; });
+    if (validPhotos.length > 0) {
+      var container = document.getElementById('photos-container');
+      var row = document.createElement('div');
+      row.className = 'photos-row' + (validPhotos.length === 1 ? ' single' : '');
+      validPhotos.forEach(function(photo) {
+        var frame = document.createElement('div');
+        frame.className = 'photo-frame';
+        var imgWrap = document.createElement('div');
+        imgWrap.className = 'photo-frame-img';
+        var img = document.createElement('img');
+        img.src = photo.src;
+        img.alt = photo.alt || '';
+        imgWrap.appendChild(img);
+        frame.appendChild(imgWrap);
+        row.appendChild(frame);
+      });
+      container.appendChild(row);
+      var rule = document.createElement('div');
+      rule.className = 'photo-rule';
+      container.appendChild(rule);
+    }
+
+    /* ── Content ── */
+    document.getElementById('eyebrow').textContent         = CLIENT.eyebrow;
+    document.getElementById('name-1').textContent          = CLIENT.name_line_1;
+    document.getElementById('conjunction').textContent     = CLIENT.conjunction;
+    document.getElementById('name-2').textContent          = CLIENT.name_line_2;
+    document.getElementById('detail-date').textContent     = CLIENT.date;
+    document.getElementById('detail-time').textContent     = CLIENT.time;
+    document.getElementById('detail-venue').textContent    = CLIENT.venue;
+    document.getElementById('detail-location').textContent = CLIENT.location;
+    document.getElementById('map-link').href               = CLIENT.maps_url;
+    document.title = CLIENT.name_line_1 + ' & ' + CLIENT.name_line_2 + ' — You Are Invited';
+
+    var evtEl = document.getElementById('event-type');
+    evtEl.textContent   = CLIENT.event_type;
+    evtEl.style.display = CLIENT.event_type ? 'block' : 'none';
+
+    var dcEl = document.getElementById('dresscode');
+    dcEl.textContent   = CLIENT.dresscode ? 'Dress Code · ' + CLIENT.dresscode : '';
+    dcEl.style.display = CLIENT.dresscode ? 'block' : 'none';
+
+    var noteEl = document.getElementById('note');
+    noteEl.textContent   = CLIENT.note;
+    noteEl.style.display = CLIENT.note ? 'block' : 'none';
+
+    document.getElementById('watermark').innerHTML =
+      CLIENT.watermark.replace('talainvites@gmail.com', '<a href="mailto:talainvites@gmail.com">talainvites@gmail.com</a>');
+
+    /* ── Countdown ── */
+    function updateCountdown() {
+      var diff = new Date(CLIENT.countdown_date).getTime() - Date.now();
+      if (diff <= 0) {
+        document.getElementById('countdown-grid').innerHTML = '<span class="countdown-expired">The celebration is here.</span>';
+        return;
+      }
+      document.getElementById('cd-days').textContent    = String(Math.floor(diff / 86400000)).padStart(2,'0');
+      document.getElementById('cd-hours').textContent   = String(Math.floor((diff % 86400000) / 3600000)).padStart(2,'0');
+      document.getElementById('cd-minutes').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2,'0');
+      document.getElementById('cd-seconds').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2,'0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>

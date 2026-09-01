@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Save the Date — Andrea & Rafael</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <script>
+    /* ============================================================
+       CLIENT CONFIG — edit only this block per invitation
+       ============================================================ */
+    const CLIENT = {
+
+      /* ── Couple ── */
+      name_line_1: "Andrea",
+      name_line_2: "Rafael",
+      conjunction: "&",
+
+      /* ── Save the Date shows date only — full details on Invitation Proper ── */
+      date_full:   "Sunday, the Fifth of July",
+      year:        "2026",
+      city:        "Makati City, Philippines",
+
+      message: "We are getting married, and we would love for you to be there. A formal invitation with all the details will follow soon.",
+
+      countdown_date: "2026-07-05T16:00:00",
+
+      /* ── Link to the full invitation once ready ── */
+      invitation_url: "suite-invitation.html",
+
+      /* ── Hero Photo ──
+         Leave src: "" for a solid gradient background. */
+      hero_photo: {
+        src: "",
+        alt: "Andrea & Rafael",
+      },
+
+      /* ── Color Theme — Tala Suite ── */
+      theme: {
+        bg:             "#1A1408",
+        bg_alt:         "#211909",
+        surface:        "#2A200D",
+        border:         "#C9A84C",
+        border_muted:   "rgba(201,168,76,0.25)",
+        border_faint:   "rgba(201,168,76,0.1)",
+        accent:         "#C9A84C",
+        accent_muted:   "rgba(201,168,76,0.4)",
+        text_primary:   "#FAF7F2",
+        text_secondary: "rgba(250,247,242,0.7)",
+        text_muted:     "#A8956E",
+        text_faint:     "rgba(250,247,242,0.4)",
+        name_color:     "#FAF7F2",
+        hero_overlay:        "rgba(26,20,8,0.5)",
+        hero_overlay_bottom: "rgba(26,20,8,0.96)",
+      },
+
+      watermark: "Crafted by Tala Invites · talainvites@gmail.com",
+    };
+  </script>
+
+  <style>
+    /* ============================================================
+       TALA SUITE — SAVE THE DATE
+       Bespoke teaser page. Short, elegant, anticipatory.
+       Shares visual identity with Invitation Proper.
+       ============================================================ */
+
+    :root {
+      --bg:             #1A1408;
+      --bg-alt:         #211909;
+      --surface:        #2A200D;
+      --border:         #C9A84C;
+      --border-muted:   rgba(201,168,76,0.25);
+      --border-faint:   rgba(201,168,76,0.1);
+      --accent:         #C9A84C;
+      --accent-muted:   rgba(201,168,76,0.4);
+      --text-primary:   #FAF7F2;
+      --text-secondary: rgba(250,247,242,0.7);
+      --text-muted:     #A8956E;
+      --text-faint:     rgba(250,247,242,0.4);
+      --name-color:     #FAF7F2;
+      --hero-overlay:        rgba(26,20,8,0.5);
+      --hero-overlay-bottom: rgba(26,20,8,0.96);
+      --lora:           'Lora', Georgia, serif;
+      --poppins:        'Poppins', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--poppins);
+      font-weight: 300;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow-x: hidden;
+      padding: 3rem 1.5rem;
+    }
+
+    .hero-bg-img { position: fixed; inset: 0; z-index: -1; }
+    .hero-bg-img img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-bg-gradient {
+      position: fixed; inset: 0; z-index: -1;
+      background: linear-gradient(160deg, #241B0A, var(--bg));
+    }
+    .hero-overlay-layer {
+      position: fixed; inset: 0; z-index: -1;
+      background: linear-gradient(to bottom, var(--hero-overlay) 0%, var(--hero-overlay-bottom) 100%);
+    }
+
+    .stamp {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 480px;
+      animation: fadeIn 1s ease both;
+    }
+
+    /* Decorative outer ring */
+    .stamp-ring {
+      width: 100%;
+      max-width: 380px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      border: 1px solid var(--border-muted);
+      border-radius: 50%;
+      aspect-ratio: 1/1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .stamp-ring::before {
+      content: '';
+      position: absolute;
+      inset: 14px;
+      border: 0.5px solid var(--border-faint);
+      border-radius: 50%;
+    }
+
+    .stamp-label {
+      font-family: var(--poppins);
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+
+    .stamp-names {
+      font-family: var(--lora);
+      font-size: clamp(1.8rem, 6vw, 2.6rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--name-color);
+      line-height: 1.15;
+    }
+    .stamp-amp {
+      font-family: var(--lora);
+      font-size: 0.9rem;
+      color: var(--accent);
+      display: block;
+      margin: 0.2rem 0;
+    }
+
+    .stamp-rule {
+      width: 28px;
+      height: 0.5px;
+      background: var(--accent);
+      margin: 1rem auto;
+    }
+
+    .stamp-date {
+      font-family: var(--poppins);
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 0.2rem;
+    }
+    .stamp-year {
+      font-family: var(--lora);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .stamp-message {
+      margin-top: 2.5rem;
+      font-family: var(--lora);
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--text-secondary);
+      line-height: 1.9;
+    }
+    .stamp-city {
+      margin-top: 1.2rem;
+      font-family: var(--poppins);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+
+    /* ── Countdown ── */
+    .countdown-wrap {
+      margin-top: 2.5rem;
+      padding-top: 1.8rem;
+      border-top: 0.5px solid var(--border-faint);
+    }
+    .countdown-label-top {
+      font-family: var(--poppins);
+      font-size: 0.5rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .countdown-grid {
+      display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; align-items: flex-start;
+    }
+    .cd-unit { text-align: center; }
+    .cd-num  { font-family: var(--lora); font-size: 2rem; font-weight: 400; color: var(--accent); line-height: 1; display: block; }
+    .cd-lbl  { font-family: var(--poppins); font-size: 0.46rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin-top: 4px; display: block; }
+    .cd-sep  { font-family: var(--lora); font-size: 1.6rem; color: var(--border-muted); line-height: 1; padding-top: 3px; }
+    .countdown-expired { font-family: var(--lora); font-size: 1rem; font-style: italic; color: var(--accent); }
+
+    /* ── CTA to full invitation ── */
+    .full-invite-link {
+      display: inline-block;
+      margin-top: 2.5rem;
+      font-family: var(--poppins);
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.8rem 2rem;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+    .full-invite-link:hover { background: var(--accent); color: var(--bg); }
+
+    /* ── Watermark ── */
+    .watermark {
+      margin-top: 2rem;
+      font-family: var(--poppins);
+      font-size: 0.46rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--border-muted);
+      text-align: center;
+    }
+    .watermark a { color: inherit; text-decoration: none; }
+    .watermark a:hover { color: var(--accent); }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Mobile: ring becomes a soft box instead of forcing circle */
+    @media (max-width: 420px) {
+      .stamp-ring {
+        border-radius: 16px;
+        aspect-ratio: auto;
+        padding: 2.5rem 1.5rem;
+      }
+      .stamp-ring::before { border-radius: 12px; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="hero-bg-gradient"></div>
+  <div class="hero-bg-img" id="hero-bg-img" style="display:none">
+    <img id="hero-bg" src="" alt="">
+  </div>
+  <div class="hero-overlay-layer"></div>
+
+  <div class="stamp">
+
+    <div class="stamp-ring">
+      <span class="stamp-label">Save the Date</span>
+
+      <h1 class="stamp-names">
+        <span id="name-1"></span>
+        <span class="stamp-amp" id="amp"></span>
+        <span id="name-2"></span>
+      </h1>
+
+      <div class="stamp-rule"></div>
+
+      <div class="stamp-date" id="stamp-date"></div>
+      <div class="stamp-year" id="stamp-year"></div>
+    </div>
+
+    <p class="stamp-message" id="stamp-message"></p>
+    <p class="stamp-city" id="stamp-city"></p>
+
+    <!-- Countdown -->
+    <div class="countdown-wrap">
+      <span class="countdown-label-top">Counting down to the day</span>
+      <div class="countdown-grid" id="countdown-grid">
+        <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><span class="cd-lbl">Days</span></div>
+        <div class="cd-sep">·</div>
+        <div class="cd-unit"><span class="cd-num" id="cd-hours">--</span><span class="cd-lbl">Hrs</span></div>
+        <div class="cd-sep">·</div>
+        <div class="cd-unit"><span class="cd-num" id="cd-minutes">--</span><span class="cd-lbl">Min</span></div>
+        <div class="cd-sep">·</div>
+        <div class="cd-unit"><span class="cd-num" id="cd-seconds">--</span><span class="cd-lbl">Sec</span></div>
+      </div>
+    </div>
+
+    <!-- Link to full invitation -->
+    <a class="full-invite-link" id="full-invite-link" href="#">
+      View Full Invitation →
+    </a>
+
+    <div class="watermark" id="watermark"></div>
+
+  </div>
+
+
+  <script>
+    /* ── 1. Apply Theme ── */
+    (function() {
+      var r = document.documentElement.style;
+      var t = CLIENT.theme;
+      r.setProperty('--bg',             t.bg);
+      r.setProperty('--bg-alt',         t.bg_alt);
+      r.setProperty('--surface',        t.surface);
+      r.setProperty('--border',         t.border);
+      r.setProperty('--border-muted',   t.border_muted);
+      r.setProperty('--border-faint',   t.border_faint);
+      r.setProperty('--accent',         t.accent);
+      r.setProperty('--accent-muted',   t.accent_muted);
+      r.setProperty('--text-primary',   t.text_primary);
+      r.setProperty('--text-secondary', t.text_secondary);
+      r.setProperty('--text-muted',     t.text_muted);
+      r.setProperty('--text-faint',     t.text_faint);
+      r.setProperty('--name-color',     t.name_color);
+      r.setProperty('--hero-overlay',        t.hero_overlay);
+      r.setProperty('--hero-overlay-bottom', t.hero_overlay_bottom);
+    })();
+
+    /* ── 2. Hero photo (optional) ── */
+    if (CLIENT.hero_photo && CLIENT.hero_photo.src) {
+      var bgWrap = document.getElementById('hero-bg-img');
+      var bgImg  = document.getElementById('hero-bg');
+      bgImg.src  = CLIENT.hero_photo.src;
+      bgImg.alt  = CLIENT.hero_photo.alt || '';
+      bgWrap.style.display = 'block';
+    }
+
+    /* ── 3. Content ── */
+    document.getElementById('name-1').textContent      = CLIENT.name_line_1;
+    document.getElementById('amp').textContent          = CLIENT.conjunction;
+    document.getElementById('name-2').textContent      = CLIENT.name_line_2;
+    document.getElementById('stamp-date').textContent  = CLIENT.date_full;
+    document.getElementById('stamp-year').textContent  = CLIENT.year;
+    document.getElementById('stamp-message').textContent = CLIENT.message;
+    document.getElementById('stamp-city').textContent  = CLIENT.city;
+    document.getElementById('full-invite-link').href   = CLIENT.invitation_url;
+
+    /* Page title */
+    document.title = 'Save the Date — ' + CLIENT.name_line_1 + ' & ' + CLIENT.name_line_2;
+
+    /* ── 4. Watermark ── */
+    document.getElementById('watermark').innerHTML =
+      CLIENT.watermark.replace('talainvites@gmail.com',
+        '<a href="mailto:talainvites@gmail.com">talainvites@gmail.com</a>');
+
+    /* ── 5. Countdown ── */
+    function updateCountdown() {
+      var diff = new Date(CLIENT.countdown_date).getTime() - Date.now();
+      if (diff <= 0) {
+        document.getElementById('countdown-grid').innerHTML =
+          '<span class="countdown-expired">The day is here.</span>';
+        return;
+      }
+      document.getElementById('cd-days').textContent    = String(Math.floor(diff / 86400000)).padStart(2, '0');
+      document.getElementById('cd-hours').textContent   = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+      document.getElementById('cd-minutes').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+      document.getElementById('cd-seconds').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>

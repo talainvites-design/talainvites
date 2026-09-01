@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rikki's 18th Birthday — You Are Invited</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <script>
+    /* ============================================================
+       CLIENT CONFIG — edit only this block per invitation
+       ============================================================ */
+    const CLIENT = {
+
+      /* ── Event Details ── */
+      name:           "Rikki",
+      age:            "18",
+      age_label:      "a decade and eight",
+      event:          "A Birthday Celebration",
+      date_full:      "Saturday, the Eleventh of April",
+      date_short:     "11 April 2026",
+      year:           "2026",
+      time:           "Four o'clock in the afternoon",
+      venue:          "Bayview Pavilion",
+      address:        "Bay Boulevard, Mandaluyong City",
+      maps_url:       "https://maps.google.com/?q=Bayview+Pavilion+Mandaluyong",
+      dresscode:      "Semi-Formal",
+      dresscode_note: "Soft pastels, florals, and garden-party attire are encouraged.",
+      rsvp_tally_id:  "YOUR_TALLY_ID",
+      rsvp_deadline:  "April 1, 2026",
+      countdown_date: "2026-04-11T16:00:00",
+
+      /* ── Programme ── */
+      programme: [
+        { time: "4:00 PM", event: "Guest Arrival & Garden Welcome" },
+        { time: "4:30 PM", event: "Grand Entrance"                 },
+        { time: "5:00 PM", event: "Welcome Toast"                   },
+        { time: "5:30 PM", event: "Afternoon Tea & Games"           },
+        { time: "6:30 PM", event: "18 Candles Ceremony"             },
+        { time: "7:00 PM", event: "Cake Cutting"                    },
+        { time: "7:30 PM", event: "Open Floor & Photobooth"         },
+        { time: "9:00 PM", event: "End of Celebration"              },
+      ],
+
+      /* ── Photos ──
+         Up to 3. Leave src: "" to show placeholder. */
+      photos: [
+        { src: "https://res.cloudinary.com/woqclpcw/image/upload/v1787629942/debut_photo_3.jpg", alt: "Rikki — Photo 1" },
+        { src: "https://res.cloudinary.com/woqclpcw/image/upload/v1787629942/debut_photo_2.jpg", alt: "Rikki — Photo 2" },
+        { src: "https://res.cloudinary.com/woqclpcw/image/upload/v1787629942/debut_photo_4.jpg", alt: "Rikki — Photo 3" },
+      ],
+
+      /* ── Color Theme — The Bloom ── */
+      theme: {
+        bg:             "#FDF8F4",   /* warm white */
+        bg_alt:         "#FEF3ED",   /* blush */
+        surface:        "#FFFFFF",
+        border:         "#E8C9B0",   /* soft peach */
+        border_muted:   "rgba(232,201,176,0.5)",
+        border_faint:   "rgba(232,201,176,0.25)",
+        accent:         "#C4956A",   /* dusty rose-gold */
+        accent_soft:    "#D9A988",
+        accent_faint:   "rgba(196,149,106,0.08)",
+        text_primary:   "#5C3D2E",   /* warm brown */
+        text_secondary: "rgba(92,61,46,0.7)",
+        text_muted:     "#A88B7A",
+        text_faint:     "rgba(92,61,46,0.35)",
+        name_color:     "#5C3D2E",
+        age_color:      "#C4956A",
+      },
+
+      /* ── Footer ── */
+      watermark: "Crafted by Tala Invites · talainvites@gmail.com",
+    };
+  </script>
+
+  <style>
+    /* ============================================================
+       DIWA TEMPLATE — MODE C: THE BLOOM
+       Soft, romantic, garden-party energy. Watercolor feel via
+       gradients, organic shapes, and floral dividers (no images).
+       ============================================================ */
+
+    :root {
+      --bg:             #FDF8F4;
+      --bg-alt:         #FEF3ED;
+      --surface:        #FFFFFF;
+      --border:         #E8C9B0;
+      --border-muted:   rgba(232,201,176,0.5);
+      --border-faint:   rgba(232,201,176,0.25);
+      --accent:         #C4956A;
+      --accent-soft:    #D9A988;
+      --accent-faint:   rgba(196,149,106,0.08);
+      --text-primary:   #5C3D2E;
+      --text-secondary: rgba(92,61,46,0.7);
+      --text-muted:     #A88B7A;
+      --text-faint:     rgba(92,61,46,0.35);
+      --name-color:     #5C3D2E;
+      --age-color:      #C4956A;
+      --lora:           'Lora', Georgia, serif;
+      --poppins:        'Poppins', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text-primary); font-family: var(--poppins); font-weight: 300; overflow-x: hidden; }
+    img  { display: block; max-width: 100%; }
+
+    /* ── Shared ── */
+    .ornament      { display: flex; align-items: center; gap: 0.8rem; margin: 1.2rem auto; justify-content: center; }
+    .ornament-flower { font-size: 0.8rem; color: var(--accent); }
+    .ornament-line  { width: 40px; height: 0.5px; background: var(--border-muted); }
+    .section-label  { font-family: var(--poppins); font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; display: block; }
+    .soft-rule      { width: 36px; height: 0.5px; background: var(--accent); margin: 1rem auto; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 5rem 2rem 6rem;
+      position: relative;
+      background: radial-gradient(ellipse at top, var(--bg-alt) 0%, var(--bg) 65%);
+      overflow: hidden;
+    }
+
+    /* Soft organic blobs in background */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -10%; right: -15%;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent-faint) 0%, transparent 70%);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -15%; left: -10%;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent-faint) 0%, transparent 70%);
+    }
+
+    .hero-flowers {
+      font-size: 1.4rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.6em;
+      opacity: 0.7;
+    }
+    .hero-eyebrow {
+      font-family: var(--poppins);
+      font-size: 0.62rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .hero-event {
+      font-family: var(--poppins);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .hero-name {
+      font-family: var(--lora);
+      font-size: clamp(4rem, 13vw, 8rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--name-color);
+      line-height: 1;
+      letter-spacing: 0.01em;
+    }
+    .hero-age-label {
+      font-family: var(--lora);
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-style: italic;
+      color: var(--age-color);
+      margin: 0.6rem 0 2rem;
+    }
+    .hero-date {
+      font-family: var(--lora);
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.3rem;
+    }
+    .hero-time, .hero-venue {
+      font-family: var(--poppins);
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.15rem;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--poppins);
+      font-size: 0.52rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      animation: floatHint 2.5s ease infinite;
+    }
+    @keyframes floatHint {
+      0%,100% { transform: translate(-50%, 0); opacity: 0.4; }
+      50%     { transform: translate(-50%, 5px); opacity: 0.9; }
+    }
+
+    /* ── COUNTDOWN ── */
+    .countdown-section {
+      padding: 5rem 2rem;
+      text-align: center;
+      background: var(--bg-alt);
+      border-top: 0.5px solid var(--border-faint);
+      border-bottom: 0.5px solid var(--border-faint);
+    }
+    .countdown-section h2 {
+      font-family: var(--lora);
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text-primary);
+    }
+    .countdown-grid {
+      display: flex; justify-content: center; gap: 2rem;
+      margin-top: 2.5rem; flex-wrap: wrap; align-items: flex-start;
+    }
+    .countdown-unit  { text-align: center; min-width: 80px; }
+    .countdown-num   { font-family: var(--lora); font-size: 3rem; font-weight: 400; color: var(--accent); line-height: 1; display: block; }
+    .countdown-label { font-family: var(--poppins); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.5rem; display: block; }
+    .countdown-sep   { font-family: var(--lora); font-size: 2.5rem; color: var(--border-muted); line-height: 1; padding-top: 0.3rem; }
+    .countdown-expired { font-family: var(--lora); font-size: 1.3rem; font-style: italic; color: var(--accent); }
+
+    /* ── SHARED SECTION ── */
+    .inv-section {
+      padding: 5rem 2rem; max-width: 720px;
+      margin: 0 auto; text-align: center;
+      border-bottom: 0.5px solid var(--border-faint);
+    }
+    .inv-section h2 {
+      font-family: var(--lora); font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 400; font-style: italic; color: var(--text-primary); margin-bottom: 0.4rem;
+    }
+    .inv-section h2 em { font-style: normal; color: var(--accent); }
+    .inv-section > p { font-family: var(--poppins); font-size: 0.78rem; font-weight: 300; color: var(--text-faint); line-height: 1.9; }
+
+    /* ── PROGRAMME ── */
+    .programme-list { list-style: none; margin: 2.5rem auto 0; max-width: 460px; }
+    .programme-item {
+      display: grid; grid-template-columns: 90px 1fr;
+      gap: 1rem; padding: 0.9rem 0;
+      border-bottom: 0.5px dashed var(--border-muted);
+      align-items: start; text-align: left;
+    }
+    .programme-item:last-child { border-bottom: none; }
+    .prog-time  { font-family: var(--poppins); font-size: 0.65rem; font-weight: 400; color: var(--accent); letter-spacing: 0.06em; margin-top: 2px; }
+    .prog-event { font-family: var(--lora); font-size: 0.9rem; color: var(--text-secondary); line-height: 1.4; font-style: italic; }
+
+    /* ── GALLERY ── */
+    .gallery-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; margin-top: 2.5rem; }
+    .gallery-item {
+      aspect-ratio: 4/5;
+      background: var(--surface);
+      border: 2px solid white;
+      box-shadow: 0 4px 16px rgba(196,149,106,0.12);
+      overflow: hidden; position: relative;
+      border-radius: 4px;
+    }
+    .gallery-item:nth-child(odd)  { transform: rotate(-1.5deg); }
+    .gallery-item:nth-child(even) { transform: rotate(1.5deg); }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+    .gallery-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;
+      background: var(--accent-faint);
+    }
+    .gallery-placeholder-icon { font-size: 1.4rem; color: var(--accent-soft); }
+    .gallery-placeholder-text { font-family: var(--poppins); font-size: 0.48rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); }
+
+    /* ── DRESS CODE ── */
+    .dresscode-box {
+      margin: 2.5rem auto 0; padding: 2.2rem;
+      border: 1px solid var(--border-muted);
+      border-radius: 8px;
+      background: var(--surface);
+      max-width: 440px;
+      position: relative;
+    }
+    .dresscode-flowers { font-size: 1rem; color: var(--accent); margin-bottom: 0.8rem; letter-spacing: 0.4em; }
+    .dresscode-label { font-family: var(--poppins); font-size: 0.55rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
+    .dresscode-name  { font-family: var(--lora); font-size: 1.8rem; font-weight: 400; font-style: italic; color: var(--text-primary); margin-bottom: 0.8rem; }
+    .dresscode-note  { font-family: var(--poppins); font-size: 0.73rem; font-weight: 300; color: var(--text-faint); line-height: 1.9; }
+
+    /* ── VENUE ── */
+    .venue-section { padding: 5rem 2rem; text-align: center; }
+    .venue-name    { font-family: var(--lora); font-size: 1.5rem; font-weight: 400; font-style: italic; color: var(--text-primary); margin-bottom: 0.4rem; }
+    .venue-address { font-family: var(--poppins); font-size: 0.75rem; font-weight: 300; color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem; }
+    .venue-map-btn {
+      display: inline-block; font-family: var(--poppins); font-size: 0.62rem;
+      letter-spacing: 0.16em; text-transform: uppercase; padding: 0.7rem 1.8rem;
+      border: 1px solid var(--accent); color: var(--accent); border-radius: 30px;
+      text-decoration: none; transition: all 0.25s;
+    }
+    .venue-map-btn:hover { background: var(--accent); color: white; }
+
+    /* ── RSVP ── */
+    .rsvp-section {
+      padding: 5rem 2rem; text-align: center;
+      background: var(--bg-alt);
+      border-top: 0.5px solid var(--border-faint);
+    }
+    .rsvp-section h2 { font-family: var(--lora); font-size: clamp(1.6rem,4vw,2.2rem); font-weight: 400; font-style: italic; color: var(--text-primary); margin-bottom: 0.4rem; }
+    .rsvp-section h2 em { font-style: normal; color: var(--accent); }
+    .rsvp-section > p { font-family: var(--poppins); font-size: 0.78rem; font-weight: 300; color: var(--text-faint); line-height: 1.9; margin-bottom: 2rem; }
+    .rsvp-deadline { color: var(--text-secondary); font-weight: 400; }
+    .rsvp-embed    { max-width: 600px; margin: 0 auto; }
+    .rsvp-embed iframe { border: none; background: transparent; }
+
+    /* ── FOOTER ── */
+    .inv-footer { text-align: center; padding: 3rem 2rem; }
+    .inv-footer-watermark { font-family: var(--poppins); font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-soft); opacity: 0.7; }
+    .inv-footer-watermark a { color: inherit; text-decoration: none; }
+    .inv-footer-watermark a:hover { opacity: 1; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    .fade-up { animation: fadeUp 0.9s ease both; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.3s; }
+    .delay-3 { animation-delay: 0.5s; }
+    .delay-4 { animation-delay: 0.7s; }
+    .delay-5 { animation-delay: 0.9s; }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-flowers fade-up delay-1">✿ ❀ ✿</div>
+    <p class="hero-eyebrow fade-up delay-1">You are invited to celebrate</p>
+    <p class="hero-event fade-up delay-2" id="hero-event"></p>
+    <h1 class="hero-name fade-up delay-2" id="hero-name"></h1>
+    <p class="hero-age-label fade-up delay-3" id="hero-age-label"></p>
+    <p class="hero-date fade-up delay-4" id="hero-date"></p>
+    <p class="hero-time fade-up delay-5" id="hero-time"></p>
+    <p class="hero-venue fade-up delay-5" id="hero-venue"></p>
+    <span class="scroll-hint">Scroll to explore ✿</span>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <section class="countdown-section">
+    <p class="section-label">Counting Down</p>
+    <h2>The celebration begins in</h2>
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <span class="ornament-flower">✿</span>
+      <div class="ornament-line"></div>
+    </div>
+    <div class="countdown-grid" id="countdown-grid">
+      <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-label">Days</span></div>
+      <div class="countdown-sep">·</div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-label">Hours</span></div>
+      <div class="countdown-sep">·</div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-minutes">--</span><span class="countdown-label">Minutes</span></div>
+      <div class="countdown-sep">·</div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-seconds">--</span><span class="countdown-label">Seconds</span></div>
+    </div>
+  </section>
+
+  <!-- PROGRAMME -->
+  <section class="inv-section">
+    <p class="section-label">Programme</p>
+    <h2>The <em>Afternoon</em></h2>
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <span class="ornament-flower">✿</span>
+      <div class="ornament-line"></div>
+    </div>
+    <ul class="programme-list" id="programme-list"></ul>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="inv-section">
+    <p class="section-label">Gallery</p>
+    <h2>A <em>Glimpse</em> of Rikki</h2>
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <span class="ornament-flower">✿</span>
+      <div class="ornament-line"></div>
+    </div>
+    <p>Photos coming soon.</p>
+    <div class="gallery-grid" id="gallery-grid"></div>
+  </section>
+
+  <!-- DRESS CODE -->
+  <section class="inv-section">
+    <p class="section-label">What to Wear</p>
+    <h2>Dress <em>Code</em></h2>
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <span class="ornament-flower">✿</span>
+      <div class="ornament-line"></div>
+    </div>
+    <div class="dresscode-box">
+      <div class="dresscode-flowers">✿ ❀ ✿</div>
+      <div class="dresscode-label">Garden Party Attire</div>
+      <div class="dresscode-name" id="dresscode-name"></div>
+      <p class="dresscode-note" id="dresscode-note"></p>
+    </div>
+  </section>
+
+  <!-- VENUE -->
+  <section class="venue-section">
+    <p class="section-label">Where to Find Us</p>
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <span class="ornament-flower">✿</span>
+      <div class="ornament-line"></div>
+    </div>
+    <div class="venue-name" id="venue-name"></div>
+    <div class="venue-address" id="venue-address"></div>
+    <a class="venue-map-btn" id="venue-map-btn" href="#" target="_blank">
+      Open in Google Maps →
+    </a>
+  </section>
+
+  <!-- RSVP -->
+  <section class="rsvp-section">
+    <p class="section-label">Kindly Reply</p>
+    <h2>Will You <em>Bloom</em> With Us?</h2>
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <span class="ornament-flower">✿</span>
+      <div class="ornament-line"></div>
+    </div>
+    <p>
+      We would be so happy to have you there.<br>
+      Please let us know by <span class="rsvp-deadline" id="rsvp-deadline"></span>
+    </p>
+    <div class="rsvp-embed" id="rsvp-embed">
+      <iframe
+        id="rsvp-iframe"
+        loading="lazy"
+        width="100%"
+        height="400"
+        frameborder="0"
+        title="RSVP Form">
+      </iframe>
+      <script async src="https://tally.so/widgets/embed.js"></script>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="inv-footer">
+    <div class="ornament" style="margin-bottom:1rem">
+      <div class="ornament-line"></div>
+      <span class="ornament-flower">✿</span>
+      <div class="ornament-line"></div>
+    </div>
+    <p class="inv-footer-watermark" id="footer-watermark"></p>
+  </footer>
+
+
+  <!-- RENDER SCRIPT -->
+  <script>
+
+    /* ── 1. Apply Theme ── */
+    (function applyTheme() {
+      var r = document.documentElement.style;
+      var t = CLIENT.theme;
+      r.setProperty('--bg',             t.bg);
+      r.setProperty('--bg-alt',         t.bg_alt);
+      r.setProperty('--surface',        t.surface);
+      r.setProperty('--border',         t.border);
+      r.setProperty('--border-muted',   t.border_muted);
+      r.setProperty('--border-faint',   t.border_faint);
+      r.setProperty('--accent',         t.accent);
+      r.setProperty('--accent-soft',    t.accent_soft);
+      r.setProperty('--accent-faint',   t.accent_faint);
+      r.setProperty('--text-primary',   t.text_primary);
+      r.setProperty('--text-secondary', t.text_secondary);
+      r.setProperty('--text-muted',     t.text_muted);
+      r.setProperty('--text-faint',     t.text_faint);
+      r.setProperty('--name-color',     t.name_color);
+      r.setProperty('--age-color',      t.age_color);
+    })();
+
+    /* ── 2. Hero ── */
+    document.getElementById('hero-event').textContent     = CLIENT.event;
+    document.getElementById('hero-name').textContent      = CLIENT.name;
+    document.getElementById('hero-age-label').textContent = CLIENT.age_label;
+    document.getElementById('hero-date').textContent      = CLIENT.date_full + ' · ' + CLIENT.year;
+    document.getElementById('hero-time').textContent      = CLIENT.time;
+    document.getElementById('hero-venue').textContent     = CLIENT.venue + ' · ' + CLIENT.address;
+
+    /* ── 3. Page Title ── */
+    document.title = CLIENT.name + "'s " + CLIENT.age + "th Birthday — You Are Invited";
+
+    /* ── 4. Programme ── */
+    var progList = document.getElementById('programme-list');
+    CLIENT.programme.forEach(function(item) {
+      var li = document.createElement('li');
+      li.className = 'programme-item';
+      li.innerHTML =
+        '<span class="prog-time">'  + item.time  + '</span>' +
+        '<span class="prog-event">' + item.event + '</span>';
+      progList.appendChild(li);
+    });
+
+    /* ── 5. Gallery ── */
+    var gallery = document.getElementById('gallery-grid');
+    CLIENT.photos.forEach(function(photo) {
+      var div = document.createElement('div');
+      div.className = 'gallery-item';
+      if (photo.src) {
+        var img = document.createElement('img');
+        img.src = photo.src;
+        img.alt = photo.alt;
+        div.appendChild(img);
+      } else {
+        div.innerHTML =
+          '<div class="gallery-placeholder">' +
+            '<span class="gallery-placeholder-icon">✿</span>' +
+            '<span class="gallery-placeholder-text">Photo Coming Soon</span>' +
+          '</div>';
+      }
+      gallery.appendChild(div);
+    });
+
+    /* ── 6. Dress Code ── */
+    document.getElementById('dresscode-name').textContent = CLIENT.dresscode;
+    document.getElementById('dresscode-note').textContent = CLIENT.dresscode_note;
+
+    /* ── 7. Venue ── */
+    document.getElementById('venue-name').textContent    = CLIENT.venue;
+    document.getElementById('venue-address').textContent = CLIENT.address;
+    document.getElementById('venue-map-btn').href        = CLIENT.maps_url;
+
+    /* ── 8. RSVP ── */
+    document.getElementById('rsvp-deadline').textContent = CLIENT.rsvp_deadline + '.';
+    var iframe = document.getElementById('rsvp-iframe');
+    iframe.setAttribute('data-tally-src',
+      'https://tally.so/embed/' + CLIENT.rsvp_tally_id +
+      '?alignLeft=1&hideTitle=1&transparentBackground=1');
+
+    /* ── 9. Footer ── */
+    document.getElementById('footer-watermark').innerHTML =
+      CLIENT.watermark.replace('talainvites@gmail.com',
+        '<a href="mailto:talainvites@gmail.com">talainvites@gmail.com</a>');
+
+    /* ── 10. Countdown ── */
+    function updateCountdown() {
+      var diff = new Date(CLIENT.countdown_date).getTime() - Date.now();
+      if (diff <= 0) {
+        document.getElementById('countdown-grid').innerHTML =
+          '<p class="countdown-expired">The celebration is here — we cannot wait to see you.</p>';
+        return;
+      }
+      document.getElementById('cd-days').textContent    = String(Math.floor(diff / 86400000)).padStart(2, '0');
+      document.getElementById('cd-hours').textContent   = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+      document.getElementById('cd-minutes').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+      document.getElementById('cd-seconds').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andrea & Rafael's Wedding — You Are Invited</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <script>
+    /* ============================================================
+       CLIENT CONFIG — edit only this block per invitation
+       ============================================================ */
+    const CLIENT = {
+
+      /* ── Couple ── */
+      name_line_1: "Andrea",
+      name_line_2: "Rafael",
+      conjunction: "&",
+      eyebrow:     "Together with their families",
+      event:       "A Wedding Celebration",
+
+      /* ── Date & Venue ── */
+      date_full:   "Sunday, the Fifth of July",
+      year:        "2026",
+      time:        "Four o'clock in the afternoon",
+      venue:       "Sanctuario de San Antonio",
+      address:     "Forbes Park, Makati City, Philippines",
+      maps_url:    "https://maps.google.com/?q=Sanctuario+de+San+Antonio+Forbes+Park",
+      countdown_date: "2026-07-05T16:00:00",
+
+      /* ── Save the Date link (back-reference) ── */
+      save_the_date_url: "suite-save-the-date.html",
+
+      /* ── Hero Photo ── */
+      hero_photo: { src: "", alt: "Andrea & Rafael" },
+
+      /* ── Our Story ── */
+      story_title: "Our Story",
+      story_text: "Some love stories begin with grand gestures. Ours began quietly — over shared coffee, long conversations, and the slow realization that we had found our person.\n\nWhat started as friendship grew into something neither of us expected, built on trust, laughter, and an unspoken understanding that we were better together than apart.\n\nNow, after years of building a life side by side, we are ready to make it official — surrounded by the people who have shaped our story along the way.",
+
+      /* ── Programme ── */
+      programme: [
+        { time: "4:00 PM", event: "Guest Arrival"        },
+        { time: "4:30 PM", event: "Ceremony Begins"        },
+        { time: "5:15 PM", event: "Photos & Cocktail Hour" },
+        { time: "6:30 PM", event: "Grand Entrance"         },
+        { time: "7:00 PM", event: "Dinner is Served"       },
+        { time: "8:00 PM", event: "First Dance & Toasts"   },
+        { time: "8:30 PM", event: "Open Dance Floor"       },
+        { time: "11:00 PM", event: "Send-Off"              },
+      ],
+
+      /* ── Entourage ──
+         Each group has a title and a list of names.
+         Leave names array empty to hide that group. */
+      entourage: [
+        {
+          group: "Parents of the Groom",
+          names: ["Mr. Ricardo Santos", "Mrs. Liwayway Santos"],
+        },
+        {
+          group: "Parents of the Bride",
+          names: ["Mr. Eduardo Reyes", "Mrs. Carmela Reyes"],
+        },
+        {
+          group: "Principal Sponsors",
+          names: [
+            "Atty. Manuel Cruz", "Dr. Beatriz Cruz",
+            "Engr. Jose Villanueva", "Mrs. Soledad Villanueva",
+            "Mr. Antonio Bautista", "Mrs. Remedios Bautista",
+          ],
+        },
+        {
+          group: "Best Man & Maid of Honor",
+          names: ["Marco Santos", "Isabella Reyes"],
+        },
+        {
+          group: "Groomsmen",
+          names: ["Diego Fernandez", "Gabriel Torres", "Miguel Aquino", "Rafael Domingo"],
+        },
+        {
+          group: "Bridesmaids",
+          names: ["Sofia Mercado", "Camille Ramos", "Andrea Lopez", "Patricia Garcia"],
+        },
+        {
+          group: "Flower Girls & Ring Bearer",
+          names: ["Mia Santos", "Lucas Reyes"],
+        },
+      ],
+
+      /* ── Gallery ── */
+      photos: [
+        { src: "", alt: "Andrea & Rafael — Feature" },
+        { src: "", alt: "Andrea & Rafael — Photo 2" },
+        { src: "", alt: "Andrea & Rafael — Photo 3" },
+      ],
+
+      /* ── Dress Code ── */
+      dresscode:      "Black Tie",
+      dresscode_note: "Gentlemen in black suits. Ladies in long, formal evening gowns. We kindly ask that guests refrain from wearing white or ivory.",
+
+      /* ── RSVP ── */
+      rsvp_tally_id: "YOUR_TALLY_ID",
+      rsvp_deadline: "June 1, 2026",
+
+      /* ── Theme — shared with Save the Date ── */
+      theme: {
+        bg:             "#1A1408",
+        bg_alt:         "#211909",
+        surface:        "#2A200D",
+        border:         "#C9A84C",
+        border_muted:   "rgba(201,168,76,0.25)",
+        border_faint:   "rgba(201,168,76,0.1)",
+        accent:         "#C9A84C",
+        accent_muted:   "rgba(201,168,76,0.4)",
+        accent_faint:   "rgba(201,168,76,0.06)",
+        text_primary:   "#FAF7F2",
+        text_secondary: "rgba(250,247,242,0.7)",
+        text_muted:     "#A8956E",
+        text_faint:     "rgba(250,247,242,0.4)",
+        name_color:     "#FAF7F2",
+        hero_overlay:        "rgba(26,20,8,0.55)",
+        hero_overlay_bottom: "rgba(26,20,8,0.96)",
+      },
+
+      watermark: "Crafted by Tala Invites · talainvites@gmail.com",
+    };
+  </script>
+
+  <style>
+    /* ============================================================
+       TALA SUITE — INVITATION PROPER
+       Full bespoke multi-section experience.
+       Shares visual identity with Save the Date page.
+       ============================================================ */
+
+    :root {
+      --bg:             #1A1408;
+      --bg-alt:         #211909;
+      --surface:        #2A200D;
+      --border:         #C9A84C;
+      --border-muted:   rgba(201,168,76,0.25);
+      --border-faint:   rgba(201,168,76,0.1);
+      --accent:         #C9A84C;
+      --accent-muted:   rgba(201,168,76,0.4);
+      --accent-faint:   rgba(201,168,76,0.06);
+      --text-primary:   #FAF7F2;
+      --text-secondary: rgba(250,247,242,0.7);
+      --text-muted:     #A8956E;
+      --text-faint:     rgba(250,247,242,0.4);
+      --name-color:     #FAF7F2;
+      --hero-overlay:        rgba(26,20,8,0.55);
+      --hero-overlay-bottom: rgba(26,20,8,0.96);
+      --lora:           'Lora', Georgia, serif;
+      --poppins:        'Poppins', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text-primary); font-family: var(--poppins); font-weight: 300; overflow-x: hidden; }
+    img  { display: block; max-width: 100%; }
+
+    /* ── Shared ── */
+    .ornament      { display: flex; align-items: center; gap: 0.75rem; margin: 1.2rem auto; justify-content: center; }
+    .ornament-line { width: 50px; height: 0.5px; background: var(--border-muted); }
+    .ornament-dot  { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    .section-label { font-family: var(--poppins); font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; display: block; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: flex-end;
+      text-align: center; padding: 4rem 2rem 5rem;
+      position: relative; overflow: hidden;
+      background:
+        linear-gradient(to bottom, var(--hero-overlay) 0%, var(--hero-overlay-bottom) 100%),
+        linear-gradient(160deg, #241B0A, var(--bg));
+    }
+    .hero-bg-img { position: absolute; inset: 0; z-index: -1; }
+    .hero-bg-img img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-eyebrow { font-family: var(--poppins); font-size: 0.6rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 1rem; }
+    .hero-event   { font-family: var(--poppins); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    .hero-names   { font-family: var(--lora); font-size: clamp(3.2rem, 11vw, 6.5rem); font-weight: 400; font-style: italic; color: var(--name-color); line-height: 1.05; }
+    .hero-amp     { font-family: var(--lora); font-size: clamp(1.2rem, 3vw, 1.8rem); color: var(--accent); display: block; margin: 0.2rem 0; }
+    .hero-date    { font-family: var(--lora); font-size: 0.95rem; color: var(--text-secondary); margin: 1.2rem 0 0.3rem; }
+    .hero-time, .hero-venue { font-family: var(--poppins); font-size: 0.7rem; font-weight: 300; color: var(--text-muted); letter-spacing: 0.06em; }
+
+    .save-date-pill {
+      display: inline-block;
+      margin-top: 1.5rem;
+      font-family: var(--poppins);
+      font-size: 0.55rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.2rem;
+      border: 0.5px solid var(--border-muted);
+      color: var(--text-muted);
+      text-decoration: none;
+      border-radius: 30px;
+      transition: all 0.2s;
+    }
+    .save-date-pill:hover { border-color: var(--accent); color: var(--accent); }
+
+    .scroll-hint {
+      position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      font-family: var(--poppins); font-size: 0.52rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--accent-muted);
+      animation: pulse 2.5s ease infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:0.35} 50%{opacity:0.9} }
+
+    /* ── SHARED SECTION ── */
+    .inv-section {
+      padding: 5rem 2rem; max-width: 720px;
+      margin: 0 auto; text-align: center;
+      border-bottom: 0.5px solid var(--border-faint);
+    }
+    .inv-section h2 { font-family: var(--lora); font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 400; color: var(--text-primary); margin-bottom: 0.4rem; }
+    .inv-section h2 em { font-style: italic; color: var(--accent); }
+    .inv-section > p.lead { font-family: var(--poppins); font-size: 0.78rem; font-weight: 300; color: var(--text-faint); line-height: 1.9; }
+
+    /* ── OUR STORY ── */
+    .story-text { margin-top: 2rem; text-align: left; max-width: 580px; margin-left: auto; margin-right: auto; }
+    .story-text p { font-family: var(--lora); font-size: 0.95rem; font-weight: 400; color: var(--text-secondary); line-height: 2; margin-bottom: 1.4rem; }
+    .story-text p:first-of-type::first-letter { font-size: 2.8rem; font-style: italic; color: var(--accent); float: left; line-height: 1; margin: 0.05em 0.1em 0 0; }
+
+    /* ── COUNTDOWN ── */
+    .countdown-grid { display: flex; justify-content: center; gap: 2rem; margin-top: 2.5rem; flex-wrap: wrap; align-items: flex-start; }
+    .cd-unit { text-align: center; }
+    .cd-num  { font-family: var(--lora); font-size: 3rem; font-weight: 400; color: var(--accent); line-height: 1; display: block; }
+    .cd-lbl  { font-family: var(--poppins); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.5rem; display: block; }
+    .cd-sep  { font-family: var(--lora); font-size: 2.5rem; color: var(--border-muted); line-height: 1; padding-top: 0.3rem; }
+    .countdown-expired { font-family: var(--lora); font-size: 1.3rem; font-style: italic; color: var(--accent); }
+
+    /* ── PROGRAMME ── */
+    .programme-list { list-style: none; margin: 2.5rem auto 0; max-width: 480px; text-align: left; }
+    .programme-item { display: grid; grid-template-columns: 90px 1fr; gap: 1rem; padding: 0.85rem 0; border-bottom: 0.5px solid var(--border-faint); align-items: start; }
+    .programme-item:last-child { border-bottom: none; }
+    .prog-time  { font-family: var(--poppins); font-size: 0.65rem; font-weight: 400; color: var(--accent); letter-spacing: 0.06em; margin-top: 2px; }
+    .prog-event { font-family: var(--lora); font-size: 0.9rem; color: var(--text-secondary); line-height: 1.4; }
+
+    /* ── ENTOURAGE ── */
+    .entourage-grid { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 2.2rem; }
+    .entourage-group { }
+    .entourage-group-title {
+      font-family: var(--poppins); font-size: 0.58rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
+      padding-bottom: 0.6rem; border-bottom: 0.5px solid var(--border-faint);
+    }
+    .entourage-names {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem 1.5rem;
+    }
+    .entourage-name {
+      font-family: var(--lora); font-size: 0.92rem; font-style: italic;
+      color: var(--text-secondary);
+    }
+
+    /* ── GALLERY ── */
+    .gallery-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: 2.5rem; }
+    .gallery-item { aspect-ratio: 3/4; background: var(--accent-faint); border: 0.5px solid var(--border-muted); overflow: hidden; position: relative; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+    .gallery-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; }
+    .gallery-placeholder-icon { font-family: var(--lora); font-size: 1.5rem; font-style: italic; color: var(--accent-muted); }
+    .gallery-placeholder-text { font-family: var(--poppins); font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-muted); opacity: 0.6; }
+
+    /* ── DRESS CODE ── */
+    .dresscode-box { margin: 2.5rem auto 0; padding: 2rem; border: 0.5px solid var(--border-muted); background: var(--surface); max-width: 440px; }
+    .dresscode-label { font-family: var(--poppins); font-size: 0.55rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
+    .dresscode-name  { font-family: var(--lora); font-size: 1.8rem; font-weight: 400; font-style: italic; color: var(--text-primary); margin-bottom: 0.8rem; }
+    .dresscode-note  { font-family: var(--poppins); font-size: 0.73rem; font-weight: 300; color: var(--text-faint); line-height: 1.9; }
+
+    /* ── VENUE ── */
+    .venue-section { padding: 5rem 2rem; text-align: center; border-top: 0.5px solid var(--border-faint); }
+    .venue-name    { font-family: var(--lora); font-size: 1.5rem; font-weight: 400; color: var(--text-primary); margin-bottom: 0.4rem; }
+    .venue-address { font-family: var(--poppins); font-size: 0.75rem; font-weight: 300; color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem; }
+    .venue-map-btn { display: inline-block; font-family: var(--poppins); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.65rem 1.6rem; border: 1px solid var(--border-muted); color: var(--accent); text-decoration: none; transition: all 0.25s; }
+    .venue-map-btn:hover { background: var(--accent); color: var(--bg); }
+
+    /* ── RSVP ── */
+    .rsvp-section { padding: 5rem 2rem; text-align: center; background: var(--bg-alt); border-top: 0.5px solid var(--border-faint); }
+    .rsvp-section h2 { font-family: var(--lora); font-size: clamp(1.6rem,4vw,2.2rem); font-weight: 400; color: var(--text-primary); margin-bottom: 0.4rem; }
+    .rsvp-section h2 em { font-style: italic; color: var(--accent); }
+    .rsvp-section > p { font-family: var(--poppins); font-size: 0.78rem; font-weight: 300; color: var(--text-faint); line-height: 1.9; margin-bottom: 2rem; }
+    .rsvp-deadline { color: var(--text-secondary); font-weight: 400; }
+    .rsvp-embed    { max-width: 600px; margin: 0 auto; }
+    .rsvp-embed iframe { border: none; background: transparent; }
+
+    /* ── FOOTER ── */
+    .inv-footer { text-align: center; padding: 3rem 2rem; border-top: 0.5px solid var(--border-faint); }
+    .inv-footer-watermark { font-family: var(--poppins); font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-muted); opacity: 0.7; }
+    .inv-footer-watermark a { color: inherit; text-decoration: none; }
+    .inv-footer-watermark a:hover { opacity: 1; }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    .fade-up { animation: fadeUp 0.9s ease both; }
+    .delay-1 { animation-delay: 0.1s; } .delay-2 { animation-delay: 0.3s; }
+    .delay-3 { animation-delay: 0.5s; } .delay-4 { animation-delay: 0.7s; }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-img" id="hero-bg-img" style="display:none"><img id="hero-bg" src="" alt=""></div>
+    <p class="hero-eyebrow fade-up delay-1" id="hero-eyebrow"></p>
+    <p class="hero-event fade-up delay-1" id="hero-event"></p>
+    <h1 class="hero-names fade-up delay-2">
+      <span id="name-1"></span>
+      <span class="hero-amp" id="amp"></span>
+      <span id="name-2"></span>
+    </h1>
+    <p class="hero-date fade-up delay-3" id="hero-date"></p>
+    <p class="hero-time fade-up delay-4" id="hero-time"></p>
+    <p class="hero-venue fade-up delay-4" id="hero-venue"></p>
+    <a class="save-date-pill fade-up delay-4" id="save-date-link" href="#">← Back to Save the Date</a>
+    <span class="scroll-hint">Scroll to explore ↓</span>
+  </section>
+
+  <!-- OUR STORY -->
+  <section class="inv-section" id="story-section">
+    <p class="section-label">Our Story</p>
+    <h2 id="story-title"></h2>
+    <div class="ornament"><div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div></div>
+    <div class="story-text" id="story-text"></div>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <section class="inv-section" style="background:var(--bg-alt)">
+    <p class="section-label">Counting Down</p>
+    <h2>The day begins in</h2>
+    <div class="ornament"><div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div></div>
+    <div class="countdown-grid" id="countdown-grid">
+      <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><span class="cd-lbl">Days</span></div>
+      <div class="cd-sep">·</div>
+      <div class="cd-unit"><span class="cd-num" id="cd-hours">--</span><span class="cd-lbl">Hours</span></div>
+      <div class="cd-sep">·</div>
+      <div class="cd-unit"><span class="cd-num" id="cd-minutes">--</span><span class="cd-lbl">Minutes</span></div>
+      <div class="cd-sep">·</div>
+      <div class="cd-unit"><span class="cd-num" id="cd-seconds">--</span><span class="cd-lbl">Seconds</span></div>
+    </div>
+  </section>
+
+  <!-- PROGRAMME -->
+  <section class="inv-section">
+    <p class="section-label">Programme</p>
+    <h2>The <em>Celebration</em></h2>
+    <div class="ornament"><div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div></div>
+    <ul class="programme-list" id="programme-list"></ul>
+  </section>
+
+  <!-- ENTOURAGE -->
+  <section class="inv-section" style="background:var(--bg-alt)">
+    <p class="section-label">With Gratitude</p>
+    <h2>The <em>Entourage</em></h2>
+    <div class="ornament"><div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div></div>
+    <p class="lead">Honouring those who stand beside us on this day.</p>
+    <div class="entourage-grid" id="entourage-grid"></div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="inv-section">
+    <p class="section-label">Gallery</p>
+    <h2>A Few of Our <em>Favorites</em></h2>
+    <div class="ornament"><div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div></div>
+    <p class="lead">Photos coming soon.</p>
+    <div class="gallery-grid" id="gallery-grid"></div>
+  </section>
+
+  <!-- DRESS CODE -->
+  <section class="inv-section" style="background:var(--bg-alt)">
+    <p class="section-label">What to Wear</p>
+    <h2>Dress <em>Code</em></h2>
+    <div class="ornament"><div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div></div>
+    <div class="dresscode-box">
+      <div class="dresscode-label">Evening Attire</div>
+      <div class="dresscode-name" id="dresscode-name"></div>
+      <p class="dresscode-note" id="dresscode-note"></p>
+    </div>
+  </section>
+
+  <!-- VENUE -->
+  <section class="venue-section">
+    <p class="section-label">Where to Find Us</p>
+    <div class="ornament"><div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div></div>
+    <div class="venue-name" id="venue-name"></div>
+    <div class="venue-address" id="venue-address"></div>
+    <a class="venue-map-btn" id="venue-map-btn" href="#" target="_blank">Open in Google Maps →</a>
+  </section>
+
+  <!-- RSVP -->
+  <section class="rsvp-section">
+    <p class="section-label">Kindly Reply</p>
+    <h2>Will You <em>Join Us?</em></h2>
+    <div class="ornament"><div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div></div>
+    <p>We would be honoured by your presence.<br>Please let us know by <span class="rsvp-deadline" id="rsvp-deadline"></span></p>
+    <div class="rsvp-embed">
+      <iframe id="rsvp-iframe" loading="lazy" width="100%" height="400" frameborder="0" title="RSVP Form"></iframe>
+      <script async src="https://tally.so/widgets/embed.js"></script>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="inv-footer">
+    <div class="ornament" style="margin-bottom:1rem"><div class="ornament-line"></div><div class="ornament-dot"></div><div class="ornament-line"></div></div>
+    <p class="inv-footer-watermark" id="footer-watermark"></p>
+  </footer>
+
+
+  <script>
+    /* ── 1. Apply Theme ── */
+    (function() {
+      var r = document.documentElement.style;
+      var t = CLIENT.theme;
+      r.setProperty('--bg',             t.bg);
+      r.setProperty('--bg-alt',         t.bg_alt);
+      r.setProperty('--surface',        t.surface);
+      r.setProperty('--border',         t.border);
+      r.setProperty('--border-muted',   t.border_muted);
+      r.setProperty('--border-faint',   t.border_faint);
+      r.setProperty('--accent',         t.accent);
+      r.setProperty('--accent-muted',   t.accent_muted);
+      r.setProperty('--accent-faint',   t.accent_faint);
+      r.setProperty('--text-primary',   t.text_primary);
+      r.setProperty('--text-secondary', t.text_secondary);
+      r.setProperty('--text-muted',     t.text_muted);
+      r.setProperty('--text-faint',     t.text_faint);
+      r.setProperty('--name-color',     t.name_color);
+      r.setProperty('--hero-overlay',        t.hero_overlay);
+      r.setProperty('--hero-overlay-bottom', t.hero_overlay_bottom);
+    })();
+
+    /* ── 2. Hero ── */
+    document.getElementById('hero-eyebrow').textContent = CLIENT.eyebrow;
+    document.getElementById('hero-event').textContent   = CLIENT.event;
+    document.getElementById('name-1').textContent       = CLIENT.name_line_1;
+    document.getElementById('amp').textContent           = CLIENT.conjunction;
+    document.getElementById('name-2').textContent       = CLIENT.name_line_2;
+    document.getElementById('hero-date').textContent    = CLIENT.date_full + ' · ' + CLIENT.year;
+    document.getElementById('hero-time').textContent    = CLIENT.time;
+    document.getElementById('hero-venue').textContent   = CLIENT.venue + ' · ' + CLIENT.address;
+    document.getElementById('save-date-link').href      = CLIENT.save_the_date_url;
+
+    if (CLIENT.hero_photo && CLIENT.hero_photo.src) {
+      var bgWrap = document.getElementById('hero-bg-img');
+      var bgImg  = document.getElementById('hero-bg');
+      bgImg.src  = CLIENT.hero_photo.src;
+      bgImg.alt  = CLIENT.hero_photo.alt || '';
+      bgWrap.style.display = 'block';
+    }
+
+    document.title = CLIENT.name_line_1 + ' & ' + CLIENT.name_line_2 + "'s Wedding — You Are Invited";
+
+    /* ── 3. Our Story ── */
+    if (CLIENT.story_text && CLIENT.story_text.trim()) {
+      document.getElementById('story-title').innerHTML = CLIENT.story_title.replace(/(\b\w+\b)$/, '<em>$1</em>');
+      var storyEl = document.getElementById('story-text');
+      CLIENT.story_text.split('\n\n').forEach(function(para) {
+        var p = document.createElement('p');
+        p.textContent = para;
+        storyEl.appendChild(p);
+      });
+    } else {
+      document.getElementById('story-section').style.display = 'none';
+    }
+
+    /* ── 4. Programme ── */
+    var progList = document.getElementById('programme-list');
+    CLIENT.programme.forEach(function(item) {
+      var li = document.createElement('li');
+      li.className = 'programme-item';
+      li.innerHTML = '<span class="prog-time">' + item.time + '</span><span class="prog-event">' + item.event + '</span>';
+      progList.appendChild(li);
+    });
+
+    /* ── 5. Entourage ── */
+    var entourageGrid = document.getElementById('entourage-grid');
+    CLIENT.entourage.forEach(function(group) {
+      if (!group.names || group.names.length === 0) return;
+      var div = document.createElement('div');
+      div.className = 'entourage-group';
+      var namesHtml = group.names.map(function(n) {
+        return '<span class="entourage-name">' + n + '</span>';
+      }).join('');
+      div.innerHTML =
+        '<div class="entourage-group-title">' + group.group + '</div>' +
+        '<div class="entourage-names">' + namesHtml + '</div>';
+      entourageGrid.appendChild(div);
+    });
+
+    /* ── 6. Gallery ── */
+    var gallery = document.getElementById('gallery-grid');
+    CLIENT.photos.forEach(function(photo) {
+      var div = document.createElement('div');
+      div.className = 'gallery-item';
+      if (photo.src) {
+        var img = document.createElement('img');
+        img.src = photo.src; img.alt = photo.alt;
+        div.appendChild(img);
+      } else {
+        div.innerHTML =
+          '<div class="gallery-placeholder"><span class="gallery-placeholder-icon">✦</span><span class="gallery-placeholder-text">Photo Coming Soon</span></div>';
+      }
+      gallery.appendChild(div);
+    });
+
+    /* ── 7. Dress Code ── */
+    document.getElementById('dresscode-name').textContent = CLIENT.dresscode;
+    document.getElementById('dresscode-note').textContent = CLIENT.dresscode_note;
+
+    /* ── 8. Venue ── */
+    document.getElementById('venue-name').textContent    = CLIENT.venue;
+    document.getElementById('venue-address').textContent = CLIENT.address;
+    document.getElementById('venue-map-btn').href        = CLIENT.maps_url;
+
+    /* ── 9. RSVP ── */
+    document.getElementById('rsvp-deadline').textContent = CLIENT.rsvp_deadline + '.';
+    var iframe = document.getElementById('rsvp-iframe');
+    iframe.setAttribute('data-tally-src', 'https://tally.so/embed/' + CLIENT.rsvp_tally_id + '?alignLeft=1&hideTitle=1&transparentBackground=1');
+
+    /* ── 10. Footer ── */
+    document.getElementById('footer-watermark').innerHTML =
+      CLIENT.watermark.replace('talainvites@gmail.com', '<a href="mailto:talainvites@gmail.com">talainvites@gmail.com</a>');
+
+    /* ── 11. Countdown ── */
+    function updateCountdown() {
+      var diff = new Date(CLIENT.countdown_date).getTime() - Date.now();
+      if (diff <= 0) {
+        document.getElementById('countdown-grid').innerHTML = '<p class="countdown-expired">The day is here — we cannot wait to see you.</p>';
+        return;
+      }
+      document.getElementById('cd-days').textContent    = String(Math.floor(diff / 86400000)).padStart(2, '0');
+      document.getElementById('cd-hours').textContent   = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+      document.getElementById('cd-minutes').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+      document.getElementById('cd-seconds').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>

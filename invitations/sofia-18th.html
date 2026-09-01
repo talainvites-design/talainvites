@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sofia's 18th Birthday — You Are Invited</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <script>
+    /* ============================================================
+       CLIENT CONFIG
+       ─────────────────────────────────────────────────────────────
+       This is the only block you edit per invitation.
+       Everything below — design, layout, animations — stays untouched.
+       ============================================================ */
+    const CLIENT = {
+
+      /* ── Event Details ── */
+      name:           "Sofia",
+      age:            "18",
+      age_label:      "years of grace & beauty",
+      event:          "A Birthday Celebration",
+      date_full:      "Friday, the Twentieth of August",
+      date_short:     "20 August 2025",
+      year:           "2025",
+      time:           "Seven o'clock in the evening",
+      venue:          "The Peninsula Manila",
+      address:        "Corner Ayala and Makati Avenues, Makati City",
+      maps_url:       "https://maps.google.com/?q=The+Peninsula+Manila+Makati",
+      dresscode:      "Black Tie",
+      dresscode_note: "Gentlemen in black suits or barong. Ladies in formal gowns or cocktail attire.",
+      rsvp_tally_id:  "YOUR_TALLY_ID",
+      rsvp_deadline:  "August 10, 2025",
+      countdown_date: "2025-08-20T19:00:00",
+
+      /* ── Programme ── */
+      programme: [
+        { time: "6:30 PM",  event: "Cocktail Hour & Guest Arrival"   },
+        { time: "7:00 PM",  event: "Grand Entrance of the Debutante" },
+        { time: "7:15 PM",  event: "Opening Remarks"                 },
+        { time: "7:30 PM",  event: "18 Roses & 18 Candles Ceremony"  },
+        { time: "8:30 PM",  event: "Dinner is Served"                },
+        { time: "9:30 PM",  event: "Cotillion de Honor"              },
+        { time: "10:00 PM", event: "Toast & Birthday Message"        },
+        { time: "10:30 PM", event: "Open Dance Floor"                },
+        { time: "12:00 AM", event: "End of Evening"                  },
+      ],
+
+      /* ── Photos ── */
+      /* Replace src: "" with real paths when photos are ready */
+      photos: [
+        { src: "", alt: "Sofia — Photo 1" },
+        { src: "", alt: "Sofia — Photo 2" },
+        { src: "", alt: "Sofia — Photo 3" },
+      ],
+
+      /* ── Color Theme ── */
+      /* Swap these hex/rgba values to repaint the entire invitation */
+      theme: {
+        bg:             "#1C1712",          /* Page background                  */
+        bg_alt:         "#221D17",          /* Alternate section background     */
+        surface:        "#2A2218",          /* Card / box surface               */
+        border:         "#C9A84C",          /* Primary border & rule color      */
+        border_muted:   "rgba(201,168,76,0.2)",   /* Subtle borders             */
+        border_faint:   "rgba(201,168,76,0.08)",  /* Faintest borders           */
+        accent:         "#C9A84C",          /* Primary accent (buttons, labels) */
+        accent_muted:   "rgba(201,168,76,0.35)",  /* Muted accent               */
+        accent_faint:   "rgba(201,168,76,0.06)",  /* Faintest accent fill       */
+        text_primary:   "#FAF7F2",          /* Main text / headings             */
+        text_secondary: "rgba(250,247,242,0.65)", /* Body text                  */
+        text_muted:     "#8B7D6B",          /* Captions, labels                 */
+        text_faint:     "rgba(250,247,242,0.35)", /* Placeholder text           */
+        name_color:     "#FAF7F2",          /* Hero name                        */
+        age_color:      "#C9A84C",          /* Hero age number                  */
+        hero_border_outer: "rgba(201,168,76,0.25)", /* Hero outer frame        */
+        hero_border_inner: "rgba(250,247,242,0.04)", /* Hero inner frame       */
+      },
+
+      /* ── Footer ── */
+      watermark: "Crafted by Tala Invites · talainvites@gmail.com",
+    };
+  </script>
+
+  <style>
+    /* ============================================================
+       DIWA TEMPLATE — MODE B: DARK
+       ─────────────────────────────────────────────────────────────
+       Do not edit this block. All colors are applied via JS
+       from CLIENT.theme. Only edit CLIENT config above.
+       ============================================================ */
+
+    /* Base CSS variables — overridden by JS on load */
+    :root {
+      --t-bg:             #1C1712;
+      --t-bg-alt:         #221D17;
+      --t-surface:        #2A2218;
+      --t-border:         #C9A84C;
+      --t-border-muted:   rgba(201,168,76,0.2);
+      --t-border-faint:   rgba(201,168,76,0.08);
+      --t-accent:         #C9A84C;
+      --t-accent-muted:   rgba(201,168,76,0.35);
+      --t-accent-faint:   rgba(201,168,76,0.06);
+      --t-text-primary:   #FAF7F2;
+      --t-text-secondary: rgba(250,247,242,0.65);
+      --t-text-muted:     #8B7D6B;
+      --t-text-faint:     rgba(250,247,242,0.35);
+      --t-name-color:     #FAF7F2;
+      --t-age-color:      #C9A84C;
+      --t-hero-border-outer: rgba(201,168,76,0.25);
+      --t-hero-border-inner: rgba(250,247,242,0.04);
+
+      /* Typography */
+      --lora:   'Lora', Georgia, serif;
+      --poppins: 'Poppins', sans-serif;
+    }
+
+    /* Reset */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html  { scroll-behavior: smooth; }
+    body  { background: var(--t-bg); color: var(--t-text-primary); font-family: var(--poppins); font-weight: 300; overflow-x: hidden; }
+    img   { display: block; max-width: 100%; }
+
+    /* ── Shared Components ── */
+    .ornament      { display: flex; align-items: center; gap: 0.75rem; margin: 1.2rem auto; justify-content: center; }
+    .ornament-line { width: 50px; height: 0.5px; background: var(--t-accent-muted); }
+    .ornament-dot  { width: 4px; height: 4px; border-radius: 50%; background: var(--t-accent); flex-shrink: 0; }
+    .section-label {
+      font-family: var(--poppins); font-size: 0.58rem;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--t-accent); margin-bottom: 0.6rem; display: block;
+    }
+    .gold-rule { width: 36px; height: 0.5px; background: var(--t-accent); margin: 1rem auto; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height:      100vh;
+      display:         flex;
+      flex-direction:  column;
+      align-items:     center;
+      justify-content: center;
+      text-align:      center;
+      padding:         5rem 2rem 6rem;
+      position:        relative;
+      border-bottom:   0.5px solid var(--t-border-faint);
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 1.5rem;
+      border: 0.5px solid var(--t-hero-border-outer);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: ''; position: absolute; inset: 2rem;
+      border: 0.5px solid var(--t-hero-border-inner);
+      pointer-events: none;
+    }
+
+    .hero-orn       { font-size: 0.6rem; letter-spacing: 0.3em; color: var(--t-accent); opacity: 0.7; margin-bottom: 2rem; }
+    .hero-eyebrow   { font-family: var(--poppins); font-size: 0.6rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--t-text-faint); margin-bottom: 1rem; }
+    .hero-event     { font-family: var(--poppins); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--t-accent); margin-bottom: 0.8rem; }
+    .hero-name      { font-family: var(--lora); font-size: clamp(4rem, 12vw, 8rem); font-weight: 400; font-style: italic; color: var(--t-name-color); line-height: 1; }
+    .hero-age       { font-family: var(--lora); font-size: clamp(3rem, 8vw, 5rem); font-weight: 400; color: var(--t-age-color); line-height: 1; margin: 0.4rem 0; }
+    .hero-age-label { font-family: var(--poppins); font-size: 0.7rem; font-weight: 300; color: var(--t-text-muted); letter-spacing: 0.1em; margin-bottom: 1.8rem; }
+    .hero-date      { font-family: var(--lora); font-size: 0.95rem; color: var(--t-text-secondary); margin-bottom: 0.3rem; }
+    .hero-time      { font-family: var(--poppins); font-size: 0.7rem; font-weight: 300; color: var(--t-text-muted); letter-spacing: 0.08em; margin-bottom: 0.2rem; }
+    .hero-venue     { font-family: var(--poppins); font-size: 0.7rem; font-weight: 300; color: var(--t-text-muted); letter-spacing: 0.08em; }
+
+    .scroll-hint {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      font-family: var(--poppins); font-size: 0.52rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--t-accent-muted);
+      animation: pulse 2.5s ease infinite;
+    }
+    @keyframes pulse { 0%,100%{ opacity:0.35 } 50%{ opacity:0.9 } }
+
+    /* ── COUNTDOWN ── */
+    .countdown-section {
+      padding: 5rem 2rem; text-align: center;
+      background: var(--t-bg-alt);
+      border-bottom: 0.5px solid var(--t-border-faint);
+    }
+    .countdown-section h2 {
+      font-family: var(--lora); font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-weight: 400; color: var(--t-text-primary);
+    }
+    .countdown-grid {
+      display: flex; justify-content: center; gap: 2rem;
+      margin-top: 2.5rem; flex-wrap: wrap; align-items: flex-start;
+    }
+    .countdown-unit  { text-align: center; min-width: 80px; }
+    .countdown-num   { font-family: var(--lora); font-size: 3.5rem; font-weight: 400; color: var(--t-accent); line-height: 1; display: block; }
+    .countdown-label { font-family: var(--poppins); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--t-text-muted); margin-top: 0.5rem; display: block; }
+    .countdown-sep   { font-family: var(--lora); font-size: 3rem; color: var(--t-border-muted); line-height: 1; padding-top: 0.3rem; }
+    .countdown-expired { font-family: var(--lora); font-size: 1.4rem; font-style: italic; color: var(--t-accent); }
+
+    /* ── SHARED SECTION ── */
+    .inv-section {
+      padding: 5rem 2rem; max-width: 760px;
+      margin: 0 auto; text-align: center;
+      border-bottom: 0.5px solid var(--t-border-faint);
+    }
+    .inv-section h2 {
+      font-family: var(--lora); font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 400; color: var(--t-text-primary); margin-bottom: 0.4rem;
+    }
+    .inv-section h2 em { font-style: italic; color: var(--t-accent); }
+    .inv-section > p   { font-family: var(--poppins); font-size: 0.78rem; font-weight: 300; color: var(--t-text-faint); line-height: 1.9; }
+
+    /* ── PROGRAMME ── */
+    .programme-list { list-style: none; margin: 2.5rem auto 0; max-width: 480px; text-align: left; }
+    .programme-item {
+      display: grid; grid-template-columns: 90px 1fr;
+      gap: 1rem; padding: 0.85rem 0;
+      border-bottom: 0.5px solid var(--t-border-faint);
+      align-items: start;
+    }
+    .programme-item:last-child { border-bottom: none; }
+    .prog-time  { font-family: var(--poppins); font-size: 0.65rem; font-weight: 400; color: var(--t-accent); letter-spacing: 0.06em; margin-top: 2px; }
+    .prog-event { font-family: var(--lora); font-size: 0.9rem; color: var(--t-text-secondary); line-height: 1.4; }
+
+    /* ── GALLERY ── */
+    .gallery-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: 2.5rem; }
+    .gallery-item {
+      aspect-ratio: 3/4;
+      background: var(--t-accent-faint);
+      border: 0.5px solid var(--t-border-muted);
+      overflow: hidden; position: relative;
+    }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gallery-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; }
+    .gallery-placeholder-icon { font-family: var(--lora); font-size: 1.5rem; font-style: italic; color: var(--t-accent-muted); }
+    .gallery-placeholder-text { font-family: var(--poppins); font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--t-accent-muted); opacity: 0.6; }
+
+    /* ── DRESS CODE ── */
+    .dresscode-box {
+      margin: 2.5rem auto 0; padding: 2rem;
+      border: 0.5px solid var(--t-border-muted);
+      background: var(--t-surface);
+      max-width: 440px;
+    }
+    .dresscode-label { font-family: var(--poppins); font-size: 0.55rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--t-accent); margin-bottom: 0.8rem; }
+    .dresscode-name  { font-family: var(--lora); font-size: 1.8rem; font-weight: 400; font-style: italic; color: var(--t-text-primary); margin-bottom: 0.8rem; }
+    .dresscode-note  { font-family: var(--poppins); font-size: 0.73rem; font-weight: 300; color: var(--t-text-faint); line-height: 1.9; }
+
+    /* ── VENUE ── */
+    .venue-section {
+      padding: 5rem 2rem; text-align: center;
+      border-top: 0.5px solid var(--t-border-faint);
+    }
+    .venue-name    { font-family: var(--lora); font-size: 1.5rem; font-weight: 400; color: var(--t-text-primary); margin-bottom: 0.4rem; }
+    .venue-address { font-family: var(--poppins); font-size: 0.75rem; font-weight: 300; color: var(--t-text-muted); line-height: 1.8; margin-bottom: 1.5rem; }
+    .venue-map-btn {
+      display: inline-block; font-family: var(--poppins); font-size: 0.62rem;
+      letter-spacing: 0.16em; text-transform: uppercase; padding: 0.65rem 1.6rem;
+      border: 1px solid var(--t-border-muted); color: var(--t-accent);
+      text-decoration: none; transition: all 0.25s;
+    }
+    .venue-map-btn:hover { background: var(--t-accent); color: var(--t-bg); }
+
+    /* ── RSVP ── */
+    .rsvp-section {
+      padding: 5rem 2rem; text-align: center;
+      background: var(--t-bg-alt);
+      border-top: 0.5px solid var(--t-border-faint);
+    }
+    .rsvp-section h2 { font-family: var(--lora); font-size: clamp(1.6rem,4vw,2.2rem); font-weight: 400; color: var(--t-text-primary); margin-bottom: 0.4rem; }
+    .rsvp-section h2 em { font-style: italic; color: var(--t-accent); }
+    .rsvp-section > p { font-family: var(--poppins); font-size: 0.78rem; font-weight: 300; color: var(--t-text-faint); line-height: 1.9; margin-bottom: 2rem; }
+    .rsvp-deadline { color: var(--t-text-secondary); font-weight: 400; }
+    .rsvp-embed    { max-width: 600px; margin: 0 auto; }
+    .rsvp-embed iframe { border: none; background: transparent; }
+
+    /* ── FOOTER ── */
+    .inv-footer { text-align: center; padding: 3rem 2rem; border-top: 0.5px solid var(--t-border-faint); }
+    .inv-footer-watermark { font-family: var(--poppins); font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--t-accent-muted); opacity: 0.7; }
+    .inv-footer-watermark a { color: inherit; text-decoration: none; }
+    .inv-footer-watermark a:hover { opacity: 1; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    .fade-up { animation: fadeUp 0.8s ease both; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.25s; }
+    .delay-3 { animation-delay: 0.4s; }
+    .delay-4 { animation-delay: 0.55s; }
+    .delay-5 { animation-delay: 0.7s; }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-orn fade-up delay-1">· ·</p>
+    <p class="hero-eyebrow fade-up delay-1">You are cordially invited to</p>
+    <p class="hero-event fade-up delay-2" id="hero-event"></p>
+    <h1 class="hero-name fade-up delay-2" id="hero-name"></h1>
+    <div class="hero-age fade-up delay-3" id="hero-age"></div>
+    <p class="hero-age-label fade-up delay-3" id="hero-age-label"></p>
+    <div class="gold-rule fade-up delay-4"></div>
+    <p class="hero-date fade-up delay-4" id="hero-date"></p>
+    <p class="hero-time fade-up delay-5" id="hero-time"></p>
+    <p class="hero-venue fade-up delay-5" id="hero-venue"></p>
+    <span class="scroll-hint">Scroll to explore ↓</span>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <section class="countdown-section">
+    <p class="section-label">Counting Down</p>
+    <h2>The celebration begins in</h2>
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-dot"></div>
+      <div class="ornament-line"></div>
+    </div>
+    <div class="countdown-grid" id="countdown-grid">
+      <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-label">Days</span></div>
+      <div class="countdown-sep">·</div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-label">Hours</span></div>
+      <div class="countdown-sep">·</div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-minutes">--</span><span class="countdown-label">Minutes</span></div>
+      <div class="countdown-sep">·</div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-seconds">--</span><span class="countdown-label">Seconds</span></div>
+    </div>
+  </section>
+
+  <!-- PROGRAMME -->
+  <section class="inv-section">
+    <p class="section-label">Evening Programme</p>
+    <h2>The <em>Evening</em></h2>
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-dot"></div>
+      <div class="ornament-line"></div>
+    </div>
+    <ul class="programme-list" id="programme-list"></ul>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="inv-section">
+    <p class="section-label">Gallery</p>
+    <h2>A <em>Glimpse</em> of Sofia</h2>
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-dot"></div>
+      <div class="ornament-line"></div>
+    </div>
+    <p>Photos coming soon.</p>
+    <div class="gallery-grid" id="gallery-grid"></div>
+  </section>
+
+  <!-- DRESS CODE -->
+  <section class="inv-section">
+    <p class="section-label">What to Wear</p>
+    <h2>Dress <em>Code</em></h2>
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-dot"></div>
+      <div class="ornament-line"></div>
+    </div>
+    <div class="dresscode-box">
+      <div class="dresscode-label">Evening Attire</div>
+      <div class="dresscode-name" id="dresscode-name"></div>
+      <p class="dresscode-note" id="dresscode-note"></p>
+    </div>
+  </section>
+
+  <!-- VENUE -->
+  <section class="venue-section">
+    <p class="section-label">Where to Find Us</p>
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-dot"></div>
+      <div class="ornament-line"></div>
+    </div>
+    <div class="venue-name" id="venue-name"></div>
+    <div class="venue-address" id="venue-address"></div>
+    <a class="venue-map-btn" id="venue-map-btn" href="#" target="_blank">
+      Open in Google Maps →
+    </a>
+  </section>
+
+  <!-- RSVP -->
+  <section class="rsvp-section">
+    <p class="section-label">Kindly Reply</p>
+    <h2>Will You <em>Join Us?</em></h2>
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-dot"></div>
+      <div class="ornament-line"></div>
+    </div>
+    <p>
+      We would be honoured by your presence.<br>
+      Please let us know by
+      <span class="rsvp-deadline" id="rsvp-deadline"></span>
+    </p>
+    <!--
+      Replace YOUR_TALLY_ID in CLIENT.rsvp_tally_id above.
+      The embed script below will render it automatically.
+    -->
+    <div class="rsvp-embed" id="rsvp-embed">
+      <iframe
+        id="rsvp-iframe"
+        loading="lazy"
+        width="100%"
+        height="400"
+        frameborder="0"
+        title="RSVP Form">
+      </iframe>
+      <script async src="https://tally.so/widgets/embed.js"></script>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="inv-footer">
+    <div class="ornament" style="margin-bottom:1rem">
+      <div class="ornament-line"></div>
+      <div class="ornament-dot"></div>
+      <div class="ornament-line"></div>
+    </div>
+    <p class="inv-footer-watermark" id="footer-watermark"></p>
+  </footer>
+
+
+  <!-- ============================================================
+       RENDER SCRIPT
+       Applies CLIENT config to the page.
+       Do not edit unless updating the template itself.
+       ============================================================ -->
+  <script>
+
+    /* ── 1. Apply Theme Colors to CSS Variables ── */
+    (function applyTheme() {
+      var r = document.documentElement.style;
+      var t = CLIENT.theme;
+      r.setProperty('--t-bg',                 t.bg);
+      r.setProperty('--t-bg-alt',             t.bg_alt);
+      r.setProperty('--t-surface',            t.surface);
+      r.setProperty('--t-border',             t.border);
+      r.setProperty('--t-border-muted',       t.border_muted);
+      r.setProperty('--t-border-faint',       t.border_faint);
+      r.setProperty('--t-accent',             t.accent);
+      r.setProperty('--t-accent-muted',       t.accent_muted);
+      r.setProperty('--t-accent-faint',       t.accent_faint);
+      r.setProperty('--t-text-primary',       t.text_primary);
+      r.setProperty('--t-text-secondary',     t.text_secondary);
+      r.setProperty('--t-text-muted',         t.text_muted);
+      r.setProperty('--t-text-faint',         t.text_faint);
+      r.setProperty('--t-name-color',         t.name_color);
+      r.setProperty('--t-age-color',          t.age_color);
+      r.setProperty('--t-hero-border-outer',  t.hero_border_outer);
+      r.setProperty('--t-hero-border-inner',  t.hero_border_inner);
+    })();
+
+    /* ── 2. Hero ── */
+    document.getElementById('hero-event').textContent     = CLIENT.event;
+    document.getElementById('hero-name').textContent      = CLIENT.name;
+    document.getElementById('hero-age').textContent       = CLIENT.age;
+    document.getElementById('hero-age-label').textContent = CLIENT.age_label;
+    document.getElementById('hero-date').textContent      = CLIENT.date_full + ' · ' + CLIENT.year;
+    document.getElementById('hero-time').textContent      = CLIENT.time;
+    document.getElementById('hero-venue').textContent     = CLIENT.venue + ' · ' + CLIENT.address;
+
+    /* ── 3. Page Title ── */
+    document.title = CLIENT.name + "'s " + CLIENT.age + "th Birthday — You Are Invited";
+
+    /* ── 4. Programme ── */
+    var progList = document.getElementById('programme-list');
+    CLIENT.programme.forEach(function(item) {
+      var li = document.createElement('li');
+      li.className = 'programme-item';
+      li.innerHTML =
+        '<span class="prog-time">'  + item.time  + '</span>' +
+        '<span class="prog-event">' + item.event + '</span>';
+      progList.appendChild(li);
+    });
+
+    /* ── 5. Gallery ── */
+    var gallery = document.getElementById('gallery-grid');
+    CLIENT.photos.forEach(function(photo) {
+      var div = document.createElement('div');
+      div.className = 'gallery-item';
+      if (photo.src) {
+        var img = document.createElement('img');
+        img.src = photo.src;
+        img.alt = photo.alt;
+        div.appendChild(img);
+      } else {
+        div.innerHTML =
+          '<div class="gallery-placeholder">' +
+            '<span class="gallery-placeholder-icon">✦</span>' +
+            '<span class="gallery-placeholder-text">Photo Coming Soon</span>' +
+          '</div>';
+      }
+      gallery.appendChild(div);
+    });
+
+    /* ── 6. Dress Code ── */
+    document.getElementById('dresscode-name').textContent = CLIENT.dresscode;
+    document.getElementById('dresscode-note').textContent = CLIENT.dresscode_note;
+
+    /* ── 7. Venue ── */
+    document.getElementById('venue-name').textContent      = CLIENT.venue;
+    document.getElementById('venue-address').textContent   = CLIENT.address;
+    document.getElementById('venue-map-btn').href          = CLIENT.maps_url;
+
+    /* ── 8. RSVP ── */
+    document.getElementById('rsvp-deadline').textContent = CLIENT.rsvp_deadline + '.';
+    var iframe = document.getElementById('rsvp-iframe');
+    iframe.setAttribute('data-tally-src',
+      'https://tally.so/embed/' + CLIENT.rsvp_tally_id +
+      '?alignLeft=1&hideTitle=1&transparentBackground=1');
+
+    /* ── 9. Footer Watermark ── */
+    document.getElementById('footer-watermark').innerHTML =
+      CLIENT.watermark.replace(
+        'talainvites@gmail.com',
+        '<a href="mailto:talainvites@gmail.com">talainvites@gmail.com</a>'
+      );
+
+    /* ── 10. Countdown Timer ── */
+    function updateCountdown() {
+      var target = new Date(CLIENT.countdown_date).getTime();
+      var now    = new Date().getTime();
+      var diff   = target - now;
+      if (diff <= 0) {
+        document.getElementById('countdown-grid').innerHTML =
+          '<p class="countdown-expired">The celebration is here — we cannot wait to see you.</p>';
+        return;
+      }
+      document.getElementById('cd-days').textContent    = String(Math.floor(diff / 86400000)).padStart(2, '0');
+      document.getElementById('cd-hours').textContent   = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+      document.getElementById('cd-minutes').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+      document.getElementById('cd-seconds').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+  </script>
+
+</body>
+</html>

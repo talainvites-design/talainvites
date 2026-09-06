@@ -291,6 +291,12 @@ footer {
 .svc-link  { font-family: var(--poppins); font-size: 0.63rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mist); border: none; background: none; cursor: pointer; padding: 0 0 2px; border-bottom: 0.5px solid var(--gold-light); transition: all 0.3s; }
 
 .svc-how        { background: var(--onyx); padding: 5rem 3rem; }
+.svc-how-light  { background: var(--ivory); }
+.svc-how-light .svc-how-header h2 { color: var(--onyx); }
+.svc-how-light .hs-num   { color: var(--gold); font-size: 1.2rem; }
+.svc-how-light .hs-title { color: var(--onyx); }
+.svc-how-light .hs-desc  { color: var(--mist); }
+.svc-how-light .how-step::after { background: var(--gold-light); }
 .svc-how-inner  { max-width: 960px; margin: 0 auto; }
 .svc-how-header { text-align: center; margin-bottom: 4rem; }
 .svc-how-header h2 { font-family: var(--lora); font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 400; color: var(--cream); }

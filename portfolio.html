@@ -6,175 +6,113 @@
   <title>Portfolio — Tala Invites</title>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="icon" type="image/x-icon" href="/assets/logo-monogram.png">
-
   <style>
 
-    /* ══════════════════════════════════════════════
-       PORTFOLIO PAGE — LOCAL STYLES
-       ══════════════════════════════════════════════ */
-
-    /* ── Template showcase strip ── */
-    .tpl-strip {
-      background: var(--onyx);
-      padding: 5rem 2rem;
-      border-bottom: 0.5px solid rgba(201,168,76,0.12);
-    }
-    .tpl-strip-header { text-align: center; margin-bottom: 3rem; }
-    .tpl-strip-header h2 {
-      font-family: var(--lora);
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 400;
-      color: var(--cream);
-    }
-    .tpl-strip-header p {
-      font-family: var(--poppins);
-      font-size: 0.78rem;
-      font-weight: 300;
-      color: var(--mist);
-      margin-top: 0.6rem;
-    }
-    .tpl-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      max-width: 1100px;
+    /* ── Featured work section ── */
+    .featured-section {
+      max-width: 1000px;
       margin: 0 auto;
-      border: 0.5px solid rgba(201,168,76,0.15);
-    }
-    .tpl-tile {
-      padding: 2.5rem 2rem;
-      text-align: center;
-      border-right: 0.5px solid rgba(201,168,76,0.15);
-      text-decoration: none;
-      display: block;
-      transition: background 0.3s;
-    }
-    .tpl-tile:last-child { border-right: none; }
-    .tpl-tile:hover { background: rgba(201,168,76,0.06); }
-    .tpl-num   { font-family: var(--poppins); font-size: 0.5rem; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(201,168,76,0.5); margin-bottom: 0.5rem; display: block; }
-    .tpl-name  { font-family: var(--lora); font-size: 1.4rem; font-weight: 400; font-style: italic; color: var(--cream); margin-bottom: 0.6rem; display: block; }
-    .tpl-desc  { font-family: var(--poppins); font-size: 0.68rem; font-weight: 300; color: rgba(250,247,242,0.4); line-height: 1.8; margin-bottom: 1.2rem; }
-    .tpl-link  { font-family: var(--poppins); font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); border-bottom: 0.5px solid rgba(201,168,76,0.3); padding-bottom: 2px; }
-
-    /* ── Dynamic filter ── */
-    .filter-wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      border-bottom: 0.5px solid var(--gold-light);
+      padding: 4rem 3rem 6rem;
     }
 
-    /* Top row — mode selector */
-    .filter-mode-row {
+    .featured-label {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      padding: 1rem 0 0.8rem;
-      border-bottom: 0.5px solid rgba(201,168,76,0.1);
+      gap: 1.2rem;
+      margin-bottom: 3rem;
     }
-    .filter-mode-label {
-      font-family: var(--poppins);
-      font-size: 0.52rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--mist);
-      flex-shrink: 0;
-    }
-    .filter-mode-btns { display: flex; gap: 0.4rem; }
-    .filter-mode-btn {
-      font-family: var(--poppins);
-      font-size: 0.58rem;
-      letter-spacing: 0.1em;
-      font-weight: 400;
-      text-transform: uppercase;
-      padding: 0.35rem 1rem;
-      border: 0.5px solid var(--gold-light);
-      background: transparent;
-      color: var(--mist);
-      cursor: pointer;
-      border-radius: 20px;
-      transition: all 0.2s;
-    }
-    .filter-mode-btn.active {
-      background: var(--onyx);
-      border-color: var(--onyx);
-      color: var(--gold);
-    }
-    .filter-mode-btn:hover:not(.active) {
-      border-color: var(--gold);
-      color: var(--gold);
-    }
-
-    /* Options row — animates in on mode switch */
-    .filter-options-row {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      padding: 0.6rem 0;
-      overflow: hidden;
-      animation: slideDown 0.22s ease both;
-    }
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-6px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── Grid wrapper ── */
-    .port-grid-wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 2rem 4rem;
-    }
-
-    /* ── Tier divider ── */
-    .tier-div {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      padding: 3rem 0 1.5rem;
-    }
-    .tier-div-line { flex: 1; height: 0.5px; background: var(--gold-light); }
-    .tier-div-label {
+    .featured-label-line { flex: 1; height: 0.5px; background: var(--gold-light); }
+    .featured-label-text {
       font-family: var(--poppins);
       font-size: 0.55rem;
-      letter-spacing: 0.24em;
+      letter-spacing: 0.26em;
       text-transform: uppercase;
       color: var(--gold);
       white-space: nowrap;
     }
 
-    /* ── Card grid ── */
-    .cards-row {
+    /* ── Suite showcase — two linked cards side by side ── */
+    .suite-showcase {
+      border: 0.5px solid var(--gold-light);
+      background: var(--ivory);
+      padding: 2rem;
+      position: relative;
+    }
+    .suite-showcase-badge {
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--poppins);
+      font-size: 0.5rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: var(--gold);
+      color: var(--onyx);
+      padding: 5px 18px;
+      white-space: nowrap;
+    }
+    .suite-showcase-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      margin-top: 0.5rem;
+    }
+    .suite-showcase-title h2 {
+      font-family: var(--lora);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 400;
+      color: var(--onyx);
+    }
+    .suite-showcase-title h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .suite-showcase-title p {
+      font-family: var(--poppins);
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: var(--mist);
+      margin-top: 0.4rem;
+    }
+
+    .suite-cards {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr 1fr;
       gap: 1.5rem;
     }
 
-    /* ══════════════════════════════════════════════
-       THE CARD SYSTEM
-       Every card: fixed 340px preview + 52px meta bar
-       ══════════════════════════════════════════════ */
-    .pcard {
+    /* ── Individual suite card ── */
+    .suite-card {
       position: relative;
       overflow: hidden;
       cursor: pointer;
-      display: flex;
-      flex-direction: column;
     }
+    .suite-card:hover .suite-card-overlay { opacity: 1; }
 
-    /* Preview area — locked height */
-    .pcard-preview {
-      height: 340px;
+    /* ── Iframe thumbnail preview ── */
+    .suite-card-preview {
+      height: 420px;
       overflow: hidden;
       position: relative;
-      flex-shrink: 0;
+      background: #1A1408;
+      pointer-events: none; /* prevent iframe from capturing mouse */
+    }
+
+    .suite-card-preview iframe {
+      width: 375px;           /* mobile viewport width */
+      height: 812px;          /* mobile viewport height */
+      border: none;
+      transform-origin: top left;
+      transform: scale(0.56); /* scale down to fit the 420px card */
+      pointer-events: none;
+      display: block;
     }
 
     /* Hover overlay */
-    .pcard-overlay {
+    .suite-card-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(28,23,18,0.88);
+      background: rgba(28,23,18,0.9);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -182,25 +120,23 @@
       gap: 0.6rem;
       opacity: 0;
       transition: opacity 0.3s ease;
-      z-index: 10;
-      text-align: center;
       padding: 2rem;
+      text-align: center;
     }
-    .pcard:hover .pcard-overlay { opacity: 1; }
-    .pcard-overlay-title {
+    .sco-title {
       font-family: var(--lora);
       font-size: 1.1rem;
       font-style: italic;
       color: var(--cream);
     }
-    .pcard-overlay-meta {
+    .sco-meta {
       font-family: var(--poppins);
       font-size: 0.62rem;
       font-weight: 300;
       color: var(--mist);
       line-height: 1.7;
     }
-    .pcard-overlay-link {
+    .sco-link {
       display: inline-block;
       margin-top: 0.8rem;
       font-family: var(--poppins);
@@ -213,176 +149,109 @@
       text-decoration: none;
       transition: all 0.2s;
     }
-    .pcard-overlay-link:hover { background: var(--gold); color: var(--onyx); }
+    .sco-link:hover { background: var(--gold); color: var(--onyx); }
 
-    /* Meta bar — locked height, consistent across all cards */
-    .pcard-meta {
+    /* Meta bar */
+    .suite-card-meta {
       height: 52px;
+      background: #1A1408;
+      border-top: 0.5px solid rgba(201,168,76,0.2);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 1rem;
-      flex-shrink: 0;
     }
-    .pcard-meta-title {
+    .scm-title {
       font-family: var(--poppins);
       font-size: 0.62rem;
       font-weight: 400;
-      letter-spacing: 0.04em;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      color: var(--cream);
     }
-    .pcard-meta-badge {
+    .scm-badge {
       font-family: var(--poppins);
       font-size: 0.48rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
+      border: 0.5px solid rgba(201,168,76,0.35);
+      color: var(--gold);
       padding: 3px 8px;
-      white-space: nowrap;
-      flex-shrink: 0;
-      margin-left: 0.6rem;
     }
 
-    /* Meta bar color variants */
-    .pcard-meta.light  { background: var(--cream); border-top: 0.5px solid var(--gold-light); }
-    .pcard-meta.light  .pcard-meta-title  { color: var(--onyx); }
-    .pcard-meta.light  .pcard-meta-badge  { background: var(--onyx); color: var(--gold); }
-
-    .pcard-meta.dark   { background: var(--onyx); border-top: 0.5px solid rgba(201,168,76,0.2); }
-    .pcard-meta.dark   .pcard-meta-title  { color: var(--cream); }
-    .pcard-meta.dark   .pcard-meta-badge  { border: 0.5px solid rgba(201,168,76,0.3); color: var(--gold); }
-
-    .pcard-meta.warm   { background: var(--gold-pale); border-top: 0.5px solid var(--gold-light); }
-    .pcard-meta.warm   .pcard-meta-title  { color: var(--cognac); }
-    .pcard-meta.warm   .pcard-meta-badge  { background: var(--cognac); color: var(--gold-light); }
-
-    .pcard-meta.bloom  { background: #FEF3ED; border-top: 0.5px solid #E8C9B0; }
-    .pcard-meta.bloom  .pcard-meta-title  { color: #5C3D2E; }
-    .pcard-meta.bloom  .pcard-meta-badge  { background: #C4956A; color: #FDF8F4; }
-
-    .pcard-meta.story  { background: #0D1117; border-top: 0.5px solid rgba(126,168,196,0.2); }
-    .pcard-meta.story  .pcard-meta-title  { color: #E8EEF4; }
-    .pcard-meta.story  .pcard-meta-badge  { border: 0.5px solid rgba(126,168,196,0.3); color: #A8C8DC; }
-
-    .pcard-meta.suite  { background: #1A1408; border-top: 0.5px solid rgba(201,168,76,0.2); }
-    .pcard-meta.suite  .pcard-meta-title  { color: var(--cream); }
-    .pcard-meta.suite  .pcard-meta-badge  { border: 0.5px solid rgba(201,168,76,0.35); color: var(--gold); }
-
-    /* ══════════════════════════════════════════════
-       CARD PREVIEW INNER DESIGNS
-       Fills the 340px preview area per card
-       ══════════════════════════════════════════════ */
-
-    /* Shared inner styles */
-    .prev { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem 1.5rem; position: relative; }
-    .prev-orn { font-size: 0.5rem; letter-spacing: 0.3em; margin-bottom: 1rem; display: block; }
-    .prev-eyebrow { font-family: var(--poppins); font-size: 0.52rem; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.6rem; display: block; }
-    .prev-event  { font-family: var(--poppins); font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
-    .prev-name   { font-family: var(--lora); font-size: 2.2rem; font-style: italic; line-height: 1.05; display: block; }
-    .prev-name-sm{ font-family: var(--lora); font-size: 1.7rem; font-style: italic; line-height: 1.05; display: block; }
-    .prev-amp    { font-family: var(--lora); font-size: 0.9rem; display: block; margin: 0.15rem 0; }
-    .prev-age    { font-family: var(--lora); font-size: 2.2rem; font-weight: 400; line-height: 1; display: block; margin: 0.2rem 0; }
-    .prev-rule   { width: 28px; height: 0.5px; margin: 0.9rem auto; display: block; }
-    .prev-detail { font-family: var(--poppins); font-size: 0.6rem; font-weight: 300; line-height: 1.9; display: block; }
-    .prev-wm     { font-family: var(--poppins); font-size: 0.44rem; letter-spacing: 0.2em; text-transform: uppercase; position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); white-space: nowrap; }
-
-    /* LIGHT */
-    .prev-light { background: var(--cream); border: 0.5px solid rgba(201,168,76,0.15); }
-    .prev-light::before { content:''; position:absolute; inset:0.8rem; border:0.5px solid rgba(201,168,76,0.2); pointer-events:none; }
-    .prev-light .prev-orn     { color: var(--gold); }
-    .prev-light .prev-eyebrow { color: var(--mist); }
-    .prev-light .prev-name    { color: var(--onyx); }
-    .prev-light .prev-amp     { color: var(--gold); }
-    .prev-light .prev-rule    { background: var(--gold); }
-    .prev-light .prev-detail  { color: var(--mist); }
-    .prev-light .prev-wm      { color: var(--gold-light); }
-
-    /* DARK */
-    .prev-dark { background: var(--onyx); }
-    .prev-dark::before { content:''; position:absolute; inset:0.8rem; border:0.5px solid rgba(201,168,76,0.15); pointer-events:none; }
-    .prev-dark .prev-orn     { color: var(--gold); }
-    .prev-dark .prev-eyebrow { color: var(--mist); }
-    .prev-dark .prev-event   { color: var(--gold); }
-    .prev-dark .prev-name    { color: var(--cream); }
-    .prev-dark .prev-amp     { color: var(--gold); }
-    .prev-dark .prev-age     { color: var(--gold); }
-    .prev-dark .prev-rule    { background: var(--gold); }
-    .prev-dark .prev-detail  { color: var(--mist); }
-    .prev-dark .prev-wm      { color: rgba(201,168,76,0.25); }
-
-    /* WARM */
-    .prev-warm { background: var(--gold-pale); }
-    .prev-warm::before { content:''; position:absolute; inset:0.7rem; border:1px solid rgba(201,168,76,0.2); pointer-events:none; }
-    .prev-warm::after  { content:''; position:absolute; inset:1.1rem; border:0.5px solid rgba(61,47,31,0.08); pointer-events:none; }
-    .prev-warm .prev-orn     { color: var(--gold); }
-    .prev-warm .prev-eyebrow { color: var(--mist); }
-    .prev-warm .prev-event   { color: var(--gold); font-style: italic; font-family: var(--lora); text-transform: none; letter-spacing: 0; }
-    .prev-warm .prev-name    { color: var(--cognac); }
-    .prev-warm .prev-amp     { color: var(--gold); }
-    .prev-warm .prev-rule    { background: var(--cognac); }
-    .prev-warm .prev-detail  { color: var(--mist); }
-    .prev-warm .prev-wm      { color: rgba(201,168,76,0.3); }
-
-    /* BLOOM */
-    .prev-bloom { background: linear-gradient(160deg, #FDF8F4, #FEF3ED); }
-    .prev-bloom .prev-orn     { color: #C4956A; }
-    .prev-bloom .prev-eyebrow { color: #A88B7A; }
-    .prev-bloom .prev-event   { color: #C4956A; }
-    .prev-bloom .prev-name    { color: #5C3D2E; font-size: 2.6rem; }
-    .prev-bloom .prev-age-label { font-family: var(--lora); font-size: 0.85rem; font-style: italic; color: #C4956A; display: block; }
-    .prev-bloom .prev-rule    { background: #C4956A; }
-    .prev-bloom .prev-detail  { color: #A88B7A; }
-    .prev-bloom .prev-wm      { color: rgba(196,149,106,0.3); }
-
-    /* STORY */
-    .prev-story { background: #0D1117; }
-    .prev-story .prev-orn     { color: #A8C8DC; }
-    .prev-story .prev-eyebrow { color: rgba(232,238,244,0.4); }
-    .prev-story .prev-event   { color: #A8C8DC; }
-    .prev-story .prev-name-sm { color: #E8EEF4; }
-    .prev-story .prev-amp     { color: #7EA8C4; font-size: 0.8rem; }
-    .prev-story .prev-rule    { background: #7EA8C4; }
-    .prev-story .prev-detail  { color: #7A8FA0; }
-    .prev-story .prev-wm      { color: rgba(126,168,196,0.2); }
-
-    /* SUITE */
-    .prev-suite { background: #1A1408; }
-    .prev-suite::before { content:''; position:absolute; inset:0.8rem; border:0.5px solid rgba(201,168,76,0.15); pointer-events:none; }
-    .prev-suite .prev-badge   { font-family: var(--poppins); font-size: 0.48rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); border: 0.5px solid rgba(201,168,76,0.3); padding: 3px 12px; border-radius: 20px; margin-bottom: 1.2rem; display: inline-block; }
-    .prev-suite .prev-eyebrow { color: #A08D6E; }
-    .prev-suite .prev-name-sm { color: var(--cream); }
-    .prev-suite .prev-amp     { color: var(--gold); font-size: 0.8rem; }
-    .prev-suite .prev-rule    { background: var(--gold); }
-    .prev-suite .prev-detail  { color: #A08D6E; }
-    .prev-suite .prev-wm      { color: rgba(201,168,76,0.2); }
-
-    /* ── Suite paired wrapper ── */
-    .suite-pair {
-      grid-column: 1 / -1;
-      border: 0.5px solid var(--gold-light);
-      padding: 1.5rem;
-      background: var(--ivory);
-      position: relative;
+    /* ── Connector arrow between cards ── */
+    .suite-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      margin: 1.5rem 0 0;
+      text-align: center;
     }
-    .suite-pair-label {
-      position: absolute;
-      top: -1px; left: 50%;
-      transform: translateX(-50%);
+    .suite-connector-line { flex: 1; height: 0.5px; background: var(--gold-light); }
+    .suite-connector-text {
       font-family: var(--poppins);
-      font-size: 0.5rem;
+      font-size: 0.52rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      background: var(--gold);
-      color: var(--onyx);
-      padding: 4px 16px;
+      color: var(--mist);
       white-space: nowrap;
     }
-    .suite-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-top: 0.5rem;
+
+    /* ── Coming soon strip ── */
+    .coming-soon-strip {
+      margin-top: 5rem;
+      padding: 4rem 3rem;
+      background: var(--onyx);
+      text-align: center;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .coming-soon-strip h3 {
+      font-family: var(--lora);
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 0.6rem;
+    }
+    .coming-soon-strip h3 em { font-style: italic; color: var(--gold); }
+    .coming-soon-strip p {
+      font-family: var(--poppins);
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: var(--mist);
+      line-height: 1.9;
+      max-width: 480px;
+      margin: 0 auto 1.5rem;
+    }
+    .coming-soon-tiers {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      border: 0.5px solid rgba(201,168,76,0.15);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .cs-tier {
+      flex: 1;
+      padding: 1rem;
+      border-right: 0.5px solid rgba(201,168,76,0.15);
+      text-align: center;
+    }
+    .cs-tier:last-child { border-right: none; }
+    .cs-tier-name {
+      font-family: var(--lora);
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--cream);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    .cs-tier-label {
+      font-family: var(--poppins);
+      font-size: 0.48rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.4);
     }
 
   </style>
@@ -417,346 +286,100 @@
       <div class="ornament-dot"></div>
       <div class="ornament-line"></div>
     </div>
-    <p>Browse invitations by tier, template, or event type. Every design is a shareable link — tap to experience it as your guests would.</p>
+    <p>Every invitation we craft is a shareable link — a living, breathing design your guests experience on their phones. Tap any piece below to see it as they would.</p>
   </section>
 
 
-  <!-- DIWA TEMPLATE SHOWCASE -->
-  <section class="tpl-strip">
-    <div class="tpl-strip-header">
-      <p class="section-label" style="color:var(--gold)">Diwa · Signature Templates</p>
-      <h2>Choose Your <em style="font-style:italic;color:var(--gold)">Vibe</em></h2>
-      <div class="ornament center" style="margin:0.8rem 0">
-        <div class="ornament-line" style="background:rgba(201,168,76,0.2)"></div>
-        <div class="ornament-dot"></div>
-        <div class="ornament-line" style="background:rgba(201,168,76,0.2)"></div>
-      </div>
-      <p>Every Diwa invitation is built on one of three template concepts. Pick the one that speaks to your celebration.</p>
-    </div>
-    <div class="tpl-grid">
-      <a class="tpl-tile" href="invitations/sofia-18th.html" target="_blank">
-        <span class="tpl-num">Template 01</span>
-        <span class="tpl-name">The Soirée</span>
-        <p class="tpl-desc">Dark &amp; editorial. Gold on onyx. Clean typography, double-frame hero, and understated luxury for formal celebrations.</p>
-        <span class="tpl-link">View Live →</span>
-      </a>
-      <a class="tpl-tile" href="invitations/diwa-bloom.html" target="_blank">
-        <span class="tpl-num">Template 02</span>
-        <span class="tpl-name">The Bloom</span>
-        <p class="tpl-desc">Soft &amp; romantic. Watercolor gradients, floral dividers, and garden-party typography for debuts and intimate celebrations.</p>
-        <span class="tpl-link">View Live →</span>
-      </a>
-      <a class="tpl-tile" href="invitations/diwa-story.html" target="_blank">
-        <span class="tpl-num">Template 03</span>
-        <span class="tpl-name">The Story</span>
-        <p class="tpl-desc">Cinematic &amp; personal. Full-bleed photos, a story section, music player, and collage layouts for couples and debuts.</p>
-        <span class="tpl-link">View Live →</span>
-      </a>
-    </div>
-  </section>
+  <!-- FEATURED WORK -->
+  <div class="featured-section">
 
-
-  <!-- FILTERS — Dynamic -->
-  <div class="filter-wrap">
-
-    <!-- Mode selector -->
-    <div class="filter-mode-row">
-      <span class="filter-mode-label">Filter by</span>
-      <div class="filter-mode-btns">
-        <button class="filter-mode-btn active" onclick="switchMode('tier', this)">Tier</button>
-        <button class="filter-mode-btn"        onclick="switchMode('event', this)">Event Type</button>
-      </div>
+    <div class="featured-label">
+      <div class="featured-label-line"></div>
+      <span class="featured-label-text">Tala Suite · Prestige · Featured Work</span>
+      <div class="featured-label-line"></div>
     </div>
 
-    <!-- Dynamic option buttons — swap on mode change -->
-    <div class="filter-options-row" id="filter-options-row">
-      <!-- Tier options (default) -->
-      <button class="filter-btn active" data-mode="tier"  data-value="all"       onclick="applyFilter('tier','all',this)">All</button>
-      <button class="filter-btn"        data-mode="tier"  data-value="pahiwatig" onclick="applyFilter('tier','pahiwatig',this)">Pahiwatig</button>
-      <button class="filter-btn"        data-mode="tier"  data-value="diwa"      onclick="applyFilter('tier','diwa',this)">Diwa</button>
-      <button class="filter-btn"        data-mode="tier"  data-value="suite"     onclick="applyFilter('tier','suite',this)">Tala Suite</button>
-    </div>
+    <!-- Nadia & Elias Suite -->
+    <div class="suite-showcase">
+      <div class="suite-showcase-badge">Nadia &amp; Elias · Wedding Suite</div>
 
-  </div>
-
-
-  <!-- PORTFOLIO GRID -->
-  <div class="port-grid-wrap">
-
-
-    <!-- ══════════ PAHIWATIG ══════════ -->
-    <div class="tier-div" data-section="pahiwatig">
-      <div class="tier-div-line"></div>
-      <span class="tier-div-label">Pahiwatig · Essential · ₱500</span>
-      <div class="tier-div-line"></div>
-    </div>
-
-    <div class="cards-row">
-
-      <!-- Pahiwatig Light -->
-      <div class="pcard" data-tier="pahiwatig" data-event="wedding">
-        <div class="pcard-preview">
-          <div class="prev prev-light">
-            <span class="prev-orn">· ·</span>
-            <span class="prev-eyebrow">Together with their families</span>
-            <span class="prev-name">Isabela</span>
-            <span class="prev-amp">&amp;</span>
-            <span class="prev-name">Mateo</span>
-            <span class="prev-rule"></span>
-            <span class="prev-detail">
-              Saturday · 14 June 2025<br>
-              San Antonio de Padua Parish<br>
-              Makati City
-            </span>
-            <span class="prev-wm">Tala Invites</span>
-          </div>
-          <div class="pcard-overlay">
-            <span class="pcard-overlay-title">Preset A — Light</span>
-            <span class="pcard-overlay-meta">Pahiwatig · Wedding<br>Centered Layout · Cream &amp; Gold</span>
-            <a class="pcard-overlay-link" href="invitations/pahiwatig-light.html" target="_blank">View Template →</a>
-          </div>
-        </div>
-        <div class="pcard-meta light">
-          <span class="pcard-meta-title">Preset A — Light</span>
-          <span class="pcard-meta-badge">Pahiwatig</span>
-        </div>
+      <div class="suite-showcase-title">
+        <h2>Nadia <em>&amp;</em> Elias</h2>
+        <p>Tala Suite · Wedding · Villa Alfonsina, Tagaytay City · December 2026</p>
       </div>
 
-      <!-- Pahiwatig Dark -->
-      <div class="pcard" data-tier="pahiwatig" data-event="birthday">
-        <div class="pcard-preview">
-          <div class="prev prev-dark">
-            <span class="prev-orn">· ·</span>
-            <span class="prev-eyebrow">You are cordially invited to</span>
-            <span class="prev-event">A Birthday Celebration</span>
-            <span class="prev-name">Sofia</span>
-            <span class="prev-age">18</span>
-            <span class="prev-rule"></span>
-            <span class="prev-detail">
-              Friday · 20 August 2025<br>
-              The Peninsula Manila<br>
-              Makati City
-            </span>
-            <span class="prev-wm">Tala Invites</span>
+      <div class="suite-cards">
+
+        <!-- Save the Date -->
+        <div class="suite-card">
+          <div class="suite-card-preview">
+            <iframe
+              src="invitations/nadia-elias-save-the-date.html"
+              title="Nadia & Elias — Save the Date"
+              loading="lazy"
+              scrolling="no">
+            </iframe>
           </div>
-          <div class="pcard-overlay">
-            <span class="pcard-overlay-title">Preset B — Dark</span>
-            <span class="pcard-overlay-meta">Pahiwatig · Birthday<br>Left-Aligned Layout · Onyx &amp; Gold</span>
-            <a class="pcard-overlay-link" href="invitations/pahiwatig-dark.html" target="_blank">View Template →</a>
+          <div class="suite-card-overlay">
+            <span class="sco-title">Save the Date</span>
+            <span class="sco-meta">Tala Suite · Nadia &amp; Elias<br>Wedding · Tagaytay</span>
+            <a class="sco-link" href="invitations/nadia-elias-save-the-date.html" target="_blank">View Page →</a>
+          </div>
+          <div class="suite-card-meta">
+            <span class="scm-title">Save the Date</span>
+            <span class="scm-badge">Tala Suite</span>
           </div>
         </div>
-        <div class="pcard-meta dark">
-          <span class="pcard-meta-title">Preset B — Dark</span>
-          <span class="pcard-meta-badge">Pahiwatig</span>
+
+        <!-- Invitation Proper -->
+        <div class="suite-card">
+          <div class="suite-card-preview">
+            <iframe
+              src="invitations/nadia-elias.html"
+              title="Nadia & Elias — Invitation Proper"
+              loading="lazy"
+              scrolling="no">
+            </iframe>
+          </div>
+          <div class="suite-card-overlay">
+            <span class="sco-title">Invitation Proper</span>
+            <span class="sco-meta">Tala Suite · Nadia &amp; Elias<br>Full Suite · Wedding</span>
+            <a class="sco-link" href="invitations/nadia-elias.html" target="_blank">View Page →</a>
+          </div>
+          <div class="suite-card-meta">
+            <span class="scm-title">Invitation Proper</span>
+            <span class="scm-badge">Tala Suite</span>
+          </div>
         </div>
+
       </div>
 
-      <!-- Pahiwatig Warm -->
-      <div class="pcard" data-tier="pahiwatig" data-event="special">
-        <div class="pcard-preview">
-          <div class="prev prev-warm">
-            <span class="prev-orn">· ·</span>
-            <span class="prev-eyebrow">In celebration of</span>
-            <span class="prev-name">Maria</span>
-            <span class="prev-amp">&amp;</span>
-            <span class="prev-name">Jose's</span>
-            <span class="prev-event">25th Wedding Anniversary</span>
-            <span class="prev-rule"></span>
-            <span class="prev-detail">
-              12 October 2025<br>
-              Rockwell Tent<br>
-              Makati City
-            </span>
-            <span class="prev-wm">Tala Invites</span>
-          </div>
-          <div class="pcard-overlay">
-            <span class="pcard-overlay-title">Preset C — Warm</span>
-            <span class="pcard-overlay-meta">Pahiwatig · Anniversary<br>Boxed Layout · Gold Pale &amp; Cognac</span>
-            <a class="pcard-overlay-link" href="invitations/pahiwatig-warm.html" target="_blank">View Template →</a>
-          </div>
-        </div>
-        <div class="pcard-meta warm">
-          <span class="pcard-meta-title">Preset C — Warm</span>
-          <span class="pcard-meta-badge">Pahiwatig</span>
-        </div>
+      <div class="suite-connector">
+        <div class="suite-connector-line"></div>
+        <span class="suite-connector-text">Two linked pages · One cohesive suite</span>
+        <div class="suite-connector-line"></div>
       </div>
 
-    </div><!-- /cards-row -->
+    </div><!-- /suite-showcase -->
 
 
-    <!-- ══════════ DIWA ══════════ -->
-    <div class="tier-div" data-section="diwa">
-      <div class="tier-div-line"></div>
-      <span class="tier-div-label">Diwa · Signature · ₱1,800</span>
-      <div class="tier-div-line"></div>
-    </div>
-
-    <div class="cards-row">
-
-      <!-- Diwa · The Soirée -->
-      <div class="pcard" data-tier="diwa" data-event="birthday">
-        <div class="pcard-preview">
-          <div class="prev prev-dark">
-            <span class="prev-orn">· ·</span>
-            <span class="prev-event">A Birthday Celebration</span>
-            <span class="prev-name">Sofia</span>
-            <span class="prev-age">18</span>
-            <span style="font-family:var(--poppins);font-size:0.55rem;font-weight:300;color:var(--mist);display:block;margin-bottom:0.6rem">years of grace &amp; beauty</span>
-            <span class="prev-rule"></span>
-            <span class="prev-detail">
-              20 August 2025<br>
-              The Peninsula Manila<br>
-              Makati City · Black Tie
-            </span>
-            <span class="prev-wm">Tala Invites</span>
-          </div>
-          <div class="pcard-overlay">
-            <span class="pcard-overlay-title">Sofia's 18th Birthday</span>
-            <span class="pcard-overlay-meta">Diwa · The Soirée<br>Birthday · Dark Editorial</span>
-            <a class="pcard-overlay-link" href="invitations/sofia-18th.html" target="_blank">View Invitation →</a>
-          </div>
+    <!-- Coming soon strip -->
+    <div class="coming-soon-strip">
+      <h3>More work <em>on the way.</em></h3>
+      <p>We're actively building our portfolio. As real client invitations go live, they'll be added here. In the meantime — yours could be next.</p>
+      <div class="coming-soon-tiers">
+        <div class="cs-tier">
+          <span class="cs-tier-name">Invitation Proper</span>
+          <span class="cs-tier-label">₱1,499 · Coming Soon</span>
         </div>
-        <div class="pcard-meta dark">
-          <span class="pcard-meta-title">Sofia's 18th · The Soirée</span>
-          <span class="pcard-meta-badge">Diwa</span>
+        <div class="cs-tier">
+          <span class="cs-tier-name">Wedding Suite</span>
+          <span class="cs-tier-label">₱2,000 · Featured ✦</span>
         </div>
-      </div>
-
-      <!-- Diwa · The Bloom -->
-      <div class="pcard" data-tier="diwa" data-event="birthday">
-        <div class="pcard-preview">
-          <div class="prev prev-bloom">
-            <span class="prev-orn" style="color:#C4956A;letter-spacing:0.4em">✿ ❀ ✿</span>
-            <span class="prev-eyebrow" style="color:#A88B7A">You are invited to celebrate</span>
-            <span class="prev-name" style="color:#5C3D2E;font-size:2.6rem">Rikki</span>
-            <span class="prev-age-label">a decade and eight</span>
-            <span class="prev-rule" style="background:#C4956A"></span>
-            <span class="prev-detail" style="color:#A88B7A">
-              11 April 2026<br>
-              Bayview Pavilion<br>
-              Mandaluyong City
-            </span>
-            <span class="prev-wm" style="color:rgba(196,149,106,0.3)">Tala Invites</span>
-          </div>
-          <div class="pcard-overlay">
-            <span class="pcard-overlay-title">Rikki's 18th Birthday</span>
-            <span class="pcard-overlay-meta">Diwa · The Bloom<br>Birthday · Floral Romantic</span>
-            <a class="pcard-overlay-link" href="invitations/diwa-bloom.html" target="_blank">View Invitation →</a>
-          </div>
-        </div>
-        <div class="pcard-meta bloom">
-          <span class="pcard-meta-title">Rikki's 18th · The Bloom</span>
-          <span class="pcard-meta-badge">Diwa</span>
-        </div>
-      </div>
-
-      <!-- Diwa · The Story -->
-      <div class="pcard" data-tier="diwa" data-event="wedding">
-        <div class="pcard-preview">
-          <div class="prev prev-story">
-            <span class="prev-orn">· ·</span>
-            <span class="prev-eyebrow">Together with their families</span>
-            <span class="prev-name-sm">Jimmy</span>
-            <span class="prev-amp">&amp;</span>
-            <span class="prev-name-sm">Hallie</span>
-            <span class="prev-rule"></span>
-            <span class="prev-detail">
-              17 January 2026<br>
-              Long Lakes Flight Club<br>
-              Silang, Cavite
-            </span>
-            <span class="prev-wm" style="color:rgba(126,168,196,0.2)">Tala Invites</span>
-          </div>
-          <div class="pcard-overlay">
-            <span class="pcard-overlay-title">Jimmy &amp; Hallie</span>
-            <span class="pcard-overlay-meta">Diwa · The Story<br>Wedding · Cinematic</span>
-            <a class="pcard-overlay-link" href="invitations/diwa-story.html" target="_blank">View Invitation →</a>
-          </div>
-        </div>
-        <div class="pcard-meta story">
-          <span class="pcard-meta-title">Jimmy &amp; Hallie · The Story</span>
-          <span class="pcard-meta-badge">Diwa</span>
-        </div>
-      </div>
-
-    </div><!-- /cards-row -->
-
-
-    <!-- ══════════ TALA SUITE ══════════ -->
-    <div class="tier-div" data-section="suite">
-      <div class="tier-div-line"></div>
-      <span class="tier-div-label">Tala Suite · Prestige · ₱4,000</span>
-      <div class="tier-div-line"></div>
-    </div>
-
-    <div class="suite-pair" data-tier="suite" data-event="wedding">
-      <div class="suite-pair-label">Andrea &amp; Rafael · Wedding Suite</div>
-      <div class="suite-inner">
-
-        <!-- Suite · Save the Date -->
-        <div class="pcard">
-          <div class="pcard-preview">
-            <div class="prev prev-suite">
-              <span class="prev-badge">Save the Date</span>
-              <span class="prev-eyebrow">Together with their families</span>
-              <span class="prev-name-sm">Andrea</span>
-              <span class="prev-amp">&amp;</span>
-              <span class="prev-name-sm">Rafael</span>
-              <span class="prev-rule"></span>
-              <span class="prev-detail">
-                Sunday · 5 July 2026<br>
-                Forbes Park, Makati City<br>
-                Formal Invitation to Follow
-              </span>
-              <span class="prev-wm">Tala Invites</span>
-            </div>
-            <div class="pcard-overlay">
-              <span class="pcard-overlay-title">Andrea &amp; Rafael</span>
-              <span class="pcard-overlay-meta">Tala Suite · Save the Date<br>Wedding · Prestige</span>
-              <a class="pcard-overlay-link" href="invitations/suite-save-the-date.html" target="_blank">View Page →</a>
-            </div>
-          </div>
-          <div class="pcard-meta suite">
-            <span class="pcard-meta-title">Save the Date</span>
-            <span class="pcard-meta-badge">Tala Suite</span>
-          </div>
-        </div>
-
-        <!-- Suite · Invitation Proper -->
-        <div class="pcard">
-          <div class="pcard-preview">
-            <div class="prev prev-suite">
-              <span class="prev-badge">Invitation Proper</span>
-              <span class="prev-eyebrow">Together with their families</span>
-              <span class="prev-name-sm">Andrea</span>
-              <span class="prev-amp">&amp;</span>
-              <span class="prev-name-sm">Rafael</span>
-              <span class="prev-rule"></span>
-              <span class="prev-detail">
-                Sunday · 5 July 2026<br>
-                Four o'clock in the afternoon<br>
-                Sanctuario de San Antonio<br>
-                Forbes Park, Makati
-              </span>
-              <span class="prev-wm">Tala Invites</span>
-            </div>
-            <div class="pcard-overlay">
-              <span class="pcard-overlay-title">Andrea &amp; Rafael</span>
-              <span class="pcard-overlay-meta">Tala Suite · Invitation Proper<br>Wedding · Full Suite</span>
-              <a class="pcard-overlay-link" href="invitations/suite-invitation.html" target="_blank">View Page →</a>
-            </div>
-          </div>
-          <div class="pcard-meta suite">
-            <span class="pcard-meta-title">Invitation Proper</span>
-            <span class="pcard-meta-badge">Tala Suite</span>
-          </div>
-        </div>
-
       </div>
     </div>
 
-
-  </div><!-- /port-grid-wrap -->
+  </div><!-- /featured-section -->
 
 
   <!-- CTA -->
@@ -768,7 +391,7 @@
       <div class="ornament-dot"></div>
       <div class="ornament-line"></div>
     </div>
-    <p>Starting from ₱500 — tell us about your celebration and we'll craft something beautiful.</p>
+    <p>Tell us about your celebration and we'll craft something beautiful.</p>
     <div class="page-cta-btns">
       <a class="btn-primary" href="contact.html">Start Your Invitation</a>
       <a class="btn-ghost"   href="pricing.html">View Pricing</a>
@@ -809,111 +432,27 @@
     <span class="footer-copy">Crafted with love · talainvites@gmail.com</span>
   </div>
 
-
   <script src="js/main.js"></script>
   <script>
-    var activeTier  = 'all';
-    var activeEvent = 'all';
-    var activeMode  = 'tier';   /* which filter axis is showing */
-
-    /* Option sets per mode */
-    var OPTIONS = {
-      tier: [
-        { label: 'All',        value: 'all'       },
-        { label: 'Pahiwatig',  value: 'pahiwatig' },
-        { label: 'Diwa',       value: 'diwa'      },
-        { label: 'Tala Suite', value: 'suite'     },
-      ],
-      event: [
-        { label: 'All',            value: 'all'      },
-        { label: 'Weddings',       value: 'wedding'  },
-        { label: 'Birthdays',      value: 'birthday' },
-        { label: 'Special Events', value: 'special'  },
-      ],
-    };
-
-    /* Switch between Tier / Event mode */
-    function switchMode(mode, btn) {
-      if (mode === activeMode) return;
-      activeMode = mode;
-
-      /* Update mode buttons */
-      document.querySelectorAll('.filter-mode-btn').forEach(function(b) {
-        b.classList.remove('active');
-      });
-      btn.classList.add('active');
-
-      /* Reset opposite axis to 'all' */
-      if (mode === 'tier')  activeEvent = 'all';
-      if (mode === 'event') activeTier  = 'all';
-
-      /* Rebuild option buttons with animation */
-      var row = document.getElementById('filter-options-row');
-      row.style.animation = 'none';
-      row.offsetHeight; /* reflow to restart animation */
-      row.style.animation = '';
-
-      row.innerHTML = '';
-      OPTIONS[mode].forEach(function(opt) {
-        var btn = document.createElement('button');
-        btn.className = 'filter-btn' + (opt.value === 'all' ? ' active' : '');
-        btn.textContent = opt.label;
-        btn.setAttribute('data-mode', mode);
-        btn.setAttribute('data-value', opt.value);
-        btn.onclick = function() { applyFilter(mode, opt.value, btn); };
-        row.appendChild(btn);
-      });
-
-      /* Refresh grid with reset values */
-      refreshGrid();
-    }
-
-    /* Apply a filter value */
-    function applyFilter(type, value, btn) {
-      /* Update active option button */
-      document.querySelectorAll('#filter-options-row .filter-btn').forEach(function(b) {
-        b.classList.remove('active');
-      });
-      btn.classList.add('active');
-
-      if (type === 'tier')  activeTier  = value;
-      if (type === 'event') activeEvent = value;
-
-      refreshGrid();
-    }
-
-    /* Refresh grid visibility */
-    function refreshGrid() {
-
-      /* Individual cards */
-      document.querySelectorAll('.pcard[data-tier]').forEach(function(card) {
-        var tierMatch  = activeTier  === 'all' || card.dataset.tier  === activeTier;
-        var eventMatch = activeEvent === 'all' || card.dataset.event === activeEvent;
-        card.style.display = (tierMatch && eventMatch) ? 'flex' : 'none';
-      });
-
-      /* Suite pair wrapper */
-      var suitePair = document.querySelector('.suite-pair');
-      if (suitePair) {
-        var suiteT = activeTier  === 'all' || activeTier  === 'suite';
-        var suiteE = activeEvent === 'all' || activeEvent === 'wedding';
-        suitePair.style.display = (suiteT && suiteE) ? 'block' : 'none';
-      }
-
-      /* Tier dividers */
-      document.querySelectorAll('.tier-div[data-section]').forEach(function(div) {
-        var show = activeTier === 'all' || activeTier === div.dataset.section;
-        div.style.display = show ? 'flex' : 'none';
-      });
-
-      /* cards-row wrappers */
-      document.querySelectorAll('.cards-row').forEach(function(row) {
-        var anyVisible = Array.from(row.querySelectorAll('.pcard')).some(function(c) {
-          return c.style.display !== 'none';
-        });
-        row.style.display = anyVisible ? 'grid' : 'none';
+    /* ── Iframe thumbnail scaler ──
+       Recalculates scale so iframe always fills the card width
+       regardless of screen size. Runs on load and resize. */
+    function scaleIframePreviews() {
+      var previews = document.querySelectorAll('.suite-card-preview');
+      previews.forEach(function(preview) {
+        var iframe = preview.querySelector('iframe');
+        if (!iframe) return;
+        var cardWidth  = preview.offsetWidth;
+        var iframeWidth = 375; /* simulated mobile viewport */
+        var scale = cardWidth / iframeWidth;
+        iframe.style.transform = 'scale(' + scale + ')';
+        iframe.style.width  = iframeWidth + 'px';
+        /* height = card height / scale so iframe content fills fully */
+        iframe.style.height = (preview.offsetHeight / scale) + 'px';
       });
     }
+    scaleIframePreviews();
+    window.addEventListener('resize', scaleIframePreviews);
   </script>
 
 </body>

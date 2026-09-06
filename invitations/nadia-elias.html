@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nadia &amp; Elias | Tala Invites</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     TALA INVITES — TALA SUITE TEMPLATE
+     Client: Nadia & Elias (DRAFT / DUMMY CONTENT)
+     ============================================================ */
+
+  /* ------------------------------------------------------------
+     CLIENT CONFIG — swap everything below for real onboarding
+     ------------------------------------------------------------ */
+  :root{
+    /* Brand palette (fixed) */
+    --cognac:#A9683F;
+    --gold:#C7A369;
+    --onyx:#211D1A;
+    --ivory:#FAF6EF;
+    --ivory-deep:#F1E9DC;
+    --line: rgba(33,29,26,0.14);
+
+    /* Type */
+    --display: 'Lora', serif;
+    --body: 'Poppins', sans-serif;
+  }
+
+  /* -------- CLOUDINARY IMAGE SLOTS --------
+     Each URL is pre-cropped SERVER-SIDE with Cloudinary transformations so the crop
+     is content-aware instead of a blind CSS center-crop:
+       c_fill,g_auto  → fills the exact w/h below, auto-picks the best crop region
+                         (faces/subjects), instead of always grabbing dead-center
+       q_auto,f_auto  → auto quality + auto format (webp/avif) for free, no visual change
+     The w/h pair is matched to each section's real on-screen aspect ratio, so the
+     browser's own background-size:cover has little/nothing left to crop.
+
+     IF ONE PHOTO STILL LOOKS OFF: override g_auto for just that slot, e.g.
+       g_auto        → default, works for most
+       g_face        → forces face-priority crop (best for tight couple portraits)
+       g_north / g_south / g_east / g_west → pin the crop to an edge
+     Just swap "g_auto" to one of those in that single line below — nothing else changes. */
+  :root{
+    --img-hero: url("https://res.cloudinary.com/woqclpcw/image/upload/c_fill,g_auto,w_1920,h_1200,q_auto,f_auto/v1788254948/pexels-tolga-ardic-410168453-26960716.jpg");
+    --img-story-1: url("https://res.cloudinary.com/woqclpcw/image/upload/c_fill,g_auto,w_800,h_900,q_auto,f_auto/v1788254946/pexels-tolga-ardic-410168453-26960724.jpg");
+    --img-story-2: url("https://res.cloudinary.com/woqclpcw/image/upload/c_fill,g_face,w_900,h_1200,q_auto,f_auto/v1788254944/pexels-tolga-ardic-410168453-26960762.jpg");
+    --img-story-3: url("https://res.cloudinary.com/woqclpcw/image/upload/c_fill,g_auto,w_800,h_900,q_auto,f_auto/v1788254943/pexels-tolga-ardic-410168453-26960717.jpg");
+    --img-gallery-1: url("https://res.cloudinary.com/woqclpcw/image/upload/c_fill,g_auto,w_1920,h_900,q_auto,f_auto/v1788254942/pexels-tolga-ardic-410168453-26960720.jpg");
+    --img-gallery-2: url("https://res.cloudinary.com/woqclpcw/image/upload/c_fill,g_auto,w_1000,h_1100,q_auto,f_auto/v1788254942/pexels-tolga-ardic-410168453-26960728.jpg");
+    --img-gallery-3: url("https://res.cloudinary.com/woqclpcw/image/upload/c_fill,g_auto,w_1000,h_1100,q_auto,f_auto/v1788254935/pexels-tolga-ardic-410168453-26960758.jpg");
+    --motif-flourish: url("https://res.cloudinary.com/woqclpcw/image/upload/v1788330289/g1.svg");
+    --motif-swirl: url("https://res.cloudinary.com/woqclpcw/image/upload/v1788330558/swirlborder.svg");
+  }
+  /* MOTIF CREDITS — fill in once here (Cloudinary metadata tags can mirror this for your own
+     asset-library tracking, but the visible on-page credit has to live in the template itself,
+     so it's set once here and every future client page just copies this block, same as the
+     rest of the CLIENT config). Required for CC BY per Noun Project's terms. */
+  /* g1.svg (flourish): "[Icon Name]" by [Creator Name], thenounproject.com/icon/[id] */
+  /* swirlborder.svg: "[Icon Name]" by [Creator Name], thenounproject.com/icon/[id] */
+
+  /* Motif recoloring — any SVG dropped into these vars inherits the site palette
+     (gold by default) via CSS mask, regardless of the SVG's own internal fill colors.
+     mask-size:contain in an oversized box keeps the shape from being cropped.
+     Only using 2 of the 5 supplied SVGs (flourish + swirl) — restraint over decoration.
+     The other 3 (path, path1, path9) are still in Cloudinary if a future page wants them. */
+  .motif{
+    -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
+    -webkit-mask-position:center; mask-position:center;
+    -webkit-mask-size:contain; mask-size:contain;
+    background-color:var(--gold);
+  }
+  .motif-swirl{ -webkit-mask-image:var(--motif-swirl); mask-image:var(--motif-swirl); }
+  .motif-flourish{ -webkit-mask-image:var(--motif-flourish); mask-image:var(--motif-flourish); }
+
+  /* Unused photos from this batch (not placed in this draft — reserve for gallery expansion,
+     RSVP background, or a future "more moments" section):
+     26960713, 27008969, 27008983, 26960749, 26960734, 26960725, 26960714 */
+
+  /* ---------- DISCREET PRINT BUTTON (screen only) ---------- */
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  .print-fab{
+    display:inline-flex;
+    width:22px; height:22px;
+    padding:4px;
+    background:transparent;
+    border:none;
+    color:var(--cognac);
+    align-items:center; justify-content:center;
+    cursor:pointer;
+    opacity:0.45;
+    transition:opacity .2s ease, transform .2s ease;
+    vertical-align:middle;
+    margin-left:6px;
+  }
+  .print-fab:hover{ opacity:1; transform:scale(1.15) rotate(8deg); }
+  .print-fab svg{ width:12px; height:12px; }
+
+  /* ============================================================
+     PRINT — keeps the countdown/RSVP/map (screen-only interactive bits)
+     out of the printed keepsake, and forces photos to actually print
+     instead of getting silently stripped by the browser's default
+     "no background graphics" print setting.
+     ============================================================ */
+  * { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  @media print{
+    .print-fab, .curtain, .scroll-cue{ display:none !important; }
+    .hero-bg{ animation:none; transform:none; }
+    .hero-inner > *{ opacity:1 !important; animation:none !important; transform:none !important; }
+    .venue-map, .rsvp-embed, .btn, .countdown{ display:none !important; }
+
+    /* Removed entirely from print: venue, our story, RSVP */
+    .venue, .story{ display:none !important; }
+    .rsvp{ display:none !important; }
+
+    /* Vertically center the quote, and the date/time/venue strip — each gets its own
+       page. Using vh (fraction of the actual page) instead of a fixed mm guess so it
+       adapts correctly regardless of paper size/margins, and stays under 100% so it
+       doesn't overflow into an extra near-blank page. */
+    .welcome{
+      min-height:82vh;
+      display:flex; flex-direction:column; justify-content:center; align-items:center;
+      break-after:page; page-break-after:always;
+    }
+    .details{
+      min-height:82vh;
+      display:flex; flex-direction:column; justify-content:center; align-items:center;
+      break-after:page; page-break-after:always;
+    }
+    .details .details-grid{ width:100%; }
+    .attire{
+      min-height:82vh;
+      display:flex; flex-direction:column; justify-content:center; align-items:center;
+      break-after:page; page-break-after:always;
+    }
+
+    /* Gallery + quote page: let it fill the whole page as a proper full-bleed photo
+       moment (not compressed/cramped) — three photo blocks + the quote sum to 100vh */
+    .print-cluster{
+      break-inside:avoid; page-break-inside:avoid;
+      break-before:page; page-break-before:always;
+      break-after:page; page-break-after:always;
+    }
+    .print-cluster .gallery-full{ height:38vh; }
+    .print-cluster .breather{ height:16vh; padding:0; display:flex; align-items:center; justify-content:center; }
+    .print-cluster .breather p{ font-size:14pt; }
+    .print-cluster .gallery-split{ height:46vh; }
+    .print-cluster .gallery-split div{ height:100%; }
+
+    /* Wedding Timeline moves to its own fresh page, normal (uncompressed) sizing */
+    .timeline{ break-before:page; page-break-before:always; }
+
+    /* Entourage — compress so the whole thing reliably fits one printed page.
+       !important is necessary here: this @media print block sits earlier in the
+       file than the base .sponsor-block/.sponsor-cols rules, and at equal CSS
+       specificity the later rule in source order wins — which was silently
+       cancelling these overrides during print. !important removes that ambiguity. */
+    .entourage{ padding:16px 0 !important; }
+    .entourage .head{ margin-bottom:12mm !important; }
+    .entourage h2{ font-size:16pt !important; }
+    .entourage .eyebrow{ font-size:7pt !important; }
+    .sponsor-blocks{ gap:0 !important; }
+    .sponsor-block{ margin-bottom:7mm !important; }
+    .sponsor-block h3{ font-size:7.5pt !important; margin-bottom:4mm !important; }
+    .sponsor-cols{ gap:0 24px !important; grid-template-columns:1fr 1fr !important; display:grid !important; }
+    .sponsor-cols li{ padding:2px 0 !important; font-size:8.5pt !important; border-bottom:none !important; }
+    .sponsor-cols li span.role{ font-size:7pt !important; }
+
+    /* Credits (footer) on its own separate page */
+    footer{ break-before:page; page-break-before:always; }
+
+    section{ padding:48px 0; }
+    section, .venue .wrap, .story, .entourage .wrap, .details-grid, .countdown,
+    .attire, .timeline, .rsvp .wrap, .gift, footer, .sponsor-block,
+    .gallery-full, .breather, .gallery-split{
+      break-inside:avoid; page-break-inside:avoid;
+    }
+    h1, h2, h3, .eyebrow, .head{
+      break-after:avoid; page-break-after:avoid;
+    }
+  }
+  body{
+    background:var(--ivory);
+    color:var(--onyx);
+    font-family:var(--body);
+    font-weight:300;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+
+  .wrap{ max-width:1080px; margin:0 auto; padding-left:32px; padding-right:32px; }
+  .narrow{ max-width:640px; margin:0 auto; padding-left:32px; padding-right:32px; }
+
+  h1,h2,h3{ font-family:var(--display); font-weight:500; }
+
+  .eyebrow{
+    font-family:var(--body);
+    font-size:12px;
+    letter-spacing:0.18em;
+    color:var(--cognac);
+    margin-bottom:14px;
+    display:block;
+  }
+
+  /* Consistent vertical rhythm scale — every section uses one of these three,
+     chosen by how much content it holds, so gaps never feel arbitrary */
+  section{ padding:120px 0; }
+  .section-tight{ padding:80px 0; }
+  .section-airy{ padding:140px 0; }
+
+  .eyebrow{ margin-bottom:20px; }
+  .head .eyebrow{ margin-bottom:16px; }
+
+  hr.rule{
+    border:none;
+    border-top:1px solid var(--line);
+    width:56px;
+    margin:24px auto;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+    color:var(--ivory);
+    padding-bottom:72px;
+  }
+  .hero-inner{ position:relative; width:100%; text-align:center; }
+  .hero .pre{
+    font-size:13px;
+    letter-spacing:0.32em;
+    opacity:0.85;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(48px,8vw,88px);
+    font-style:italic;
+    line-height:1.05;
+  }
+  .hero .amp{ font-style:normal; color:var(--gold); padding:0 10px; }
+  .hero .date{
+    margin-top:22px;
+    font-size:15px;
+    letter-spacing:0.12em;
+  }
+  .scroll-cue{
+    margin-top:40px;
+    width:1px; height:44px;
+    background:var(--ivory);
+    opacity:0.6;
+    margin-left:auto; margin-right:auto;
+  }
+
+  /* ---------- LOAD SEQUENCE — one orchestrated moment, nothing else on the page animates ---------- */
+  .curtain{
+    position:fixed; inset:0; z-index:999;
+    background:var(--ivory);
+    display:flex; align-items:center; justify-content:center;
+    animation: curtainOut 0.9s ease 1.5s forwards;
+  }
+  .curtain-mark{
+    font-family:var(--display);
+    font-style:italic;
+    font-size:34px;
+    color:var(--cognac);
+    letter-spacing:0.04em;
+    opacity:0;
+    animation: markIn 0.8s ease 0.15s forwards, markOut 0.5s ease 1.35s forwards;
+  }
+  @keyframes markIn{ from{ opacity:0; transform:scale(0.94); } to{ opacity:1; transform:scale(1); } }
+  @keyframes markOut{ to{ opacity:0; } }
+  @keyframes curtainOut{
+    0%{ opacity:1; visibility:visible; }
+    100%{ opacity:0; visibility:hidden; }
+  }
+
+  .hero-bg{
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(180deg, rgba(33,29,26,0.15) 0%, rgba(33,29,26,0.55) 100%),
+      var(--img-hero);
+    background-size:cover;
+    background-position:center;
+    animation: kenBurns 16s ease-out 1.4s forwards;
+  }
+  @keyframes kenBurns{
+    from{ transform:scale(1.12); }
+    to{ transform:scale(1); }
+  }
+
+  .hero-inner > *{ opacity:0; animation-fill-mode:forwards; animation-timing-function:ease; }
+  .hero .pre{ animation-name:fadeUp; animation-duration:0.7s; animation-delay:1.55s; }
+  .hero h1{ animation-name:fadeUp; animation-duration:0.8s; animation-delay:1.7s; }
+  .hero-inner .motif-flourish{ animation-name:fadeUp; animation-duration:0.7s; animation-delay:1.95s; }
+  .hero .date{ animation-name:fadeUp; animation-duration:0.7s; animation-delay:2.1s; }
+  .scroll-cue{ animation-name:fadeUp; animation-duration:0.7s; animation-delay:2.3s; opacity:0; animation-fill-mode:forwards; }
+  @keyframes fadeUp{
+    from{ opacity:0; transform:translateY(14px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .curtain, .curtain-mark, .hero-bg, .hero-inner > *, .scroll-cue{
+      animation:none !important; opacity:1 !important; transform:none !important;
+    }
+    .curtain{ display:none; }
+  }
+
+  /* ---------- SCROLL REVEAL — one consistent pattern reused everywhere:
+     fade + slight rise, triggered once when a section enters view.
+     Grouped items (cards, list rows, collage frames) stagger via
+     transition-delay set per nth-child in JS. ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.in-view{
+    opacity:1;
+    transform:translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1 !important; transform:none !important; transition:none !important; }
+  }
+  @media print{
+    .reveal{ opacity:1 !important; transform:none !important; transition:none !important; }
+  }
+
+  /* ---------- WELCOME QUOTE ---------- */
+  .welcome{ text-align:center; }
+  .welcome p.lead{
+    font-family:var(--display);
+    font-style:italic;
+    font-size:22px;
+    color:var(--onyx);
+    line-height:1.7;
+  }
+  .welcome .signoff{
+    margin-top:18px;
+    font-size:13px;
+    letter-spacing:0.14em;
+    color:var(--cognac);
+  }
+
+  /* ---------- DETAILS STRIP ---------- */
+  .details{ background:var(--ivory-deep); }
+  .details-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:56px 48px;
+    text-align:center;
+  }
+  .details-grid > div{ padding:0 8px; }
+  .details-grid .big{ margin:8px 0 4px; }
+  .details-grid h3{
+    font-size:14px;
+    letter-spacing:0.14em;
+    font-family:var(--body);
+    font-weight:500;
+    color:var(--cognac);
+    margin-bottom:10px;
+  }
+  .details-grid p{ font-size:15px; }
+  .details-grid .big{
+    font-family:var(--display);
+    font-size:20px;
+    font-style:italic;
+  }
+
+  /* ---------- COUNTDOWN ---------- */
+  .countdown{ text-align:center; }
+  .countdown-nums{
+    display:flex;
+    justify-content:center;
+    gap:56px;
+    margin-top:36px;
+    flex-wrap:wrap;
+  }
+  .countdown-nums div{ text-align:center; }
+  .countdown-nums .num{
+    font-family:var(--display);
+    font-size:44px;
+    color:var(--cognac);
+  }
+  .countdown-nums .label{
+    font-size:12px;
+    letter-spacing:0.14em;
+    margin-top:6px;
+    color:var(--onyx);
+    opacity:0.7;
+  }
+
+  /* ---------- VENUE ---------- */
+  .venue{ background:var(--onyx); color:var(--ivory); text-align:center; }
+  .venue .eyebrow{ color:var(--gold); }
+  .venue h2{ font-style:italic; font-size:32px; }
+  .venue p{ opacity:0.85; margin-top:10px; }
+  .venue-map{
+    margin-top:40px;
+    aspect-ratio:16/7;
+    background:rgba(250,246,239,0.08);
+    border:1px solid rgba(250,246,239,0.18);
+    display:flex; align-items:center; justify-content:center;
+    font-size:13px; letter-spacing:0.1em; opacity:0.6;
+  }
+  .btn{
+    display:inline-block;
+    margin-top:28px;
+    padding:14px 34px;
+    border:1px solid var(--gold);
+    color:var(--gold);
+    font-size:12px;
+    letter-spacing:0.14em;
+    border-radius:2px;
+    transition:background .25s ease, color .25s ease;
+  }
+  .btn:hover{ background:var(--gold); color:var(--onyx); }
+
+  /* ---------- OUR STORY (collage) ---------- */
+  .story{ text-align:center; }
+  .story .head{ margin-bottom:64px; }
+  .collage{
+    display:grid;
+    grid-template-columns:1fr 1.2fr 1fr;
+    gap:20px;
+    align-items:end;
+  }
+  .collage img, .collage .ph{
+    width:100%; height:100%; object-fit:cover;
+    background-size:cover; background-position:center;
+  }
+  .collage .a{ height:320px; background-image:var(--img-story-1); background-size:cover; background-position:center; margin-top:40px; }
+  .collage .b{ height:420px; background-image:var(--img-story-2); background-size:cover; background-position:center; }
+  .collage .c{ height:320px; background-image:var(--img-story-3); background-size:cover; background-position:center; margin-top:40px; }
+  .story-text{
+    max-width:640px;
+    margin:56px auto 0;
+    font-size:15.5px;
+    color:var(--onyx);
+    opacity:0.85;
+    text-align:left;
+  }
+
+  /* ---------- ENTOURAGE ---------- */
+  .entourage{ background:var(--ivory-deep); }
+  .entourage .head{ text-align:center; margin-bottom:56px; }
+  .sponsor-block{ margin-bottom:56px; }
+  .sponsor-block:last-child{ margin-bottom:0; }
+  .sponsor-block h3{
+    text-align:center;
+    font-size:14px;
+    letter-spacing:0.14em;
+    font-weight:500;
+    color:var(--cognac);
+    margin-bottom:28px;
+  }
+  .sponsor-cols{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0 64px;
+  }
+  .sponsor-cols ul{ list-style:none; }
+  .sponsor-cols li{
+    padding:10px 0;
+    border-bottom:1px solid var(--line);
+    font-size:14.5px;
+    display:flex;
+    justify-content:space-between;
+  }
+  .sponsor-cols li span.role{ color:var(--cognac); font-size:12px; letter-spacing:0.06em; }
+
+  /* ---------- ATTIRE / PALETTE ---------- */
+  .attire{ text-align:center; }
+  .swatches{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    margin-top:36px;
+    flex-wrap:wrap;
+  }
+  .swatch{ text-align:center; }
+  .swatch .dot{
+    width:52px; height:52px;
+    border-radius:50%;
+    margin:0 auto 8px;
+    border:1px solid var(--line);
+  }
+  .swatch .name{ font-size:11px; letter-spacing:0.08em; opacity:0.7; }
+
+  /* ---------- GALLERY ---------- */
+  .gallery-full{
+    height:70vh;
+    background-image: linear-gradient(180deg, rgba(33,29,26,0.05), rgba(33,29,26,0.35)), var(--img-gallery-1);
+    background-size:cover; background-position:center;
+  }
+  .gallery-split{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+  .gallery-split div{ height:52vh; background-size:cover; background-position:center; }
+  .gallery-split .g2{ background-image:var(--img-gallery-2); }
+  .gallery-split .g3{ background-image:var(--img-gallery-3); }
+
+  .breather{
+    background:linear-gradient(135deg, var(--cognac), var(--gold));
+    color:var(--ivory);
+    text-align:center;
+    padding:80px 0;
+  }
+  .breather p{
+    font-family:var(--display);
+    font-style:italic;
+    font-size:24px;
+    max-width:520px;
+    margin:0 auto;
+  }
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{ }
+  .timeline .head{ text-align:center; margin-bottom:56px; }
+  .tl-list{ max-width:480px; margin:0 auto; }
+  .tl-item{
+    display:flex;
+    gap:24px;
+    padding:18px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .tl-item:last-child{ border-bottom:none; }
+  .tl-time{
+    font-family:var(--display);
+    font-style:italic;
+    color:var(--cognac);
+    width:96px;
+    flex-shrink:0;
+    font-size:15px;
+  }
+  .tl-label{ font-size:14.5px; }
+
+  /* ---------- RSVP ---------- */
+  .rsvp{ background:var(--onyx); color:var(--ivory); text-align:center; }
+  .rsvp .eyebrow{ color:var(--gold); }
+  .rsvp h2{ font-style:italic; font-size:30px; margin-bottom:8px; }
+  .rsvp p{ opacity:0.75; margin-bottom:32px; font-size:14px; }
+  .rsvp-embed{
+    max-width:480px; margin:0 auto;
+    background:var(--ivory);
+    border-radius:4px;
+    overflow:hidden;
+    padding:8px;
+  }
+
+  /* ---------- GIFT ---------- */
+  .gift{ text-align:center; }
+  .gift p{ max-width:480px; margin:14px auto 0; font-size:14.5px; opacity:0.8; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    text-align:center;
+    padding:64px 0 40px;
+  }
+  footer .names{
+    font-family:var(--display);
+    font-style:italic;
+    font-size:22px;
+    color:var(--cognac);
+  }
+  footer .credit{
+    margin-top:18px;
+    font-size:11px;
+    letter-spacing:0.12em;
+    opacity:0.5;
+  }
+
+  @media (max-width:760px){
+    .details-grid{ grid-template-columns:1fr; gap:32px; }
+    .sponsor-cols{ grid-template-columns:1fr; gap:0; }
+    .collage{ grid-template-columns:1fr; }
+    .collage .a,.collage .c{ margin-top:0; height:260px; }
+    .collage .b{ height:300px; }
+    .gallery-split{ grid-template-columns:1fr; }
+    .countdown-nums{ gap:28px; }
+    section{ padding:64px 0; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- LOAD SEQUENCE: brief ivory curtain with monogram, parts to reveal the hero -->
+  <div class="curtain"><div class="curtain-mark">N &amp; E</div></div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner">
+      <div class="pre">TOGETHER WITH THEIR FAMILIES</div>
+      <h1>Nadia <span class="amp">&amp;</span> Elias</h1>
+      <div class="motif motif-flourish" style="width:120px;height:36px;margin:14px auto 0;background-color:var(--ivory);opacity:0.85;"></div>
+      <div class="date">DECEMBER 12, 2026 &nbsp;·&nbsp; TAGAYTAY, PHILIPPINES</div>
+      <div class="scroll-cue"></div>
+    </div>
+  </header>
+
+  <!-- WELCOME -->
+  <section class="welcome narrow section-airy">
+    <p class="lead reveal">"Where you go, I will go; where you stay, I will stay. This is where our forever begins."</p>
+    <div class="signoff reveal">— NADIA &amp; ELIAS</div>
+  </section>
+
+  <!-- DETAILS -->
+  <section class="details">
+    <div class="wrap details-grid" data-reveal-group>
+      <div>
+        <h3>THE DATE</h3>
+        <p class="big">December 12, 2026</p>
+        <p>Saturday</p>
+      </div>
+      <div>
+        <h3>THE TIME</h3>
+        <p class="big">4:00 in the afternoon</p>
+        <p>Ceremony begins promptly</p>
+      </div>
+      <div>
+        <h3>THE VENUE</h3>
+        <p class="big">Villa Alfonsina</p>
+        <p>Tagaytay City</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <section class="countdown narrow">
+    <span class="eyebrow reveal" style="text-align:center;display:block;">COUNTING DOWN TO FOREVER</span>
+    <div class="countdown-nums reveal">
+      <div><div class="num" id="cd-days">00</div><div class="label">DAYS</div></div>
+      <div><div class="num" id="cd-hours">00</div><div class="label">HOURS</div></div>
+      <div><div class="num" id="cd-mins">00</div><div class="label">MINUTES</div></div>
+      <div><div class="num" id="cd-secs">00</div><div class="label">SECONDS</div></div>
+    </div>
+  </section>
+
+  <!-- VENUE -->
+  <section class="venue">
+    <div class="wrap reveal">
+      <span class="eyebrow">WHERE WE'LL GATHER</span>
+      <h2>Villa Alfonsina</h2>
+      <p>Barangay Neogan, Tagaytay City, Cavite</p>
+      <div class="venue-map">MAP EMBED — Google Maps / Mapbox</div>
+      <a href="#" class="btn">GET DIRECTIONS</a>
+    </div>
+  </section>
+
+  <!-- OUR STORY -->
+  <section class="story wrap">
+    <div class="head reveal" style="margin-bottom:64px;">
+      <span class="eyebrow">HOW IT BEGAN</span>
+      <h2 style="font-style:italic;font-size:32px;">Our Story</h2>
+      <div class="motif motif-swirl" style="width:140px;height:28px;margin:18px auto 0;"></div>
+    </div>
+    <div class="collage" data-reveal-group>
+      <div class="a"></div>
+      <div class="b"></div>
+      <div class="c"></div>
+    </div>
+    <p class="story-text reveal">It started with a shared table at a mutual friend's birthday dinner — a conversation about nothing in particular that somehow lasted until the restaurant closed. Six years, two dogs, and one very small apartment later, Elias asked Nadia to marry him on the same stretch of beach where they had their first weekend trip together. She said yes before he finished the sentence.</p>
+  </section>
+
+  <!-- ENTOURAGE -->
+  <section class="entourage">
+    <div class="wrap">
+      <div class="head" style="margin-bottom:64px;">
+        <span class="eyebrow">WITH GRATITUDE</span>
+        <h2 style="font-style:italic;font-size:32px;">Our Entourage</h2>
+      </div>
+
+      <div class="sponsor-blocks" data-reveal-group>
+      <div class="sponsor-block">
+        <h3>PRINCIPAL SPONSORS</h3>
+        <div class="sponsor-cols">
+          <ul>
+            <li><span>Mr. Ramon Villanueva</span></li>
+            <li><span>Mr. Antonio Cruz</span></li>
+            <li><span>Mr. Benjamin Reyes</span></li>
+            <li><span>Mr. Carlo Mendoza</span></li>
+          </ul>
+          <ul>
+            <li><span>Mrs. Teresa Villanueva</span></li>
+            <li><span>Mrs. Corazon Cruz</span></li>
+            <li><span>Mrs. Liwayway Reyes</span></li>
+            <li><span>Mrs. Estela Mendoza</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sponsor-block">
+        <h3>PARENTS OF THE GROOM &amp; BRIDE</h3>
+        <div class="sponsor-cols">
+          <ul>
+            <li><span>Mr. Roberto Santos</span></li>
+            <li><span>Mrs. Adelina Santos</span></li>
+          </ul>
+          <ul>
+            <li><span>Mr. Francisco De Leon</span></li>
+            <li><span>Mrs. Marilou De Leon</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sponsor-block">
+        <h3>BEST MAN &amp; MAID OF HONOR</h3>
+        <div class="sponsor-cols">
+          <ul><li><span>Miguel Santos</span> <span class="role">BEST MAN</span></li></ul>
+          <ul><li><span>Isabel De Leon</span> <span class="role">MAID OF HONOR</span></li></ul>
+        </div>
+      </div>
+
+      <div class="sponsor-block">
+        <h3>GROOMSMEN &amp; BRIDESMAIDS</h3>
+        <div class="sponsor-cols">
+          <ul>
+            <li><span>Diego Ramirez</span></li>
+            <li><span>Julian Torres</span></li>
+            <li><span>Rafael Bautista</span></li>
+          </ul>
+          <ul>
+            <li><span>Camille Aquino</span></li>
+            <li><span>Sofia Del Rosario</span></li>
+            <li><span>Alexa Fernandez</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sponsor-block">
+        <h3>FLOWER GIRL &amp; RING BEARER</h3>
+        <div class="sponsor-cols">
+          <ul><li><span>Mia Santos</span></li></ul>
+          <ul><li><span>Gabriel De Leon</span></li></ul>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ATTIRE -->
+  <section class="attire narrow">
+    <div class="reveal">
+      <span class="eyebrow">DRESS CODE</span>
+      <h2 style="font-style:italic;font-size:28px;">A Dreamy Palette</h2>
+      <hr class="rule">
+      <p style="font-size:14.5px;opacity:0.75;">Formal attire in the shades below. Gentlemen, a coat is welcome but not required.</p>
+    </div>
+    <div class="swatches" data-reveal-group>
+      <div class="swatch"><div class="dot" style="background:#A9683F;"></div><div class="name">COGNAC</div></div>
+      <div class="swatch"><div class="dot" style="background:#C7A369;"></div><div class="name">GOLD</div></div>
+      <div class="swatch"><div class="dot" style="background:#E4D6C3;"></div><div class="name">SAND</div></div>
+      <div class="swatch"><div class="dot" style="background:#3B332B;"></div><div class="name">ESPRESSO</div></div>
+      <div class="swatch"><div class="dot" style="background:#F1E9DC;"></div><div class="name">IVORY</div></div>
+    </div>
+  </section>
+
+  <!-- GALLERY — a full print page on its own (three photos + quote fill the page) -->
+  <div class="print-cluster">
+  <div class="gallery-full reveal"></div>
+  <div class="breather reveal">
+    <p>"Every love story is beautiful, but ours is my favorite."</p>
+  </div>
+  <div class="gallery-split" data-reveal-group>
+    <div class="g2"></div>
+    <div class="g3"></div>
+  </div>
+  </div><!-- /.print-cluster -->
+
+  <!-- TIMELINE -->
+  <section class="timeline wrap">
+    <div class="head reveal">
+      <span class="eyebrow" style="text-align:center;display:block;">HOW THE DAY UNFOLDS</span>
+      <h2 style="text-align:center;font-style:italic;font-size:32px;">Wedding Timeline</h2>
+    </div>
+    <div class="tl-list" data-reveal-group>
+      <div class="tl-item"><div class="tl-time">3:30 PM</div><div class="tl-label">Guest arrival</div></div>
+      <div class="tl-item"><div class="tl-time">4:00 PM</div><div class="tl-label">Ceremony</div></div>
+      <div class="tl-item"><div class="tl-time">5:00 PM</div><div class="tl-label">Cocktail hour</div></div>
+      <div class="tl-item"><div class="tl-time">6:00 PM</div><div class="tl-label">Reception &amp; dinner</div></div>
+      <div class="tl-item"><div class="tl-time">7:30 PM</div><div class="tl-label">Speeches &amp; toasts</div></div>
+      <div class="tl-item"><div class="tl-time">8:30 PM</div><div class="tl-label">First dance</div></div>
+      <div class="tl-item"><div class="tl-time">9:00 PM</div><div class="tl-label">Party &amp; dancing</div></div>
+    </div>
+  </section>
+
+  <!-- RSVP — this is a portfolio demo, so this section is Tala's own inquiry form,
+       clearly labeled as such (not framed as RSVP-ing to Nadia & Elias's wedding). -->
+  <section class="rsvp">
+    <div class="wrap reveal" style="max-width:560px;">
+      <span class="eyebrow">LIKE WHAT YOU SEE?</span>
+      <h2>Book This For Your Own Wedding</h2>
+      <p>Tell us a bit about your celebration and we'll get back to you within 48 hours.</p>
+      <div class="rsvp-embed">
+        <iframe data-tally-src="https://tally.so/embed/vGKd8A?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                loading="lazy"
+                width="100%"
+                height="400"
+                title="Tala Invites Inquiry Form"
+                style="border:none;">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIFT -->
+  <section class="gift narrow section-tight">
+    <div class="reveal">
+      <span class="eyebrow">GIFT NOTE</span>
+      <h2 style="font-style:italic;font-size:26px;">With Love &amp; Gratitude</h2>
+      <p>Your presence is the greatest gift of all. Should you wish to give further, a monetary gift would be received with love and gratitude.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="names">Nadia &amp; Elias</div>
+    <div class="credit">DESIGNED BY TALA INVITES
+      <button class="print-fab" onclick="window.print()" title="Print keepsake card" aria-label="Print keepsake card">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 1.5c.5 4.2 1.6 7 3.3 8.7 1.7 1.7 4.5 2.8 8.7 3.3-4.2.5-7 1.6-8.7 3.3-1.7 1.7-2.8 4.5-3.3 8.7-.5-4.2-1.6-7-3.3-8.7-1.7-1.7-4.5-2.8-8.7-3.3 4.2-.5 7-1.6 8.7-3.3 1.7-1.7 2.8-4.5 3.3-8.7z"/>
+        </svg>
+      </button>
+    </div>
+    <div class="credit" style="margin-top:6px;opacity:0.4;">
+      <!-- Keep this line in sync with the MOTIF CREDITS comment in the config block above.
+           Update both places once per icon change, not per client page. -->
+      Ornamental icons: "[Icon Name]" by <a href="https://thenounproject.com/creator/[id]" style="text-decoration:underline;">[Creator Name]</a>,
+      "[Icon Name]" by <a href="https://thenounproject.com/creator/[id]" style="text-decoration:underline;">[Creator Name]</a> —
+      <a href="https://thenounproject.com" style="text-decoration:underline;">The Noun Project</a> (CC BY)
+    </div>
+  </footer>
+
+  <script>
+    // Countdown — set target date to wedding date/time above
+    const target = new Date("2026-12-12T16:00:00+08:00").getTime();
+    function tick(){
+      const now = Date.now();
+      const diff = Math.max(0, target - now);
+      const d = Math.floor(diff/86400000);
+      const h = Math.floor((diff%86400000)/3600000);
+      const m = Math.floor((diff%3600000)/60000);
+      const s = Math.floor((diff%60000)/1000);
+      const pad = n => String(n).padStart(2,'0');
+      document.getElementById('cd-days').textContent = pad(d);
+      document.getElementById('cd-hours').textContent = pad(h);
+      document.getElementById('cd-mins').textContent = pad(m);
+      document.getElementById('cd-secs').textContent = pad(s);
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    // SCROLL REVEAL — every [data-reveal-group]'s direct children become staggered
+    // .reveal items; everything already marked .reveal fades in as a single block.
+    // Fires once per element (unobserved after reveal) so it never replays on re-scroll.
+    document.querySelectorAll('[data-reveal-group]').forEach(group => {
+      Array.from(group.children).forEach((child, i) => {
+        child.classList.add('reveal');
+        child.style.transitionDelay = (i * 0.12) + 's';
+      });
+    });
+    const revealTargets = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+      revealTargets.forEach(el => io.observe(el));
+    } else {
+      revealTargets.forEach(el => el.classList.add('in-view'));
+    }
+  </script>
+
+  <!-- Tally embed loader — handles dynamicHeight resizing for the inquiry form iframe above -->
+  <script async src="https://tally.so/widgets/embed.js"
+    onload="if (typeof Tally !== 'undefined') Tally.loadEmbeds();"></script>
+
+</body>
+</html>

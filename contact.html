@@ -6,8 +6,6 @@
   <title>Contact — Tala Invites</title>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="icon" type="image/x-icon" href="/assets/logo-monogram.png">
-
 </head>
 <body>
 
@@ -27,7 +25,19 @@
       <li><a href="about.html">About</a></li>
     </ul>
     <a class="nav-cta" href="contact.html">Begin Your Story</a>
+    <button class="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- MOBILE NAV DRAWER -->
+  <div class="nav-mobile-drawer">
+    <a href="services.html"  onclick="closeMobileMenu()">Services</a>
+    <a href="portfolio.html" onclick="closeMobileMenu()">Portfolio</a>
+    <a href="pricing.html"   onclick="closeMobileMenu()">Pricing</a>
+    <a href="about.html"     onclick="closeMobileMenu()">About</a>
+    <a href="contact.html"   class="nav-mobile-cta" onclick="closeMobileMenu()">Begin Your Story</a>
+  </div>
 
   <!-- PAGE HERO -->
   <section class="page-hero">
@@ -68,15 +78,23 @@
         <div class="cd-item">
           <span class="cd-label">Website</span>
           <span class="cd-value">
-            <a href="https://www.talainvites.co" target="_blank">www.talainvites.co</a>
+            <a href="https://www.talainvites.com" target="_blank">www.talainvites.com</a>
           </span>
         </div>
 
         <div class="cd-item">
           <span class="cd-label">Location</span>
           <span class="cd-value">
-            Philippines
+            Makati City, Philippines
             <span class="cd-sub">Serving clients nationwide</span>
+          </span>
+        </div>
+
+        <div class="cd-item">
+          <span class="cd-label">Hours</span>
+          <span class="cd-value">
+            Monday – Saturday
+            <span class="cd-sub">9:00 AM – 6:00 PM PHT</span>
           </span>
         </div>
 
@@ -86,8 +104,8 @@
         Follow Us
       </p>
       <div class="contact-social">
-        <a class="social-pill" href="#">Instagram</a>
-        <a class="social-pill" href="#">Facebook</a>
+        
+        <a class="social-pill" href="https://www.facebook.com/share/19HXyvrzeC/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
         <a class="social-pill" href="#">Viber</a>
       </div>
 
@@ -122,7 +140,7 @@
         ═══════════════════════════════════════════════════════
       -->
       <iframe
-        data-tally-src="https://tally.so/embed/vGKd8A?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+        data-tally-src="https://tally.so/embed/YOUR_FORM_ID?alignLeft=1&hideTitle=1&transparentBackground=1"
         loading="lazy"
         width="100%"
         height="600"
@@ -163,12 +181,12 @@
         <a href="mailto:talainvites@gmail.com">talainvites@gmail.com</a>
       </div>
       <div class="footer-contact-item">
-        <a href="https://www.talainvites.co" target="_blank">www.talainvites.co</a>
+        <a href="https://www.talainvites.com" target="_blank">www.talainvites.com</a>
       </div>
       <div class="footer-contact-item">Makati City, Philippines</div>
       <div class="social-pills">
-        <a class="social-pill" href="#">Instagram</a>
-        <a class="social-pill" href="#">Facebook</a>
+        
+        <a class="social-pill" href="https://www.facebook.com/share/19HXyvrzeC/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
       </div>
     </div>
   </footer>

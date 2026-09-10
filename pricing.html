@@ -58,10 +58,10 @@
     <div class="pricing-grid" style="grid-template-columns:repeat(2,1fr);max-width:780px;margin:0 auto">
 
 
-      <!-- ─── Invitation Proper ─── -->
+      <!-- ─── Invitation ─── -->
       <div class="p-card">
         <p class="p-tier">Essential</p>
-        <h3 class="p-name">Invitation Proper</h3>
+        <h3 class="p-name">Invitation</h3>
         <p class="p-tagline">Everything your guests need — beautifully designed and delivered.</p>
 
         <div class="p-price"><span class="p-cur">₱</span>1,499</div>
@@ -69,8 +69,10 @@
 
         <div class="p-rule"></div>
 
+        <button class="p-features-toggle" onclick="toggleFeatures(this)">
+          What's included ↓
+        </button>
         <ul class="p-features">
-          <li>Full bespoke single-page invitation design</li>
           <li class="highlight">Full photo production — hero, gallery &amp; photos throughout</li>
           <li class="highlight">Countdown timer included</li>
           <li>Programme, Entourage &amp; Dress Code sections</li>
@@ -86,12 +88,12 @@
       </div>
 
 
-      <!-- ─── Full Wedding Suite ─── -->
+      <!-- ─── Full Full Suite ─── -->
       <div class="p-card featured">
         <div class="popular-badge">Best Value</div>
 
         <p class="p-tier">Full Suite</p>
-        <h3 class="p-name">Wedding Suite</h3>
+        <h3 class="p-name">Full Suite</h3>
         <p class="p-tagline">The complete experience — from Save the Date to your full invitation.</p>
 
         <div class="p-price"><span class="p-cur">₱</span>2,000</div>
@@ -99,8 +101,11 @@
 
         <div class="p-rule"></div>
 
+        <button class="p-features-toggle" onclick="toggleFeatures(this)">
+          What's included ↓
+        </button>
         <ul class="p-features">
-          <li>Everything in Invitation Proper</li>
+          <li>Everything in Invitation</li>
           <li class="highlight">+ Save the Date page — a linked teaser before the full reveal</li>
           <li>Two cohesive linked pages — one suite experience</li>
           <li class="highlight">Full photo production — hero, story section, collage gallery &amp; photos throughout</li>
@@ -147,7 +152,7 @@
         What is the difference between the two packages?
       </div>
       <div class="faq-a">
-        The Invitation Proper is a single full-page wedding invitation with RSVP, gallery, entourage, and all the details your guests need. The Wedding Suite adds a Save the Date page — a beautifully designed teaser that goes out first, with a link to the full invitation when it's ready. Both are fully bespoke.
+        The Invitation is a single full-page wedding invitation with RSVP, gallery, entourage, and all the details your guests need. The Full Suite adds a Save the Date page — a beautifully designed teaser that goes out first, with a link to the full invitation when it's ready. Both are fully bespoke.
       </div>
     </div>
 
@@ -250,5 +255,12 @@
   </div>
 
   <script src="js/main.js"></script>
+  <script>
+    function toggleFeatures(btn) {
+      var list = btn.nextElementSibling;
+      var open = list.classList.toggle('expanded');
+      btn.textContent = open ? 'What\'s included ↑' : 'What\'s included ↓';
+    }
+  </script>
 </body>
 </html>

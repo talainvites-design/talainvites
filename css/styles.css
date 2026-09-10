@@ -784,3 +784,119 @@ footer {
 @media (max-width: 768px) {
   .nav-hamburger { display: flex; }
 }
+
+
+/* ============================================================
+   MOBILE FIXES — Round 2
+   Targeted fixes per page audit
+   ============================================================ */
+
+/* ── INDEX: Our Story — center on mobile ── */
+@media (max-width: 768px) {
+  .home-intro-text {
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 0.5px solid var(--gold-light);
+    padding-bottom: 2.5rem;
+    text-align: center;
+  }
+  .home-intro-stats {
+    padding-left: 0;
+    text-align: center;
+    align-items: center;
+  }
+  .stat-item { text-align: center; }
+
+  /* ── INDEX / SERVICES: Process & We Create For — remove right separator lines ── */
+  .process-step::after { display: none; }
+  .how-step::after     { display: none; }
+
+  /* ── SERVICES: We Create For — center on mobile ── */
+  .how-step { text-align: center; }
+  .hs-num   { margin: 0 auto 0.5rem; }
+
+  /* ── ABOUT: Story section — center on mobile ── */
+  .about-story-text {
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 0.5px solid var(--gold-light);
+    padding-bottom: 2.5rem;
+    text-align: center;
+  }
+  .about-story-side {
+    padding-left: 0;
+    text-align: center;
+    align-items: center;
+  }
+
+  /* ── CONTACT: Reach Us — center on mobile ── */
+  .contact-info  { text-align: center; }
+  .contact-info .social-pills { justify-content: center; }
+
+  /* ── PORTFOLIO: Suite cards stack on mobile ── */
+  .suite-cards { grid-template-columns: 1fr; }
+
+  /* ── PRICING: Collapsible features on mobile ── */
+  .p-features-toggle {
+    display: block;
+    font-family: var(--poppins);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  .p-features { display: none; }
+  .p-features.expanded { display: block; }
+  .p-card.featured .p-features { display: block; } /* always show on featured card */
+}
+
+@media (max-width: 480px) {
+  .home-intro-text { padding-bottom: 2rem; }
+  .about-story-text { padding-bottom: 2rem; }
+}
+
+/* ── Iframe preview cards (homepage + portfolio) ── */
+.inv-card-iframe-wrap {
+  display:        flex;
+  flex-direction: column;
+  overflow:       hidden;
+  border:         0.5px solid rgba(201,168,76,0.15);
+}
+.inv-card-preview-box {
+  height:   420px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+.inv-card-preview-box iframe {
+  transform-origin: top left;
+  pointer-events:   none;
+}
+@media (max-width: 768px) {
+  .preview-row { grid-template-columns: 1fr; }
+  .inv-card-preview-box { height: 360px; }
+}
+
+/* ── Always-visible view button below suite cards ── */
+.suite-card-view-btn {
+  display:         block;
+  text-align:      center;
+  font-family:     var(--poppins);
+  font-size:       0.6rem;
+  letter-spacing:  0.14em;
+  text-transform:  uppercase;
+  padding:         0.75rem 1rem;
+  background:      #1A1408;
+  color:           var(--gold);
+  text-decoration: none;
+  border-top:      0.5px solid rgba(201,168,76,0.15);
+  transition:      background 0.2s;
+}
+.suite-card-view-btn:hover { background: var(--gold); color: var(--onyx); }

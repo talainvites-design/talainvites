@@ -994,3 +994,78 @@ footer {
 /* ── Portfolio: Remove hover overlay entirely ── */
 .suite-card-overlay { display: none !important; }
 
+
+
+/* ============================================================
+   UX FIXES — Round 4
+   ============================================================ */
+
+/* ── 1. Homepage/Portfolio: Move overlay label to bottom of card ── */
+.inv-card-click-overlay {
+  align-items:     flex-end;
+  justify-content: center;
+  padding-bottom:  1rem;
+}
+.inv-card-click-overlay-label {
+  background: rgba(28,23,18,0.75);
+  padding: 0.5rem 1.2rem;
+}
+
+/* On mobile — pin label to bottom, full width */
+@media (max-width: 768px) {
+  .inv-card-click-overlay {
+    background: rgba(28,23,18,0.15);
+    align-items: flex-end;
+    padding-bottom: 0;
+  }
+  .inv-card-click-overlay-label {
+    width:       100%;
+    text-align:  center;
+    background:  rgba(28,23,18,0.82);
+    padding:     0.75rem 1rem;
+    border:      none;
+    border-top:  0.5px solid rgba(201,168,76,0.3);
+    font-size:   0.62rem;
+    opacity:     1;
+    transform:   none;
+  }
+}
+
+/* ── 2. Portfolio: Suite cards — stack on mobile, full width ── */
+@media (max-width: 768px) {
+  .suite-cards {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+
+  /* Shorter card on mobile — landscape-ish rectangle */
+  .suite-card-preview {
+    height: 220px !important;
+  }
+
+  /* Hide the separate meta bar + view btn on mobile —
+     the click overlay label handles it */
+  .suite-card-meta   { display: none; }
+  .suite-card-view-btn { display: none; }
+
+  /* Portfolio suite showcase padding tighter on mobile */
+  .suite-showcase { padding: 1.2rem; }
+  .suite-showcase-title h2 { font-size: 1.3rem; }
+  .suite-showcase-title p  { font-size: 0.68rem; }
+}
+
+/* ── 3. Pricing: Force single column on mobile ── */
+@media (max-width: 768px) {
+  .pricing-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 420px !important;
+    margin: 0 auto !important;
+  }
+  .p-card.featured { order: -1; }
+}
+
+@media (max-width: 480px) {
+  .pricing-grid { max-width: 100% !important; }
+  .p-card { padding: 1.8rem 1.4rem; }
+}
+
